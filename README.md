@@ -1,4 +1,6 @@
-# hightouchapi
+# Hightouch Python SDK
+
+Hightouch exposes a REST API that lets users interact with resources like syncs, models, sources and destinations. 
 
 <!-- Start SDK Installation -->
 ## SDK Installation
@@ -7,6 +9,14 @@
 pip install hightouchapi
 ```
 <!-- End SDK Installation -->
+
+## Authentication
+
+- Create an [API key](https://app.hightouch.com/settings/api-keys)
+- From the API keys tab on the Settings page, select Add API key.
+- Enter a descriptive Name for your key.
+- Copy your API key and store it in a safe location. The key will only be displayed once.
+- Click Create API key.
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
