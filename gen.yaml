@@ -1,9 +1,9 @@
 management:
     openapi-checksum: a53d236a840ccb19591ccbf41c41acd1
     openapi-version: 1.0.0
-    speakeasy-version: 0.21.0
+    speakeasy-version: 0.21.1
 python:
-    version: 1.1.0
+    version: 1.1.1
     packagename: hightouchapi
     author: hightouchapi
 sdkclassname: hightouchapi

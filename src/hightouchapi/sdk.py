@@ -22,8 +22,8 @@ class Hightouchapi:
     
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "1.1.0"
-    _gen_version: str = "0.21.0"
+    _sdk_version: str = "1.1.1"
+    _gen_version: str = "0.21.1"
 
     def __init__(self) -> None:
         self._client = requests.Session()
