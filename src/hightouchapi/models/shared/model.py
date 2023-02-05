@@ -1,10 +1,10 @@
 import dataclasses
-from datetime import date, datetime
-from marshmallow import fields
 import dateutil.parser
-from typing import Any,Optional
 from dataclasses_json import dataclass_json
+from datetime import datetime
 from hightouchapi import utils
+from marshmallow import fields
+from typing import Any, Optional
 
 
 @dataclass_json

@@ -1,7 +1,7 @@
 import dataclasses
-from typing import Any
 from dataclasses_json import dataclass_json
 from hightouchapi import utils
+from typing import Any
 
 
 @dataclass_json

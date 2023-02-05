@@ -1,7 +1,7 @@
 import dataclasses
+from ..shared import interval as shared_interval
 from dataclasses_json import dataclass_json
 from hightouchapi import utils
-from ..shared import interval as shared_interval
 
 
 @dataclass_json

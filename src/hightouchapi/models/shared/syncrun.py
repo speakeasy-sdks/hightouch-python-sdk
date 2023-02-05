@@ -1,12 +1,11 @@
 import dataclasses
-from datetime import date, datetime
-from marshmallow import fields
 import dateutil.parser
-from typing import Optional
-from enum import Enum
-from dataclasses_json import dataclass_json
-from hightouchapi import utils
 from ..shared import syncrunstatus_enum as shared_syncrunstatus_enum
+from dataclasses_json import dataclass_json
+from datetime import datetime
+from hightouchapi import utils
+from marshmallow import fields
+from typing import Optional
 
 
 @dataclass_json

@@ -1,7 +1,7 @@
 import dataclasses
-from typing import Optional
 from ..shared import security as shared_security
 from ..shared import sync as shared_sync
+from typing import Optional
 
 
 @dataclasses.dataclass

@@ -1,8 +1,7 @@
 import dataclasses
-from enum import Enum
+from ..shared import intervalunit_enum as shared_intervalunit_enum
 from dataclasses_json import dataclass_json
 from hightouchapi import utils
-from ..shared import intervalunit_enum as shared_intervalunit_enum
 
 
 @dataclass_json
