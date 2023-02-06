@@ -1,11 +1,8 @@
 import dataclasses
-from datetime import date, datetime
-from marshmallow import fields
-import dateutil.parser
-from typing import Any
-from enum import Enum
 from dataclasses_json import dataclass_json
+from enum import Enum
 from hightouchapi import utils
+from typing import Any
 
 class ValidateErrorJSONMessageEnum(str, Enum):
     VALIDATION_FAILED = "Validation failed"

@@ -6,4 +6,3 @@ class IntervalUnitEnum(str, Enum):
     HOUR = "hour"
     DAY = "day"
     WEEK = "week"
-

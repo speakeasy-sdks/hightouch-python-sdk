@@ -11,4 +11,3 @@ class SyncRunStatusEnum(str, Enum):
     PROCESSING = "processing"
     REPORTING = "reporting"
     INTERRUPTED = "interrupted"
-

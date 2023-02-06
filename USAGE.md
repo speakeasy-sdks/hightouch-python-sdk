@@ -4,7 +4,7 @@ import hightouchapi
 from hightouchapi.models import operations, shared
 
 s = hightouchapi.Hightouchapi()
-    
+   
 req = operations.CreateDestinationRequest(
     security=operations.CreateDestinationSecurity(
         bearer_auth=shared.SchemeBearerAuth(
@@ -13,11 +13,13 @@ req = operations.CreateDestinationRequest(
     ),
     request=shared.DestinationCreate(
         configuration={
-            "voluptas": "culpa",
+            "deserunt": "porro",
+            "nulla": "id",
+            "vero": "perspiciatis",
         },
-        name="expedita",
-        slug="consequuntur",
-        type="dolor",
+        name="nulla",
+        slug="nihil",
+        type="fuga",
     ),
 )
     

@@ -1,14 +1,11 @@
 import dataclasses
-from datetime import date, datetime
-from marshmallow import fields
-import dateutil.parser
-from typing import Optional
-from enum import Enum
-from dataclasses_json import dataclass_json
-from hightouchapi import utils
-from ..shared import security as shared_security
 from ..shared import model as shared_model
+from ..shared import security as shared_security
 from ..shared import validateerrorjson as shared_validateerrorjson
+from dataclasses_json import dataclass_json
+from enum import Enum
+from hightouchapi import utils
+from typing import Optional
 
 class ListModelOrderByEnum(str, Enum):
     ID = "id"
@@ -32,16 +29,16 @@ class ListModelSecurity:
     bearer_auth: shared_security.SchemeBearerAuth = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})
     
 
-@dataclass_json
-@dataclasses.dataclass
-class ListModel200ApplicationJSON:
-    data: list[shared_model.Model] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('data') }})
-    
-
 @dataclasses.dataclass
 class ListModelRequest:
     query_params: ListModelQueryParams = dataclasses.field()
     security: ListModelSecurity = dataclasses.field()
+    
+
+@dataclass_json
+@dataclasses.dataclass
+class ListModel200ApplicationJSON:
+    data: list[shared_model.Model] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('data') }})
     
 
 @dataclasses.dataclass

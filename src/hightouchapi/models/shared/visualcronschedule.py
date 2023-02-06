@@ -1,7 +1,7 @@
 import dataclasses
+from ..shared import record_day_boolean_or_undefined_ as shared_record_day_boolean_or_undefined_
 from dataclasses_json import dataclass_json
 from hightouchapi import utils
-from ..shared import record_day_boolean_or_undefined_ as shared_record_day_boolean_or_undefined_
 
 
 @dataclass_json

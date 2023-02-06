@@ -1,13 +1,8 @@
 
-
 import requests
-from typing import Any,Optional
-from enum import Enum
-from hightouchapi.models import shared, operations
 from . import utils
-
-
-
+from hightouchapi.models import operations, shared
+from typing import Optional
 
 SERVERS = [
 	"https://api.hightouch.com/api/v1",
@@ -22,8 +17,8 @@ class Hightouchapi:
     
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "1.1.0"
-    _gen_version: str = "0.21.0"
+    _sdk_version: str = "2.0.0"
+    _gen_version: str = "1.0.0"
 
     def __init__(self) -> None:
         self._client = requests.Session()
@@ -43,7 +38,6 @@ class Hightouchapi:
     def config_client(self, client: requests.Session):
         self._client = client
         
-    
     
     
     def create_destination(self, request: operations.CreateDestinationRequest) -> operations.CreateDestinationResponse:
@@ -90,7 +84,6 @@ class Hightouchapi:
 
         return res
 
-    
     def create_model(self, request: operations.CreateModelRequest) -> operations.CreateModelResponse:
         r"""Create Model
         Create a new model
@@ -135,7 +128,6 @@ class Hightouchapi:
 
         return res
 
-    
     def create_source(self, request: operations.CreateSourceRequest) -> operations.CreateSourceResponse:
         r"""Create Source
         Create a new source
@@ -180,7 +172,6 @@ class Hightouchapi:
 
         return res
 
-    
     def create_sync(self, request: operations.CreateSyncRequest) -> operations.CreateSyncResponse:
         r"""Create Sync
         Create a new sync
@@ -225,7 +216,6 @@ class Hightouchapi:
 
         return res
 
-    
     def get_destination(self, request: operations.GetDestinationRequest) -> operations.GetDestinationResponse:
         r"""Get Destination
         Retrieve a destination based on its Hightouch ID
@@ -254,7 +244,6 @@ class Hightouchapi:
 
         return res
 
-    
     def get_model(self, request: operations.GetModelRequest) -> operations.GetModelResponse:
         r"""Get Model
         Retrieve models from model ID
@@ -283,7 +272,6 @@ class Hightouchapi:
 
         return res
 
-    
     def get_source(self, request: operations.GetSourceRequest) -> operations.GetSourceResponse:
         r"""Get Source
         Retrieve source from source ID
@@ -316,7 +304,6 @@ class Hightouchapi:
 
         return res
 
-    
     def get_sync(self, request: operations.GetSyncRequest) -> operations.GetSyncResponse:
         r"""Get Sync
         Retrieve sync from sync ID
@@ -345,7 +332,6 @@ class Hightouchapi:
 
         return res
 
-    
     def list_destination(self, request: operations.ListDestinationRequest) -> operations.ListDestinationResponse:
         r"""List Destinations
         List the destinations in the user's workspace
@@ -379,7 +365,6 @@ class Hightouchapi:
 
         return res
 
-    
     def list_model(self, request: operations.ListModelRequest) -> operations.ListModelResponse:
         r"""List Models
         List all the models in the current workspace
@@ -413,7 +398,6 @@ class Hightouchapi:
 
         return res
 
-    
     def list_source(self, request: operations.ListSourceRequest) -> operations.ListSourceResponse:
         r"""List Sources
         List all the sources in the current workspace
@@ -443,7 +427,6 @@ class Hightouchapi:
 
         return res
 
-    
     def list_sync(self, request: operations.ListSyncRequest) -> operations.ListSyncResponse:
         r"""List Syncs
         List all the syncs in the current workspace
@@ -477,7 +460,6 @@ class Hightouchapi:
 
         return res
 
-    
     def list_sync_runs(self, request: operations.ListSyncRunsRequest) -> operations.ListSyncRunsResponse:
         r"""List Sync Runs
         List all sync runs under a sync
@@ -511,7 +493,6 @@ class Hightouchapi:
 
         return res
 
-    
     def trigger_run(self, request: operations.TriggerRunRequest) -> operations.TriggerRunResponse:
         r"""Trigger Sync
         Trigger a new run for the given sync.
@@ -551,7 +532,6 @@ class Hightouchapi:
 
         return res
 
-    
     def trigger_run_custom(self, request: operations.TriggerRunCustomRequest) -> operations.TriggerRunCustomResponse:
         r"""Trigger Sync From ID or Slug
         Trigger a new run globally based on sync id or sync slug
@@ -593,7 +573,6 @@ class Hightouchapi:
 
         return res
 
-    
     def update_destination(self, request: operations.UpdateDestinationRequest) -> operations.UpdateDestinationResponse:
         r"""Update Destination
         Update an existing destination
@@ -638,7 +617,6 @@ class Hightouchapi:
 
         return res
 
-    
     def update_model(self, request: operations.UpdateModelRequest) -> operations.UpdateModelResponse:
         r"""Update Model
         Update an existing model
@@ -683,7 +661,6 @@ class Hightouchapi:
 
         return res
 
-    
     def update_source(self, request: operations.UpdateSourceRequest) -> operations.UpdateSourceResponse:
         r"""Update Source
         Update an existing source
@@ -728,7 +705,6 @@ class Hightouchapi:
 
         return res
 
-    
     def update_sync(self, request: operations.UpdateSyncRequest) -> operations.UpdateSyncResponse:
         r"""Update Sync
         Update an existing sync

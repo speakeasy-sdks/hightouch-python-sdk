@@ -1,16 +1,11 @@
 import dataclasses
-from datetime import date, datetime
-from marshmallow import fields
 import dateutil.parser
-from typing import Any
-from enum import Enum
-from dataclasses_json import dataclass_json
-from hightouchapi import utils
-from ..shared import intervalschedule as shared_intervalschedule
-from ..shared import cronschedule as shared_cronschedule
-from ..shared import visualcronschedule as shared_visualcronschedule
-from ..shared import dbtschedule as shared_dbtschedule
 from ..shared import syncstatus_enum as shared_syncstatus_enum
+from dataclasses_json import dataclass_json
+from datetime import datetime
+from hightouchapi import utils
+from marshmallow import fields
+from typing import Any
 
 
 @dataclass_json
