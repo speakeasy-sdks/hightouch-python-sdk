@@ -1,5 +1,10 @@
 src/hightouchapi/sdk.py
 setup.py
+src/hightouchapi/__init__.py
+src/hightouchapi/models/__init__.py
+src/hightouchapi/utils/__init__.py
+src/hightouchapi/utils/retries.py
+src/hightouchapi/utils/utils.py
 src/hightouchapi/models/operations/createdestination.py
 src/hightouchapi/models/operations/createmodel.py
 src/hightouchapi/models/operations/createsource.py
