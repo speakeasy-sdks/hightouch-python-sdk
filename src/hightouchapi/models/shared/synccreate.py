@@ -1,10 +1,11 @@
+from __future__ import annotations
 import dataclasses
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from hightouchapi import utils
 from typing import Any
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class SyncCreateSchedule:
     r"""SyncCreateSchedule
@@ -23,7 +24,7 @@ class SyncCreateSchedule:
     type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('type') }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class SyncCreate:
     r"""SyncCreate

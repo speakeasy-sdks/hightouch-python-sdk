@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import destinationcreate as shared_destinationcreate
 from ..shared import internalservererror_enum as shared_internalservererror_enum

@@ -1,14 +1,15 @@
+from __future__ import annotations
 import dataclasses
 import dateutil.parser
 from ..shared import syncstatus_enum as shared_syncstatus_enum
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from hightouchapi import utils
 from marshmallow import fields
 from typing import Any
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class SyncSchedule:
     r"""SyncSchedule
@@ -27,7 +28,7 @@ class SyncSchedule:
     type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('type') }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class Sync:
     r"""Sync

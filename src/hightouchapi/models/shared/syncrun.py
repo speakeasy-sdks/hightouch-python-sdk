@@ -1,14 +1,15 @@
+from __future__ import annotations
 import dataclasses
 import dateutil.parser
 from ..shared import syncrunstatus_enum as shared_syncrunstatus_enum
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from hightouchapi import utils
 from marshmallow import fields
 from typing import Optional
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class SyncRunFailedRows:
     r"""SyncRunFailedRows
@@ -24,7 +25,7 @@ class SyncRunFailedRows:
     removed_count: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('removedCount') }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class SyncRunPlannedRows:
     r"""SyncRunPlannedRows
@@ -39,7 +40,7 @@ class SyncRunPlannedRows:
     removed_count: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('removedCount') }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class SyncRunSuccessfulRows:
     r"""SyncRunSuccessfulRows
@@ -51,7 +52,7 @@ class SyncRunSuccessfulRows:
     removed_count: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('removedCount') }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class SyncRun:
     completion_ratio: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('completionRatio') }})
@@ -64,5 +65,5 @@ class SyncRun:
     started_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('startedAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
     status: shared_syncrunstatus_enum.SyncRunStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('status') }})
     successful_rows: SyncRunSuccessfulRows = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('successfulRows') }})
-    error: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('error') }})
+    error: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('error'), 'exclude': lambda f: f is None }})
     
