@@ -1,10 +1,11 @@
+from __future__ import annotations
 import dataclasses
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from hightouchapi import utils
 from typing import Any, Optional
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ModelCreateCustom:
     r"""ModelCreateCustom
@@ -14,13 +15,13 @@ class ModelCreateCustom:
     query: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('query') }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ModelCreateDbt:
     model_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('modelId') }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ModelCreateRaw:
     r"""ModelCreateRaw
@@ -30,7 +31,7 @@ class ModelCreateRaw:
     sql: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('sql') }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ModelCreateTable:
     r"""ModelCreateTable
@@ -40,7 +41,7 @@ class ModelCreateTable:
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('name') }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ModelCreateVisual:
     r"""ModelCreateVisual
@@ -53,7 +54,7 @@ class ModelCreateVisual:
     secondary_label: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('secondaryLabel') }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ModelCreate:
     r"""ModelCreate
@@ -66,9 +67,9 @@ class ModelCreate:
     query_type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('queryType') }})
     slug: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('slug') }})
     source_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('sourceId') }})
-    custom: Optional[ModelCreateCustom] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('custom') }})
-    dbt: Optional[ModelCreateDbt] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('dbt') }})
-    raw: Optional[ModelCreateRaw] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('raw') }})
-    table: Optional[ModelCreateTable] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('table') }})
-    visual: Optional[ModelCreateVisual] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('visual') }})
+    custom: Optional[ModelCreateCustom] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('custom'), 'exclude': lambda f: f is None }})
+    dbt: Optional[ModelCreateDbt] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('dbt'), 'exclude': lambda f: f is None }})
+    raw: Optional[ModelCreateRaw] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('raw'), 'exclude': lambda f: f is None }})
+    table: Optional[ModelCreateTable] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('table'), 'exclude': lambda f: f is None }})
+    visual: Optional[ModelCreateVisual] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('visual'), 'exclude': lambda f: f is None }})
     

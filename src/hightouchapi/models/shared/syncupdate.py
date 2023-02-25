@@ -1,10 +1,11 @@
+from __future__ import annotations
 import dataclasses
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from hightouchapi import utils
 from typing import Any, Optional
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class SyncUpdateSchedule:
     r"""SyncUpdateSchedule
@@ -23,14 +24,14 @@ class SyncUpdateSchedule:
     type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('type') }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class SyncUpdate:
     r"""SyncUpdate
     The input for updating a Sync
     """
     
-    configuration: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('configuration') }})
-    disabled: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('disabled') }})
-    schedule: Optional[SyncUpdateSchedule] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('schedule') }})
+    configuration: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('configuration'), 'exclude': lambda f: f is None }})
+    disabled: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('disabled'), 'exclude': lambda f: f is None }})
+    schedule: Optional[SyncUpdateSchedule] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('schedule'), 'exclude': lambda f: f is None }})
     

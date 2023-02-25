@@ -1,9 +1,10 @@
+from __future__ import annotations
 import dataclasses
 import dateutil.parser
 from ..shared import security as shared_security
 from ..shared import syncrun as shared_syncrun
 from ..shared import validateerrorjson as shared_validateerrorjson
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from enum import Enum
 from hightouchapi import utils
@@ -45,7 +46,7 @@ class ListSyncRunsRequest:
     security: ListSyncRunsSecurity = dataclasses.field()
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ListSyncRuns200ApplicationJSON:
     data: list[shared_syncrun.SyncRun] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('data') }})

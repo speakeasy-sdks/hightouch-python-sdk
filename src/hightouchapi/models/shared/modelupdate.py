@@ -1,10 +1,11 @@
+from __future__ import annotations
 import dataclasses
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from hightouchapi import utils
 from typing import Any, Optional
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ModelUpdateCustom:
     r"""ModelUpdateCustom
@@ -14,13 +15,13 @@ class ModelUpdateCustom:
     query: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('query') }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ModelUpdateDbt:
     model_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('modelId') }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ModelUpdateRaw:
     r"""ModelUpdateRaw
@@ -30,7 +31,7 @@ class ModelUpdateRaw:
     sql: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('sql') }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ModelUpdateTable:
     r"""ModelUpdateTable
@@ -40,7 +41,7 @@ class ModelUpdateTable:
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('name') }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ModelUpdateVisual:
     r"""ModelUpdateVisual
@@ -53,19 +54,19 @@ class ModelUpdateVisual:
     secondary_label: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('secondaryLabel') }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ModelUpdate:
     r"""ModelUpdate
     The input for updating a Model
     """
     
-    custom: Optional[ModelUpdateCustom] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('custom') }})
-    dbt: Optional[ModelUpdateDbt] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('dbt') }})
-    is_schema: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('isSchema') }})
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('name') }})
-    primary_key: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('primaryKey') }})
-    raw: Optional[ModelUpdateRaw] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('raw') }})
-    table: Optional[ModelUpdateTable] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('table') }})
-    visual: Optional[ModelUpdateVisual] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('visual') }})
+    custom: Optional[ModelUpdateCustom] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('custom'), 'exclude': lambda f: f is None }})
+    dbt: Optional[ModelUpdateDbt] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('dbt'), 'exclude': lambda f: f is None }})
+    is_schema: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('isSchema'), 'exclude': lambda f: f is None }})
+    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('name'), 'exclude': lambda f: f is None }})
+    primary_key: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('primaryKey'), 'exclude': lambda f: f is None }})
+    raw: Optional[ModelUpdateRaw] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('raw'), 'exclude': lambda f: f is None }})
+    table: Optional[ModelUpdateTable] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('table'), 'exclude': lambda f: f is None }})
+    visual: Optional[ModelUpdateVisual] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('visual'), 'exclude': lambda f: f is None }})
     

@@ -1,13 +1,14 @@
+from __future__ import annotations
 import dataclasses
 import dateutil.parser
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from hightouchapi import utils
 from marshmallow import fields
 from typing import Any
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class Destination:
     r"""Destination

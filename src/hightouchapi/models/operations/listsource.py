@@ -1,7 +1,8 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import security as shared_security
 from ..shared import source as shared_source
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from hightouchapi import utils
 from typing import Optional
@@ -34,7 +35,7 @@ class ListSourceRequest:
     security: ListSourceSecurity = dataclasses.field()
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ListSource200ApplicationJSON:
     data: list[shared_source.Source] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('data') }})

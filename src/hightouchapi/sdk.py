@@ -2,7 +2,7 @@
 import requests
 from . import utils
 from hightouchapi.models import operations, shared
-from typing import Optional
+from typing import Any, Optional
 
 SERVERS = [
 	"https://api.hightouch.com/api/v1",
@@ -17,8 +17,8 @@ class Hightouchapi:
     
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "2.0.0"
-    _gen_version: str = "1.0.0"
+    _sdk_version: str = "2.5.1"
+    _gen_version: str = "1.5.3"
 
     def __init__(self) -> None:
         self._client = requests.Session()
@@ -50,15 +50,15 @@ class Hightouchapi:
         url = base_url.removesuffix("/") + "/destinations"
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.CreateDestinationResponse(status_code=r.status_code, content_type=content_type)
@@ -94,15 +94,15 @@ class Hightouchapi:
         url = base_url.removesuffix("/") + "/models"
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.CreateModelResponse(status_code=r.status_code, content_type=content_type)
@@ -138,15 +138,15 @@ class Hightouchapi:
         url = base_url.removesuffix("/") + "/sources"
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.CreateSourceResponse(status_code=r.status_code, content_type=content_type)
@@ -182,15 +182,15 @@ class Hightouchapi:
         url = base_url.removesuffix("/") + "/syncs"
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.CreateSyncResponse(status_code=r.status_code, content_type=content_type)
@@ -506,13 +506,13 @@ class Hightouchapi:
         url = utils.generate_url(base_url, "/syncs/{syncId}/trigger", request.path_params)
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.TriggerRunResponse(status_code=r.status_code, content_type=content_type)
@@ -545,15 +545,15 @@ class Hightouchapi:
         url = base_url.removesuffix("/") + "/syncs/trigger"
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.TriggerRunCustomResponse(status_code=r.status_code, content_type=content_type)
@@ -585,15 +585,15 @@ class Hightouchapi:
         url = utils.generate_url(base_url, "/destinations/{destinationId}", request.path_params)
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("PATCH", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("PATCH", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.UpdateDestinationResponse(status_code=r.status_code, content_type=content_type)
@@ -629,15 +629,15 @@ class Hightouchapi:
         url = utils.generate_url(base_url, "/models/{modelId}", request.path_params)
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("PATCH", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("PATCH", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.UpdateModelResponse(status_code=r.status_code, content_type=content_type)
@@ -673,15 +673,15 @@ class Hightouchapi:
         url = utils.generate_url(base_url, "/sources/{sourceId}", request.path_params)
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("PATCH", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("PATCH", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.UpdateSourceResponse(status_code=r.status_code, content_type=content_type)
@@ -717,15 +717,15 @@ class Hightouchapi:
         url = utils.generate_url(base_url, "/syncs/{syncId}", request.path_params)
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("PATCH", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("PATCH", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.UpdateSyncResponse(status_code=r.status_code, content_type=content_type)
