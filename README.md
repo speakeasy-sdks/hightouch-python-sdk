@@ -1,6 +1,12 @@
 # Hightouch Python SDK
 
-Hightouch exposes a REST API that lets users interact with resources like syncs, models, sources and destinations. 
+<div align="center">
+   <p>Hightouch exposes a REST API that lets users interact with resources like syncs, models, sources and destinations.</p>
+   <a href="https://hightouch.com/docs/api-reference"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=000000&style=for-the-badge" /></a>
+   <a href="https://github.com/speakeasy-sdks/hightouch-python-sdk/actions"><img src="https://img.shields.io/github/actions/workflow/status/speakeasy-sdks/hightouch-python-sdk/speakeasy_sdk_generation.yml?style=for-the-badge" /></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" /></a>
+  <a href="https://github.com/speakeasy-sdks/hightouch-python-sdk/releases"><img src="https://img.shields.io/github/v/release/speakeasy-sdks/hightouch-python-sdk?sort=semver&style=for-the-badge" /></a>
+</div>
 
 <!-- Start SDK Installation -->
 ## SDK Installation
