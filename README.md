@@ -15,7 +15,7 @@
 ## SDK Installation
 
 ```bash
-pip install hightouchapi
+pip install hightouch
 ```
 <!-- End SDK Installation -->
 
@@ -30,16 +30,14 @@ pip install hightouchapi
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```python
-import hightouchapi
-from hightouchapi.models import operations, shared
+import hightouch
+from hightouch.models import operations, shared
 
-s = hightouchapi.Hightouchapi()
+s = hightouch.Hightouch()
    
 req = operations.CreateDestinationRequest(
     security=operations.CreateDestinationSecurity(
-        bearer_auth=shared.SchemeBearerAuth(
-            authorization="Bearer YOUR_BEARER_TOKEN_HERE",
-        ),
+        bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
     ),
     request=shared.DestinationCreate(
         configuration={
@@ -63,7 +61,7 @@ if res.create_destination_200_application_json_any_of is not None:
 <!-- Start SDK Available Operations -->
 ## SDK Available Operations
 
-### Hightouchapi SDK
+### Hightouch SDK
 
 * `create_destination` - Create Destination
 * `create_model` - Create Model

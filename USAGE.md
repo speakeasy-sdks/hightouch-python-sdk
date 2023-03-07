@@ -1,15 +1,13 @@
 <!-- Start SDK Example Usage -->
 ```python
-import hightouchapi
-from hightouchapi.models import operations, shared
+import hightouch
+from hightouch.models import operations, shared
 
-s = hightouchapi.Hightouchapi()
+s = hightouch.Hightouch()
    
 req = operations.CreateDestinationRequest(
     security=operations.CreateDestinationSecurity(
-        bearer_auth=shared.SchemeBearerAuth(
-            authorization="Bearer YOUR_BEARER_TOKEN_HERE",
-        ),
+        bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
     ),
     request=shared.DestinationCreate(
         configuration={
