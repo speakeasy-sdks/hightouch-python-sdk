@@ -1,9 +1,10 @@
-management:
-    openapi-checksum: a53d236a840ccb19591ccbf41c41acd1
-    openapi-version: 1.0.0
-    speakeasy-version: 1.5.3
+configVersion: 1.0.0
+generation:
+    telemetryEnabled: true
+    sdkClassName: hightouch
+    sdkFlattening: true
 python:
-    version: 2.5.1
-    packagename: hightouchapi
-    author: hightouchapi
-sdkclassname: hightouchapi
+    version: 1.8.2
+    author: Speakeasy
+    description: Python SDK for Hightouch API
+    packageName: hightouch
