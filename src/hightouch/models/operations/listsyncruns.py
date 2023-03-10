@@ -1,6 +1,5 @@
 from __future__ import annotations
 import dataclasses
-import dateutil.parser
 import requests as requests_http
 from ..shared import syncrun as shared_syncrun
 from ..shared import validateerrorjson as shared_validateerrorjson
@@ -8,7 +7,6 @@ from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from enum import Enum
 from hightouch import utils
-from marshmallow import fields
 from typing import Optional
 
 
