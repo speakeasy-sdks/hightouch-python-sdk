@@ -4,24 +4,22 @@ import hightouch
 from hightouch.models import operations, shared
 
 s = hightouch.Hightouch()
-   
-req = operations.CreateDestinationRequest(
-    security=operations.CreateDestinationSecurity(
-        bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
-    ),
-    request=shared.DestinationCreate(
-        configuration={
-            "deserunt": "porro",
-            "nulla": "id",
-            "vero": "perspiciatis",
-        },
-        name="nulla",
-        slug="nihil",
-        type="fuga",
-    ),
+
+
+req = shared.DestinationCreate(
+    configuration={
+        "deserunt": "porro",
+        "nulla": "id",
+        "vero": "perspiciatis",
+    },
+    name="nulla",
+    slug="nihil",
+    type="fuga",
 )
     
-res = s.create_destination(req)
+res = s.create_destination(req, operations.CreateDestinationSecurity(
+    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+))
 
 if res.create_destination_200_application_json_any_of is not None:
     # handle response

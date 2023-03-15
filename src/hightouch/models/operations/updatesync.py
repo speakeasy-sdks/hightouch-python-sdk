@@ -13,14 +13,9 @@ class UpdateSyncSecurity:
     
 
 @dataclasses.dataclass
-class UpdateSyncPathParams:
-    sync_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class UpdateSyncRequest:
-    path_params: UpdateSyncPathParams = dataclasses.field()
-    request: shared_syncupdate.SyncUpdate = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
+    sync_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
+    sync_update: shared_syncupdate.SyncUpdate = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclasses.dataclass

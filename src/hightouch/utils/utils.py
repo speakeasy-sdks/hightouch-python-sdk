@@ -5,7 +5,7 @@ from dataclasses import Field, dataclass, fields, is_dataclass, make_dataclass
 from datetime import date, datetime
 from email.message import Message
 from enum import Enum
-from typing import Callable, Optional, Tuple, Union, get_args, get_origin
+from typing import Any, Callable, Optional, Tuple, Union, get_args, get_origin
 from xmlrpc.client import boolean
 
 import dateutil.parser
@@ -29,6 +29,9 @@ class SecurityClient:
 
 def configure_security_client(client: requests.Session, security: dataclass):
     client = SecurityClient(client)
+
+    if security is None:
+        return client
 
     sec_fields: Tuple[Field, ...] = fields(security)
     for sec_field in sec_fields:
@@ -136,14 +139,23 @@ def _parse_basic_auth_scheme(client: SecurityClient, scheme: dataclass):
     client.client.headers['Authorization'] = f'Basic {base64.b64encode(data).decode()}'
 
 
-def generate_url(server_url: str, path: str, path_params: dataclass) -> str:
-    path_param_fields: Tuple[Field, ...] = fields(path_params)
+def generate_url(clazz: type, server_url: str, path: str, path_params: dataclass, gbls: dict[str, dict[str, dict[str, Any]]] = None) -> str:
+    path_param_fields: Tuple[Field, ...] = fields(clazz)
     for field in path_param_fields:
+        request_metadata = field.metadata.get('request')
+        if request_metadata is not None:
+            continue
+
         param_metadata = field.metadata.get('path_param')
         if param_metadata is None:
             continue
+
         if param_metadata.get('style', 'simple') == 'simple':
-            param = getattr(path_params, field.name)
+            param = getattr(
+                path_params, field.name) if path_params is not None else None
+            param = _populate_from_globals(
+                field.name, param, 'pathParam', gbls)
+
             if param is None:
                 continue
 
@@ -210,32 +222,38 @@ def template_url(url_with_params: str, params: dict[str, str]) -> str:
     return url_with_params
 
 
-def get_query_params(query_params: dataclass) -> dict[str, list[str]]:
-    if query_params is None:
-        return {}
-
+def get_query_params(clazz: type, query_params: dataclass, gbls: dict[str, dict[str, dict[str, Any]]] = None) -> dict[str, list[str]]:
     params: dict[str, list[str]] = {}
 
-    param_fields: Tuple[Field, ...] = fields(query_params)
+    param_fields: Tuple[Field, ...] = fields(clazz)
     for field in param_fields:
+        request_metadata = field.metadata.get('request')
+        if request_metadata is not None:
+            continue
+
         metadata = field.metadata.get('query_param')
         if not metadata:
             continue
 
         param_name = field.name
+        value = getattr(
+            query_params, param_name) if query_params is not None else None
+
+        value = _populate_from_globals(param_name, value, 'queryParam', gbls)
+
         f_name = metadata.get("field_name")
         serialization = metadata.get('serialization', '')
         if serialization != '':
             params = params | _get_serialized_query_params(
-                metadata, f_name, getattr(query_params, param_name))
+                metadata, f_name, value)
         else:
             style = metadata.get('style', 'form')
             if style == 'deepObject':
                 params = params | _get_deep_object_query_params(
-                    metadata, f_name, getattr(query_params, param_name))
+                    metadata, f_name, value)
             elif style == 'form':
                 params = params | _get_form_query_params(
-                    metadata, f_name, getattr(query_params, param_name))
+                    metadata, f_name, value)
             else:
                 raise Exception('not yet implemented')
     return params
@@ -339,38 +357,36 @@ def _get_form_query_params(metadata: dict, field_name: str, obj: any) -> dict[st
     return _populate_form(field_name, metadata.get("explode", True), obj, _get_query_param_field_name)
 
 
-def serialize_request_body(request: dataclass) -> Tuple[str, any, any]:
+SERIALIZATION_METHOD_TO_CONTENT_TYPE = {
+    'json':      'application/json',
+    'form':      'application/x-www-form-urlencoded',
+    'multipart': 'multipart/form-data',
+    'raw':       'application/octet-stream',
+    'string':    'text/plain',
+}
+
+
+def serialize_request_body(request: dataclass, request_field_name: str, serialization_method: str) -> Tuple[str, any, any]:
     if request is None:
         return None, None, None, None
 
-    request_val = getattr(request, "request")
-    if request_val is None:
-        raise Exception("request body not found")
+    if not is_dataclass(request) or not hasattr(request, request_field_name):
+        return serialize_content_type(request_field_name, SERIALIZATION_METHOD_TO_CONTENT_TYPE[serialization_method], request)
+
+    request_val = getattr(request, request_field_name)
 
     request_fields: Tuple[Field, ...] = fields(request)
     request_metadata = None
 
     for field in request_fields:
-        if field.name == "request":
+        if field.name == request_field_name:
             request_metadata = field.metadata.get('request')
             break
 
-    if request_metadata is not None:
-        # single request
-        return serialize_content_type('request', request_metadata.get('media_type', 'application/octet-stream'), request_val)
+    if request_metadata is None:
+        raise Exception('invalid request type')
 
-    request_fields: Tuple[Field, ...] = fields(request_val)
-    for field in request_fields:
-        req = getattr(request_val, field.name)
-        if req is None:
-            continue
-
-        request_metadata = field.metadata.get('request')
-        if request_metadata is None:
-            raise Exception(
-                f'missing request tag on request body field {field.name}')
-
-        return serialize_content_type(field.name, request_metadata.get('media_type', 'application/octet-stream'), req)
+    return serialize_content_type(request_field_name, request_metadata.get('media_type', 'application/octet-stream'), request_val)
 
 
 def serialize_content_type(field_name: str, media_type: str, request: dataclass) -> Tuple[str, any, list[list[any]]]:
@@ -703,3 +719,15 @@ def _val_to_string(val):
         return val.value
 
     return str(val)
+
+
+def _populate_from_globals(param_name: str, value: any, param_type: str, gbls: dict[str, dict[str, dict[str, Any]]]):
+    if value is None and gbls is not None:
+        if 'parameters' in gbls:
+            if param_type in gbls['parameters']:
+                if param_name in gbls['parameters'][param_type]:
+                    global_value = gbls['parameters'][param_type][param_name]
+                    if global_value is not None:
+                        value = global_value
+
+    return value
