@@ -11,13 +11,8 @@ class GetDestinationSecurity:
     
 
 @dataclasses.dataclass
-class GetDestinationPathParams:
-    destination_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'destinationId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class GetDestinationRequest:
-    path_params: GetDestinationPathParams = dataclasses.field()
+    destination_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'destinationId', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

@@ -13,14 +13,9 @@ class UpdateDestinationSecurity:
     
 
 @dataclasses.dataclass
-class UpdateDestinationPathParams:
-    destination_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'destinationId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class UpdateDestinationRequest:
-    path_params: UpdateDestinationPathParams = dataclasses.field()
-    request: shared_destinationupdate.DestinationUpdate = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
+    destination_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'destinationId', 'style': 'simple', 'explode': False }})
+    destination_update: shared_destinationupdate.DestinationUpdate = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclasses.dataclass

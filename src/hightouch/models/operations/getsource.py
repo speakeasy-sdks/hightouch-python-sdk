@@ -12,13 +12,8 @@ class GetSourceSecurity:
     
 
 @dataclasses.dataclass
-class GetSourcePathParams:
-    source_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'sourceId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class GetSourceRequest:
-    path_params: GetSourcePathParams = dataclasses.field()
+    source_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'sourceId', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

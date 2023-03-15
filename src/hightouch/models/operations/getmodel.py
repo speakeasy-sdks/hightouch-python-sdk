@@ -11,13 +11,8 @@ class GetModelSecurity:
     
 
 @dataclasses.dataclass
-class GetModelPathParams:
-    model_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class GetModelRequest:
-    path_params: GetModelPathParams = dataclasses.field()
+    model_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

@@ -13,14 +13,9 @@ class UpdateSourceSecurity:
     
 
 @dataclasses.dataclass
-class UpdateSourcePathParams:
-    source_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'sourceId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class UpdateSourceRequest:
-    path_params: UpdateSourcePathParams = dataclasses.field()
-    request: shared_sourceupdate.SourceUpdate = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
+    source_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'sourceId', 'style': 'simple', 'explode': False }})
+    source_update: shared_sourceupdate.SourceUpdate = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclasses.dataclass

@@ -11,13 +11,8 @@ class GetSyncSecurity:
     
 
 @dataclasses.dataclass
-class GetSyncPathParams:
-    sync_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class GetSyncRequest:
-    path_params: GetSyncPathParams = dataclasses.field()
+    sync_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

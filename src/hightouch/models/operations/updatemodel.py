@@ -13,14 +13,9 @@ class UpdateModelSecurity:
     
 
 @dataclasses.dataclass
-class UpdateModelPathParams:
-    model_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class UpdateModelRequest:
-    path_params: UpdateModelPathParams = dataclasses.field()
-    request: shared_modelupdate.ModelUpdate = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
+    model_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
+    model_update: shared_modelupdate.ModelUpdate = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclasses.dataclass
