@@ -13,35 +13,35 @@ class Hightouch:
     
     _client: requests_http.Session
     _security_client: requests_http.Session
-    
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "1.9.1"
-    _gen_version: str = "1.8.6"
+    _sdk_version: str = "1.11.0"
+    _gen_version: str = "1.11.0"
 
-    def __init__(self) -> None:
+    def __init__(self,
+                 server_url: str = None,
+                 url_params: dict[str, str] = None,
+                 client: requests_http.Session = None
+                 ) -> None:
         self._client = requests_http.Session()
-        self._security_client = requests_http.Session()
+        
+        
+        if server_url is not None:
+            if url_params is not None:
+                self._server_url = utils.template_url(server_url, url_params)
+            else:
+                self._server_url = server_url
+
+        if client is not None:
+            self._client = client
+        
+        self._security_client = self._client
         
 
-    def config_server_url(self, server_url: str, params: dict[str, str] = None):
-        if params is not None:
-            self._server_url = utils.template_url(server_url, params)
-        else:
-            self._server_url = server_url
-
         
     
     
-
-    def config_client(self, client: requests_http.Session):
-        self._client = client
-        
-    
-    
-    
-    
-    def create_destination(self, request: operations.CreateDestinationRequest, security: operations.CreateDestinationSecurity) -> operations.CreateDestinationResponse:
+    def create_destination(self, request: shared.DestinationCreate, security: operations.CreateDestinationSecurity) -> operations.CreateDestinationResponse:
         r"""Create Destination
         Create a new destination
         """
@@ -51,7 +51,7 @@ class Hightouch:
         url = base_url.removesuffix('/') + '/destinations'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -71,11 +71,7 @@ class Hightouch:
                 res.create_destination_200_application_json_any_of = out
         elif http_res.status_code == 401:
             pass
-        elif http_res.status_code == 409:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ValidateErrorJSON])
-                res.validate_error_json = out
-        elif http_res.status_code == 422:
+        elif http_res.status_code in [409, 422]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ValidateErrorJSON])
                 res.validate_error_json = out
@@ -86,7 +82,7 @@ class Hightouch:
 
         return res
 
-    def create_model(self, request: operations.CreateModelRequest, security: operations.CreateModelSecurity) -> operations.CreateModelResponse:
+    def create_model(self, request: shared.ModelCreate, security: operations.CreateModelSecurity) -> operations.CreateModelResponse:
         r"""Create Model
         Create a new model
         """
@@ -96,7 +92,7 @@ class Hightouch:
         url = base_url.removesuffix('/') + '/models'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -116,11 +112,7 @@ class Hightouch:
                 res.create_model_200_application_json_any_of = out
         elif http_res.status_code == 401:
             pass
-        elif http_res.status_code == 409:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ValidateErrorJSON])
-                res.validate_error_json = out
-        elif http_res.status_code == 422:
+        elif http_res.status_code in [409, 422]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ValidateErrorJSON])
                 res.validate_error_json = out
@@ -131,7 +123,7 @@ class Hightouch:
 
         return res
 
-    def create_source(self, request: operations.CreateSourceRequest, security: operations.CreateSourceSecurity) -> operations.CreateSourceResponse:
+    def create_source(self, request: shared.SourceCreate, security: operations.CreateSourceSecurity) -> operations.CreateSourceResponse:
         r"""Create Source
         Create a new source
         """
@@ -141,7 +133,7 @@ class Hightouch:
         url = base_url.removesuffix('/') + '/sources'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -161,11 +153,7 @@ class Hightouch:
                 res.create_source_200_application_json_any_of = out
         elif http_res.status_code == 401:
             pass
-        elif http_res.status_code == 409:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ValidateErrorJSON])
-                res.validate_error_json = out
-        elif http_res.status_code == 422:
+        elif http_res.status_code in [409, 422]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ValidateErrorJSON])
                 res.validate_error_json = out
@@ -176,7 +164,7 @@ class Hightouch:
 
         return res
 
-    def create_sync(self, request: operations.CreateSyncRequest, security: operations.CreateSyncSecurity) -> operations.CreateSyncResponse:
+    def create_sync(self, request: shared.SyncCreate, security: operations.CreateSyncSecurity) -> operations.CreateSyncResponse:
         r"""Create Sync
         Create a new sync
         """
@@ -186,7 +174,7 @@ class Hightouch:
         url = base_url.removesuffix('/') + '/syncs'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -206,11 +194,7 @@ class Hightouch:
                 res.create_sync_200_application_json_any_of = out
         elif http_res.status_code == 401:
             pass
-        elif http_res.status_code == 409:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ValidateErrorJSON])
-                res.validate_error_json = out
-        elif http_res.status_code == 422:
+        elif http_res.status_code in [409, 422]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ValidateErrorJSON])
                 res.validate_error_json = out
@@ -228,7 +212,7 @@ class Hightouch:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/destinations/{destinationId}', request.path_params)
+        url = utils.generate_url(operations.GetDestinationRequest, base_url, '/destinations/{destinationId}', request)
         
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -244,9 +228,7 @@ class Hightouch:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Destination])
                 res.destination = out
-        elif http_res.status_code == 401:
-            pass
-        elif http_res.status_code == 404:
+        elif http_res.status_code in [401, 404]:
             pass
 
         return res
@@ -258,7 +240,7 @@ class Hightouch:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/models/{modelId}', request.path_params)
+        url = utils.generate_url(operations.GetModelRequest, base_url, '/models/{modelId}', request)
         
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -274,9 +256,7 @@ class Hightouch:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Model])
                 res.model = out
-        elif http_res.status_code == 401:
-            pass
-        elif http_res.status_code == 404:
+        elif http_res.status_code in [401, 404]:
             pass
 
         return res
@@ -288,7 +268,7 @@ class Hightouch:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/sources/{sourceId}', request.path_params)
+        url = utils.generate_url(operations.GetSourceRequest, base_url, '/sources/{sourceId}', request)
         
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -304,9 +284,7 @@ class Hightouch:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Source])
                 res.source = out
-        elif http_res.status_code == 401:
-            pass
-        elif http_res.status_code == 404:
+        elif http_res.status_code in [401, 404]:
             pass
         elif http_res.status_code == 422:
             if utils.match_content_type(content_type, 'application/json'):
@@ -322,7 +300,7 @@ class Hightouch:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/syncs/{syncId}', request.path_params)
+        url = utils.generate_url(operations.GetSyncRequest, base_url, '/syncs/{syncId}', request)
         
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -338,9 +316,7 @@ class Hightouch:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Sync])
                 res.sync = out
-        elif http_res.status_code == 401:
-            pass
-        elif http_res.status_code == 404:
+        elif http_res.status_code in [401, 404]:
             pass
 
         return res
@@ -355,7 +331,7 @@ class Hightouch:
         url = base_url.removesuffix('/') + '/destinations'
         
         headers = {}
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListDestinationRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -369,9 +345,7 @@ class Hightouch:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.ListDestination200ApplicationJSON])
                 res.list_destination_200_application_json_object = out
-        elif http_res.status_code == 400:
-            pass
-        elif http_res.status_code == 401:
+        elif http_res.status_code in [400, 401]:
             pass
         elif http_res.status_code == 422:
             if utils.match_content_type(content_type, 'application/json'):
@@ -390,7 +364,7 @@ class Hightouch:
         url = base_url.removesuffix('/') + '/models'
         
         headers = {}
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListModelRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -404,9 +378,7 @@ class Hightouch:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.ListModel200ApplicationJSON])
                 res.list_model_200_application_json_object = out
-        elif http_res.status_code == 400:
-            pass
-        elif http_res.status_code == 401:
+        elif http_res.status_code in [400, 401]:
             pass
         elif http_res.status_code == 422:
             if utils.match_content_type(content_type, 'application/json'):
@@ -425,7 +397,7 @@ class Hightouch:
         url = base_url.removesuffix('/') + '/sources'
         
         headers = {}
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListSourceRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -439,9 +411,7 @@ class Hightouch:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.ListSource200ApplicationJSON])
                 res.list_source_200_application_json_object = out
-        elif http_res.status_code == 400:
-            pass
-        elif http_res.status_code == 401:
+        elif http_res.status_code in [400, 401]:
             pass
 
         return res
@@ -456,7 +426,7 @@ class Hightouch:
         url = base_url.removesuffix('/') + '/syncs'
         
         headers = {}
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListSyncRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -470,9 +440,7 @@ class Hightouch:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.ListSync200ApplicationJSON])
                 res.list_sync_200_application_json_object = out
-        elif http_res.status_code == 400:
-            pass
-        elif http_res.status_code == 401:
+        elif http_res.status_code in [400, 401]:
             pass
         elif http_res.status_code == 422:
             if utils.match_content_type(content_type, 'application/json'):
@@ -488,10 +456,10 @@ class Hightouch:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/syncs/{syncId}/runs', request.path_params)
+        url = utils.generate_url(operations.ListSyncRunsRequest, base_url, '/syncs/{syncId}/runs', request)
         
         headers = {}
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListSyncRunsRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -505,9 +473,7 @@ class Hightouch:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.ListSyncRuns200ApplicationJSON])
                 res.list_sync_runs_200_application_json_object = out
-        elif http_res.status_code == 400:
-            pass
-        elif http_res.status_code == 401:
+        elif http_res.status_code in [400, 401]:
             pass
         elif http_res.status_code == 422:
             if utils.match_content_type(content_type, 'application/json'):
@@ -526,10 +492,10 @@ class Hightouch:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/syncs/{syncId}/trigger', request.path_params)
+        url = utils.generate_url(operations.TriggerRunRequest, base_url, '/syncs/{syncId}/trigger', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "trigger_run_input", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -545,9 +511,7 @@ class Hightouch:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.TriggerRunOutput])
                 res.trigger_run_output = out
-        elif http_res.status_code == 400:
-            pass
-        elif http_res.status_code == 401:
+        elif http_res.status_code in [400, 401]:
             pass
         elif http_res.status_code == 422:
             if utils.match_content_type(content_type, 'application/json'):
@@ -556,7 +520,7 @@ class Hightouch:
 
         return res
 
-    def trigger_run_custom(self, request: operations.TriggerRunCustomRequest, security: operations.TriggerRunCustomSecurity) -> operations.TriggerRunCustomResponse:
+    def trigger_run_custom(self, request: shared.TriggerRunCustomInput, security: operations.TriggerRunCustomSecurity) -> operations.TriggerRunCustomResponse:
         r"""Trigger Sync From ID or Slug
         Trigger a new run globally based on sync id or sync slug
         
@@ -569,7 +533,7 @@ class Hightouch:
         url = base_url.removesuffix('/') + '/syncs/trigger'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -587,9 +551,7 @@ class Hightouch:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[Any])
                 res.trigger_run_custom_200_application_json_any_of = out
-        elif http_res.status_code == 400:
-            pass
-        elif http_res.status_code == 401:
+        elif http_res.status_code in [400, 401]:
             pass
         elif http_res.status_code == 422:
             if utils.match_content_type(content_type, 'application/json'):
@@ -607,10 +569,10 @@ class Hightouch:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/destinations/{destinationId}', request.path_params)
+        url = utils.generate_url(operations.UpdateDestinationRequest, base_url, '/destinations/{destinationId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "destination_update", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -628,9 +590,7 @@ class Hightouch:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[Any])
                 res.update_destination_200_application_json_any_of = out
-        elif http_res.status_code == 401:
-            pass
-        elif http_res.status_code == 404:
+        elif http_res.status_code in [401, 404]:
             pass
         elif http_res.status_code == 422:
             if utils.match_content_type(content_type, 'application/json'):
@@ -652,10 +612,10 @@ class Hightouch:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/models/{modelId}', request.path_params)
+        url = utils.generate_url(operations.UpdateModelRequest, base_url, '/models/{modelId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "model_update", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -673,9 +633,7 @@ class Hightouch:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[Any])
                 res.update_model_200_application_json_any_of = out
-        elif http_res.status_code == 401:
-            pass
-        elif http_res.status_code == 404:
+        elif http_res.status_code in [401, 404]:
             pass
         elif http_res.status_code == 422:
             if utils.match_content_type(content_type, 'application/json'):
@@ -697,10 +655,10 @@ class Hightouch:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/sources/{sourceId}', request.path_params)
+        url = utils.generate_url(operations.UpdateSourceRequest, base_url, '/sources/{sourceId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "source_update", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -718,9 +676,7 @@ class Hightouch:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[Any])
                 res.update_source_200_application_json_any_of = out
-        elif http_res.status_code == 401:
-            pass
-        elif http_res.status_code == 404:
+        elif http_res.status_code in [401, 404]:
             pass
         elif http_res.status_code == 422:
             if utils.match_content_type(content_type, 'application/json'):
@@ -742,10 +698,10 @@ class Hightouch:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/syncs/{syncId}', request.path_params)
+        url = utils.generate_url(operations.UpdateSyncRequest, base_url, '/syncs/{syncId}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "sync_update", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -763,9 +719,7 @@ class Hightouch:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[Any])
                 res.update_sync_200_application_json_any_of = out
-        elif http_res.status_code == 401:
-            pass
-        elif http_res.status_code == 404:
+        elif http_res.status_code in [401, 404]:
             pass
         elif http_res.status_code == 422:
             if utils.match_content_type(content_type, 'application/json'):

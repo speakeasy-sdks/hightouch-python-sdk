@@ -1,6 +1,5 @@
 from __future__ import annotations
 import dataclasses
-import dateutil.parser
 import requests as requests_http
 from ..shared import sync as shared_sync
 from ..shared import validateerrorjson as shared_validateerrorjson
@@ -8,7 +7,6 @@ from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from enum import Enum
 from hightouch import utils
-from marshmallow import fields
 from typing import Optional
 
 
@@ -25,7 +23,7 @@ class ListSyncOrderByEnum(str, Enum):
 
 
 @dataclasses.dataclass
-class ListSyncQueryParams:
+class ListSyncRequest:
     after: Optional[datetime] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'after', 'style': 'form', 'explode': True }})
     before: Optional[datetime] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'before', 'style': 'form', 'explode': True }})
     limit: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'limit', 'style': 'form', 'explode': True }})
@@ -33,11 +31,6 @@ class ListSyncQueryParams:
     offset: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'offset', 'style': 'form', 'explode': True }})
     order_by: Optional[ListSyncOrderByEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
     slug: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'slug', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class ListSyncRequest:
-    query_params: ListSyncQueryParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

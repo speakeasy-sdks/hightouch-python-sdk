@@ -13,14 +13,9 @@ class TriggerRunSecurity:
     
 
 @dataclasses.dataclass
-class TriggerRunPathParams:
-    sync_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class TriggerRunRequest:
-    path_params: TriggerRunPathParams = dataclasses.field()
-    request: Optional[shared_triggerruninput.TriggerRunInput] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    sync_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
+    trigger_run_input: Optional[shared_triggerruninput.TriggerRunInput] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclasses.dataclass
