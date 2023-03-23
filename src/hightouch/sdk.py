@@ -17,8 +17,8 @@ class Hightouch:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "1.13.0"
-    _gen_version: str = "2.12.10"
+    _sdk_version: str = "1.14.0"
+    _gen_version: str = "2.13.1"
 
     def __init__(self,
                  server_url: str = None,
@@ -358,7 +358,7 @@ class Hightouch:
 
     def list_model(self, request: operations.ListModelRequest, security: operations.ListModelSecurity) -> operations.ListModelResponse:
         r"""List Models
-        List all the models in the current workspace
+        List all the models in the current workspace including parent and related models
         """
         base_url = self._server_url
         
