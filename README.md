@@ -12,7 +12,7 @@
 ## SDK Installation
 
 ```bash
-pip install hightouch
+pip install git+<UNSET>.git
 ```
 <!-- End SDK Installation -->
 
