@@ -18,11 +18,11 @@ class ListDestinationSecurity:
     
 class ListDestinationOrderByEnum(str, Enum):
     r"""Order the returned destinations"""
-    ID = "id"
-    NAME = "name"
-    SLUG = "slug"
-    CREATED_AT = "createdAt"
-    UPDATED_AT = "updatedAt"
+    ID = 'id'
+    NAME = 'name'
+    SLUG = 'slug'
+    CREATED_AT = 'createdAt'
+    UPDATED_AT = 'updatedAt'
 
 
 @dataclasses.dataclass

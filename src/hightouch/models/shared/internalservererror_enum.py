@@ -5,4 +5,4 @@ from enum import Enum
 
 class InternalServerErrorEnum(str, Enum):
     r"""Something went wrong"""
-    INTERNAL_SERVER_ERROR = "Internal Server Error"
+    INTERNAL_SERVER_ERROR = 'Internal Server Error'

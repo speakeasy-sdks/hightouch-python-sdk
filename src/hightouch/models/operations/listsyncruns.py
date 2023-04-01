@@ -19,10 +19,10 @@ class ListSyncRunsSecurity:
     
 class ListSyncRunsOrderByEnum(str, Enum):
     r"""specify the order"""
-    ID = "id"
-    CREATED_AT = "createdAt"
-    STARTED_AT = "startedAt"
-    FINISHED_AT = "finishedAt"
+    ID = 'id'
+    CREATED_AT = 'createdAt'
+    STARTED_AT = 'startedAt'
+    FINISHED_AT = 'finishedAt'
 
 
 @dataclasses.dataclass

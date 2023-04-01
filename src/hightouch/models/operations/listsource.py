@@ -17,11 +17,11 @@ class ListSourceSecurity:
     
 class ListSourceOrderByEnum(str, Enum):
     r"""specify the order"""
-    ID = "id"
-    NAME = "name"
-    SLUG = "slug"
-    CREATED_AT = "createdAt"
-    UPDATED_AT = "updatedAt"
+    ID = 'id'
+    NAME = 'name'
+    SLUG = 'slug'
+    CREATED_AT = 'createdAt'
+    UPDATED_AT = 'updatedAt'
 
 
 @dataclasses.dataclass

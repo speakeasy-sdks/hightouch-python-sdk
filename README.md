@@ -35,13 +35,13 @@ s = hightouch.Hightouch()
 
 req = shared.DestinationCreate(
     configuration={
-        "deserunt": "porro",
-        "nulla": "id",
-        "vero": "perspiciatis",
+        "provident": "distinctio",
+        "quibusdam": "unde",
+        "nulla": "corrupti",
     },
-    name="nulla",
-    slug="nihil",
-    type="fuga",
+    name="illum",
+    slug="vel",
+    type="error",
 )
     
 res = s.create_destination(req, operations.CreateDestinationSecurity(
@@ -54,7 +54,7 @@ if res.create_destination_200_application_json_any_of is not None:
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-## SDK Available Operations
+## Available Resources and Operations
 
 ### Hightouch SDK
 

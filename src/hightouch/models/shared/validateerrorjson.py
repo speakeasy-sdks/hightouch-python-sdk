@@ -8,7 +8,7 @@ from hightouch import utils
 from typing import Any
 
 class ValidateErrorJSONMessageEnum(str, Enum):
-    VALIDATION_FAILED = "Validation failed"
+    VALIDATION_FAILED = 'Validation failed'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
