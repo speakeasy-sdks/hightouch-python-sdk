@@ -12,9 +12,9 @@ req = shared.DestinationCreate(
         "quibusdam": "unde",
         "nulla": "corrupti",
     },
-    name="illum",
-    slug="vel",
-    type="error",
+    name="Ben Mueller",
+    slug="iure",
+    type="magnam",
 )
     
 res = s.create_destination(req, operations.CreateDestinationSecurity(
