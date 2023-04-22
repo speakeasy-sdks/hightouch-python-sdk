@@ -263,3 +263,11 @@ Based on:
 - Speakeasy CLI 1.21.4 https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v1.19.1] https://pypi.org/project/hightouch/1.19.1 - .
+
+## 2023-04-22 01:10:26
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 https://api.hightouch.io/api/swagger.json
+- Speakeasy CLI 1.22.1 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v1.20.0] https://pypi.org/project/hightouch/1.20.0 - .
