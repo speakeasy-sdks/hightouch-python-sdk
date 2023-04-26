@@ -16,7 +16,7 @@ req = shared.DestinationCreate(
     slug="iure",
     type="magnam",
 )
-    
+
 res = s.create_destination(req, operations.CreateDestinationSecurity(
     bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
 ))

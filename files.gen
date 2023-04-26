@@ -54,4 +54,5 @@ src/hightouch/models/shared/modelupdate.py
 src/hightouch/models/shared/sourceupdate.py
 src/hightouch/models/shared/syncupdate.py
 src/hightouch/models/shared/__init__.py
+docs/hightouch/README.md
 USAGE.md
