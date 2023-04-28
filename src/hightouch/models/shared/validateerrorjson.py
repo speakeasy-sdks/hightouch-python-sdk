@@ -16,6 +16,8 @@ class ValidateErrorJSONMessageEnum(str, Enum):
 class ValidateErrorJSON:
     r"""Validation Failed"""
     
-    details: dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details') }})  
-    message: ValidateErrorJSONMessageEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})  
+    details: dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details') }})
+
+    message: ValidateErrorJSONMessageEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})
+
     

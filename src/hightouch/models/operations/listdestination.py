@@ -14,7 +14,8 @@ from typing import Optional
 @dataclasses.dataclass
 class ListDestinationSecurity:
     
-    bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})  
+    bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
+
     
 class ListDestinationOrderByEnum(str, Enum):
     r"""Order the returned destinations"""
@@ -29,15 +30,20 @@ class ListDestinationOrderByEnum(str, Enum):
 class ListDestinationRequest:
     
     limit: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'limit', 'style': 'form', 'explode': True }})
-    r"""limit the number of objects returned (default is 100)"""  
+
+    r"""limit the number of objects returned (default is 100)"""
     name: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'name', 'style': 'form', 'explode': True }})
-    r"""Filter based on the destination's name"""  
+
+    r"""Filter based on the destination's name"""
     offset: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'offset', 'style': 'form', 'explode': True }})
-    r"""set the offset on results (for pagination)"""  
+
+    r"""set the offset on results (for pagination)"""
     order_by: Optional[ListDestinationOrderByEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
-    r"""Order the returned destinations"""  
+
+    r"""Order the returned destinations"""
     slug: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'slug', 'style': 'form', 'explode': True }})
-    r"""Filter based on destination's slug"""  
+
+    r"""Filter based on destination's slug"""
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -45,17 +51,23 @@ class ListDestinationRequest:
 class ListDestination200ApplicationJSON:
     r"""Ok"""
     
-    data: list[shared_destination.Destination] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})  
+    data: list[shared_destination.Destination] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
+
     
 
 @dataclasses.dataclass
 class ListDestinationResponse:
     
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
+    content_type: str = dataclasses.field()
+
+    status_code: int = dataclasses.field()
+
     list_destination_200_application_json_object: Optional[ListDestination200ApplicationJSON] = dataclasses.field(default=None)
-    r"""Ok"""  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+
+    r"""Ok"""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+
     validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
-    r"""Validation Failed"""  
+
+    r"""Validation Failed"""
     

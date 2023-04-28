@@ -18,6 +18,7 @@ class Destination:
     """
     
     configuration: dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('configuration') }})
+
     r"""The destination's configuration. This specifies general metadata about destination, like hostname and username.
     Hightouch will be using this configuration to connect to destination.
     
@@ -25,21 +26,29 @@ class Destination:
     
     Consumers should NOT make assumptions on the contents of the
     configuration. It may change as Hightouch updates its internal code.
-    """  
+    """
     created_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The timestamp when the destination was created"""  
+
+    r"""The timestamp when the destination was created"""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-    r"""Number as a string"""  
+
+    r"""Number as a string"""
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
-    r"""The destination's name"""  
+
+    r"""The destination's name"""
     slug: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('slug') }})
-    r"""The destination's slug"""  
+
+    r"""The destination's slug"""
     syncs: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncs') }})
-    r"""A list of syncs that sync to this destination."""  
+
+    r"""A list of syncs that sync to this destination."""
     type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
-    r"""The destination's type (e.g. salesforce or hubspot)."""  
+
+    r"""The destination's type (e.g. salesforce or hubspot)."""
     updated_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updatedAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The timestamp when the destination was last updated"""  
+
+    r"""The timestamp when the destination was last updated"""
     workspace_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('workspaceId') }})
-    r"""Number as a string"""  
+
+    r"""Number as a string"""
     

@@ -10,5 +10,6 @@ from hightouch import utils
 @dataclasses.dataclass
 class CronSchedule:
     
-    expression: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expression') }})  
+    expression: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expression') }})
+
     

@@ -17,8 +17,8 @@ class Hightouch:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "1.22.0"
-    _gen_version: str = "2.22.0"
+    _sdk_version: str = "1.23.0"
+    _gen_version: str = "2.23.2"
 
     def __init__(self,
                  server_url: str = None,

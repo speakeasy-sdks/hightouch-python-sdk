@@ -13,6 +13,7 @@ class SourceCreate:
     r"""The input for creating a Source"""
     
     configuration: dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('configuration') }})
+
     r"""The source's configuration. This specifies general metadata about sources, like connection details
     Hightouch will use this configuration to connect to underlying source.
     
@@ -20,11 +21,14 @@ class SourceCreate:
     
     Consumers should NOT make assumptions on the contents of the
     configuration. It may change as Hightouch updates its internal code.
-    """  
+    """
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
-    r"""The source's name"""  
+
+    r"""The source's name"""
     slug: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('slug') }})
-    r"""The source's slug"""  
+
+    r"""The source's slug"""
     type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
-    r"""The source's type (e.g. snowflake or postgres)."""  
+
+    r"""The source's type (e.g. snowflake or postgres)."""
     

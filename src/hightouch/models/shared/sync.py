@@ -25,8 +25,10 @@ class SyncSchedule:
     DBT-cloud: the sync will be trigged based on a dbt cloud job
     """
     
-    schedule: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})  
-    type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})  
+    schedule: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})
+
+    type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -38,6 +40,7 @@ class Sync:
     """
     
     configuration: dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('configuration') }})
+
     r"""The sync's configuration. This specifies how data is mapped, among other
     configuration.
     
@@ -45,24 +48,33 @@ class Sync:
     
     Consumers should NOT make assumptions on the contents of the
     configuration. It may change as Hightouch updates its internal code.
-    """  
+    """
     created_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The timestamp when the sync was created"""  
+
+    r"""The timestamp when the sync was created"""
     destination_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('destinationId') }})
-    r"""Number as a string"""  
+
+    r"""Number as a string"""
     disabled: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('disabled') }})
-    r"""Whether the sync has been disabled by the user."""  
+
+    r"""Whether the sync has been disabled by the user."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-    r"""Number as a string"""  
+
+    r"""Number as a string"""
     last_run_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lastRunAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The timestamp of the last sync run"""  
+
+    r"""The timestamp of the last sync run"""
     model_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modelId') }})
-    r"""Number as a string"""  
+
+    r"""Number as a string"""
     primary_key: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('primaryKey') }})
-    r"""The primary key that sync uses to identify data from source"""  
+
+    r"""The primary key that sync uses to identify data from source"""
     referenced_columns: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('referencedColumns') }})
-    r"""The reference column that sync depends on to sync data from source"""  
+
+    r"""The reference column that sync depends on to sync data from source"""
     schedule: SyncSchedule = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})
+
     r"""The scheduling configuration. It can be triggerd based on several ways:
     
     Interval: the sync will be trigged based on certain interval(minutes/hours/days/weeks)
@@ -72,12 +84,16 @@ class Sync:
     Visual: the sync will be trigged based a visual cron configuration on UI
     
     DBT-cloud: the sync will be trigged based on a dbt cloud job
-    """  
+    """
     slug: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('slug') }})
-    r"""The sync's slug"""  
-    status: shared_syncstatus_enum.SyncStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})  
+
+    r"""The sync's slug"""
+    status: shared_syncstatus_enum.SyncStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+
     updated_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updatedAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The timestamp when the sync was last updated"""  
+
+    r"""The timestamp when the sync was last updated"""
     workspace_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('workspaceId') }})
-    r"""Number as a string"""  
+
+    r"""Number as a string"""
     

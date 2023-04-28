@@ -13,7 +13,8 @@ from typing import Optional
 @dataclasses.dataclass
 class ListSourceSecurity:
     
-    bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})  
+    bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
+
     
 class ListSourceOrderByEnum(str, Enum):
     r"""specify the order"""
@@ -28,15 +29,20 @@ class ListSourceOrderByEnum(str, Enum):
 class ListSourceRequest:
     
     limit: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'limit', 'style': 'form', 'explode': True }})
-    r"""limit the number of objects returned (default is 100)"""  
+
+    r"""limit the number of objects returned (default is 100)"""
     name: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'name', 'style': 'form', 'explode': True }})
-    r"""filter based on name"""  
+
+    r"""filter based on name"""
     offset: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'offset', 'style': 'form', 'explode': True }})
-    r"""set the offset on results (for pagination)"""  
+
+    r"""set the offset on results (for pagination)"""
     order_by: Optional[ListSourceOrderByEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
-    r"""specify the order"""  
+
+    r"""specify the order"""
     slug: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'slug', 'style': 'form', 'explode': True }})
-    r"""filter based on slug"""  
+
+    r"""filter based on slug"""
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -44,15 +50,20 @@ class ListSourceRequest:
 class ListSource200ApplicationJSON:
     r"""Ok"""
     
-    data: list[shared_source.Source] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})  
+    data: list[shared_source.Source] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
+
     
 
 @dataclasses.dataclass
 class ListSourceResponse:
     
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
+    content_type: str = dataclasses.field()
+
+    status_code: int = dataclasses.field()
+
     list_source_200_application_json_object: Optional[ListSource200ApplicationJSON] = dataclasses.field(default=None)
-    r"""Ok"""  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+
+    r"""Ok"""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+
     

@@ -15,7 +15,8 @@ from typing import Optional
 @dataclasses.dataclass
 class ListSyncRunsSecurity:
     
-    bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})  
+    bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
+
     
 class ListSyncRunsOrderByEnum(str, Enum):
     r"""specify the order"""
@@ -28,21 +29,29 @@ class ListSyncRunsOrderByEnum(str, Enum):
 @dataclasses.dataclass
 class ListSyncRunsRequest:
     
-    sync_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})  
+    sync_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
+
     after: Optional[datetime] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'after', 'style': 'form', 'explode': True }})
-    r"""select sync runs that are started after given ISO timestamp"""  
+
+    r"""select sync runs that are started after given ISO timestamp"""
     before: Optional[datetime] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'before', 'style': 'form', 'explode': True }})
-    r"""select sync runs that are started before certain ISO timestamp"""  
+
+    r"""select sync runs that are started before certain ISO timestamp"""
     limit: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'limit', 'style': 'form', 'explode': True }})
-    r"""limit the number of objects returned (default is 5)"""  
+
+    r"""limit the number of objects returned (default is 5)"""
     offset: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'offset', 'style': 'form', 'explode': True }})
-    r"""set the offset on results (for pagination)"""  
+
+    r"""set the offset on results (for pagination)"""
     order_by: Optional[ListSyncRunsOrderByEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
-    r"""specify the order"""  
+
+    r"""specify the order"""
     run_id: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'runId', 'style': 'form', 'explode': True }})
-    r"""query for specific run id"""  
+
+    r"""query for specific run id"""
     within: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'within', 'style': 'form', 'explode': True }})
-    r"""select sync runs that are started within last given minutes"""  
+
+    r"""select sync runs that are started within last given minutes"""
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -50,17 +59,23 @@ class ListSyncRunsRequest:
 class ListSyncRuns200ApplicationJSON:
     r"""Ok"""
     
-    data: list[shared_syncrun.SyncRun] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})  
+    data: list[shared_syncrun.SyncRun] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
+
     
 
 @dataclasses.dataclass
 class ListSyncRunsResponse:
     
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
+    content_type: str = dataclasses.field()
+
+    status_code: int = dataclasses.field()
+
     list_sync_runs_200_application_json_object: Optional[ListSyncRuns200ApplicationJSON] = dataclasses.field(default=None)
-    r"""Ok"""  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+
+    r"""Ok"""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+
     validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
-    r"""Validation Failed"""  
+
+    r"""Validation Failed"""
     

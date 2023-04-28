@@ -11,5 +11,6 @@ from hightouch import utils
 @dataclasses.dataclass
 class IntervalSchedule:
     
-    interval: shared_interval.Interval = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('interval') }})  
+    interval: shared_interval.Interval = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('interval') }})
+
     
