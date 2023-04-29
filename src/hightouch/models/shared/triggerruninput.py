@@ -13,7 +13,6 @@ class TriggerRunInput:
     r"""The input of a trigger action to run syncs"""
     
     full_resync: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fullResync'), 'exclude': lambda f: f is None }})
-
     r"""Whether to resync all the rows in the query (i.e. ignoring previously
     synced rows).
     """

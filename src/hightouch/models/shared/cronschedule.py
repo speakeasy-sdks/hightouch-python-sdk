@@ -11,5 +11,4 @@ from hightouch import utils
 class CronSchedule:
     
     expression: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expression') }})
-
     

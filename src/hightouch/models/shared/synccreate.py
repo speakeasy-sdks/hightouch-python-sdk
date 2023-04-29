@@ -22,9 +22,7 @@ class SyncCreateSchedule:
     """
     
     schedule: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})
-
     type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
-
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -33,7 +31,6 @@ class SyncCreate:
     r"""The input for creating a Sync"""
     
     configuration: dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('configuration') }})
-
     r"""The sync's configuration. This specifies how data is mapped, among other
     configuration.
     
@@ -43,16 +40,12 @@ class SyncCreate:
     configuration. It may change as Hightouch updates its internal code.
     """
     destination_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('destinationId') }})
-
     r"""Number as a string"""
     disabled: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('disabled') }})
-
     r"""Whether the sync has been disabled by the user."""
     model_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modelId') }})
-
     r"""Number as a string"""
     schedule: SyncCreateSchedule = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})
-
     r"""The scheduling configuration. It can be triggerd based on several ways:
     
     Interval: the sync will be trigged based on certain interval(minutes/hours/days/weeks)
@@ -64,6 +57,5 @@ class SyncCreate:
     DBT-cloud: the sync will be trigged based on a dbt cloud job
     """
     slug: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('slug') }})
-
     r"""The sync's slug"""
     

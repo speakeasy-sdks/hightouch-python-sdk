@@ -11,7 +11,6 @@ from hightouch import utils
 class DBTScheduleAccount:
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -19,7 +18,6 @@ class DBTScheduleAccount:
 class DBTScheduleJob:
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -27,9 +25,6 @@ class DBTScheduleJob:
 class DBTSchedule:
     
     account: DBTScheduleAccount = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('account') }})
-
     dbt_credential_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dbtCredentialId') }})
-
     job: DBTScheduleJob = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('job') }})
-
     

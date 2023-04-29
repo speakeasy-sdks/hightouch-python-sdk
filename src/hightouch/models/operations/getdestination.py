@@ -11,14 +11,12 @@ from typing import Optional
 class GetDestinationSecurity:
     
     bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
-
     
 
 @dataclasses.dataclass
 class GetDestinationRequest:
     
     destination_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'destinationId', 'style': 'simple', 'explode': False }})
-
     r"""The destination's ID"""
     
 
@@ -26,12 +24,8 @@ class GetDestinationRequest:
 class GetDestinationResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     destination: Optional[shared_destination.Destination] = dataclasses.field(default=None)
-
     r"""Ok"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

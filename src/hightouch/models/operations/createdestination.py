@@ -12,25 +12,18 @@ from typing import Any, Optional
 class CreateDestinationSecurity:
     
     bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
-
     
 
 @dataclasses.dataclass
 class CreateDestinationResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     create_destination_200_application_json_any_of: Optional[Any] = dataclasses.field(default=None)
-
     r"""Ok"""
     internal_server_error: Optional[shared_internalservererror_enum.InternalServerErrorEnum] = dataclasses.field(default=None)
-
     r"""Something went wrong"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
-
     r"""Conflict"""
     

@@ -12,7 +12,6 @@ class TriggerRunOutput:
     r"""The output of a trigger action to run syncs"""
     
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-
     r"""The id of the triggered sync run. This can be passed to `/sync/runs` to
     get the run's status.
     """

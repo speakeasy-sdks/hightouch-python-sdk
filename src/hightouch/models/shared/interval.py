@@ -12,7 +12,5 @@ from hightouch import utils
 class Interval:
     
     quantity: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('quantity') }})
-
     unit: shared_intervalunit_enum.IntervalUnitEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unit') }})
-
     
