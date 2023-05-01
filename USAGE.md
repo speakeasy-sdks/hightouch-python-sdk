@@ -8,15 +8,15 @@ s = hightouch.Hightouch()
 
 req = shared.DestinationCreate(
     configuration={
-        "deserunt": "porro",
-        "nulla": "id",
-        "vero": "perspiciatis",
+        "provident": "distinctio",
+        "quibusdam": "unde",
+        "nulla": "corrupti",
     },
-    name="nulla",
-    slug="nihil",
-    type="fuga",
+    name="Ben Mueller",
+    slug="iure",
+    type="magnam",
 )
-    
+
 res = s.create_destination(req, operations.CreateDestinationSecurity(
     bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
 ))
