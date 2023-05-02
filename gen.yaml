@@ -2,13 +2,13 @@ configVersion: 1.0.0
 management:
   docChecksum: aa7996b16bd1ba46707b0b981b12068e
   docVersion: 1.0.0
-  speakeasyVersion: 1.26.4
+  speakeasyVersion: 1.26.5
 generation:
   telemetryEnabled: true
   sdkClassName: hightouch
   sdkFlattening: false
 python:
-  version: 1.23.1
+  version: 1.23.2
   author: Speakeasy
   description: Python SDK for Hightouch API
   packageName: hightouch
