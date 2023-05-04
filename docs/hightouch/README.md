@@ -41,14 +41,14 @@ s = hightouch.Hightouch()
 
 req = shared.DestinationCreate(
     configuration={
-        "ipsa": "delectus",
-        "tempora": "suscipit",
-        "molestiae": "minus",
-        "placeat": "voluptatum",
+        "ipsa": 'delectus',
+        "tempora": 'suscipit',
+        "molestiae": 'minus',
+        "placeat": 'voluptatum',
     },
-    name="Miriam Huel",
-    slug="ab",
-    type="quis",
+    name='Miriam Huel',
+    slug='ab',
+    type='quis',
 )
 
 res = s.hightouch.create_destination(req, operations.CreateDestinationSecurity(
@@ -74,28 +74,28 @@ s = hightouch.Hightouch()
 
 req = shared.ModelCreate(
     custom=shared.ModelCreateCustom(
-        query="veritatis",
+        query='veritatis',
     ),
     dbt=shared.ModelCreateDbt(
-        model_id="deserunt",
+        model_id='deserunt',
     ),
     is_schema=False,
-    name="Roberta Sipes",
-    primary_key="odit",
-    query_type="at",
+    name='Roberta Sipes',
+    primary_key='odit',
+    query_type='at',
     raw=shared.ModelCreateRaw(
-        sql="at",
+        sql='at',
     ),
-    slug="maiores",
-    source_id="molestiae",
+    slug='maiores',
+    source_id='molestiae',
     table=shared.ModelCreateTable(
-        name="Forrest Koepp",
+        name='Forrest Koepp',
     ),
     visual=shared.ModelCreateVisual(
-        filter="dolorum",
-        parent_id="dicta",
-        primary_label="nam",
-        secondary_label="officia",
+        filter='dolorum',
+        parent_id='dicta',
+        primary_label='nam',
+        secondary_label='officia',
     ),
 )
 
@@ -122,13 +122,13 @@ s = hightouch.Hightouch()
 
 req = shared.SourceCreate(
     configuration={
-        "fugit": "deleniti",
-        "hic": "optio",
-        "totam": "beatae",
+        "fugit": 'deleniti',
+        "hic": 'optio',
+        "totam": 'beatae',
     },
-    name="Tanya Gleason",
-    slug="cum",
-    type="esse",
+    name='Tanya Gleason',
+    slug='cum',
+    type='esse',
 )
 
 res = s.hightouch.create_source(req, operations.CreateSourceSecurity(
@@ -154,11 +154,11 @@ s = hightouch.Hightouch()
 
 req = shared.SyncCreate(
     configuration={
-        "excepturi": "aspernatur",
+        "excepturi": 'aspernatur',
     },
-    destination_id="perferendis",
+    destination_id='perferendis',
     disabled=False,
-    model_id="ad",
+    model_id='ad',
     schedule=shared.SyncCreateSchedule(
         schedule=shared.VisualCronSchedule(
             expressions=[
@@ -172,13 +172,13 @@ req = shared.SyncCreate(
                         tuesday=False,
                         wednesday=False,
                     ),
-                    time="iste",
+                    time='iste',
                 ),
             ],
         ),
-        type="dolor",
+        type='dolor',
     ),
-    slug="natus",
+    slug='natus',
 )
 
 res = s.hightouch.create_sync(req, operations.CreateSyncSecurity(
@@ -304,10 +304,10 @@ s = hightouch.Hightouch()
 
 req = operations.ListDestinationRequest(
     limit=4499.5,
-    name="Sheryl Kertzmann",
+    name='Sheryl Kertzmann',
     offset=992.8,
-    order_by="id",
-    slug="reiciendis",
+    order_by=operations.ListDestinationOrderByEnum.ID,
+    slug='reiciendis',
 )
 
 res = s.hightouch.list_destination(req, operations.ListDestinationSecurity(
@@ -333,10 +333,10 @@ s = hightouch.Hightouch()
 
 req = operations.ListModelRequest(
     limit=6667.67,
-    name="Cameron Dach",
+    name='Cameron Dach',
     offset=1289.26,
-    order_by="createdAt",
-    slug="enim",
+    order_by=operations.ListModelOrderByEnum.CREATED_AT,
+    slug='enim',
 )
 
 res = s.hightouch.list_model(req, operations.ListModelSecurity(
@@ -362,10 +362,10 @@ s = hightouch.Hightouch()
 
 req = operations.ListSourceRequest(
     limit=6078.31,
-    name="Ms. Cathy Marks",
+    name='Ms. Cathy Marks',
     offset=9883.74,
-    order_by="updatedAt",
-    slug="architecto",
+    order_by=operations.ListSourceOrderByEnum.UPDATED_AT,
+    slug='architecto',
 )
 
 res = s.hightouch.list_source(req, operations.ListSourceSecurity(
@@ -396,8 +396,8 @@ req = operations.ListSyncRequest(
     limit=9953,
     model_id=6531.08,
     offset=5818.5,
-    order_by="name",
-    slug="commodi",
+    order_by=operations.ListSyncOrderByEnum.NAME,
+    slug='commodi',
 )
 
 res = s.hightouch.list_sync(req, operations.ListSyncSecurity(
@@ -427,7 +427,7 @@ req = operations.ListSyncRunsRequest(
     before=dateutil.parser.isoparse('2022-05-18T10:03:04.921Z'),
     limit=1589.69,
     offset=3380.07,
-    order_by="id",
+    order_by=operations.ListSyncRunsOrderByEnum.ID,
     run_id=6747.52,
     sync_id=6563.3,
     within=3172.02,
@@ -461,7 +461,7 @@ req = operations.TriggerRunRequest(
     trigger_run_input=shared.TriggerRunInput(
         full_resync=False,
     ),
-    sync_id="odit",
+    sync_id='odit',
 )
 
 res = s.hightouch.trigger_run(req, operations.TriggerRunSecurity(
@@ -490,8 +490,8 @@ s = hightouch.Hightouch()
 
 req = shared.TriggerRunCustomInput(
     full_resync=False,
-    sync_id="quo",
-    sync_slug="sequi",
+    sync_id='quo',
+    sync_slug='sequi',
 )
 
 res = s.hightouch.trigger_run_custom(req, operations.TriggerRunCustomSecurity(
@@ -520,12 +520,12 @@ s = hightouch.Hightouch()
 req = operations.UpdateDestinationRequest(
     destination_update=shared.DestinationUpdate(
         configuration={
-            "ipsam": "id",
-            "possimus": "aut",
-            "quasi": "error",
-            "temporibus": "laborum",
+            "ipsam": 'id',
+            "possimus": 'aut',
+            "quasi": 'error',
+            "temporibus": 'laborum',
         },
-        name="Johanna Wolf",
+        name='Johanna Wolf',
     ),
     destination_id=5096.24,
 )
@@ -556,25 +556,25 @@ s = hightouch.Hightouch()
 req = operations.UpdateModelRequest(
     model_update=shared.ModelUpdate(
         custom=shared.ModelUpdateCustom(
-            query="voluptatibus",
+            query='voluptatibus',
         ),
         dbt=shared.ModelUpdateDbt(
-            model_id="ipsa",
+            model_id='ipsa',
         ),
         is_schema=False,
-        name="Mr. Jared Ritchie",
-        primary_key="ut",
+        name='Mr. Jared Ritchie',
+        primary_key='ut',
         raw=shared.ModelUpdateRaw(
-            sql="maiores",
+            sql='maiores',
         ),
         table=shared.ModelUpdateTable(
-            name="Stacy Gulgowski MD",
+            name='Stacy Gulgowski MD',
         ),
         visual=shared.ModelUpdateVisual(
-            filter="enim",
-            parent_id="accusamus",
-            primary_label="commodi",
-            secondary_label="repudiandae",
+            filter='enim',
+            parent_id='accusamus',
+            primary_label='commodi',
+            secondary_label='repudiandae',
         ),
     ),
     model_id=641.47,
@@ -606,9 +606,9 @@ s = hightouch.Hightouch()
 req = operations.UpdateSourceRequest(
     source_update=shared.SourceUpdate(
         configuration={
-            "quidem": "molestias",
+            "quidem": 'molestias',
         },
-        name="Ervin Gleason",
+        name='Ervin Gleason',
     ),
     source_id=9167.23,
 )
@@ -639,17 +639,17 @@ s = hightouch.Hightouch()
 req = operations.UpdateSyncRequest(
     sync_update=shared.SyncUpdate(
         configuration={
-            "repudiandae": "sint",
+            "repudiandae": 'sint',
         },
         disabled=False,
         schedule=shared.SyncUpdateSchedule(
             schedule=shared.IntervalSchedule(
                 interval=shared.Interval(
                     quantity=9292.97,
-                    unit="hour",
+                    unit=shared.IntervalUnitEnum.HOUR,
                 ),
             ),
-            type="enim",
+            type='enim',
         ),
     ),
     sync_id=93.56,
