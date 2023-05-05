@@ -17,8 +17,8 @@ class Hightouch:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "1.24.0"
-    _gen_version: str = "2.24.0"
+    _sdk_version: str = "1.25.0"
+    _gen_version: str = "2.26.0"
 
     def __init__(self,
                  server_url: str = None,
@@ -50,6 +50,7 @@ class Hightouch:
         
 
         
+    
     
     
     def create_destination(self, request: shared.DestinationCreate, security: operations.CreateDestinationSecurity) -> operations.CreateDestinationResponse:
@@ -92,6 +93,7 @@ class Hightouch:
 
         return res
 
+    
     def create_model(self, request: shared.ModelCreate, security: operations.CreateModelSecurity) -> operations.CreateModelResponse:
         r"""Create Model
         Create a new model
@@ -132,6 +134,7 @@ class Hightouch:
 
         return res
 
+    
     def create_source(self, request: shared.SourceCreate, security: operations.CreateSourceSecurity) -> operations.CreateSourceResponse:
         r"""Create Source
         Create a new source
@@ -172,6 +175,7 @@ class Hightouch:
 
         return res
 
+    
     def create_sync(self, request: shared.SyncCreate, security: operations.CreateSyncSecurity) -> operations.CreateSyncResponse:
         r"""Create Sync
         Create a new sync
@@ -212,6 +216,7 @@ class Hightouch:
 
         return res
 
+    
     def get_destination(self, request: operations.GetDestinationRequest, security: operations.GetDestinationSecurity) -> operations.GetDestinationResponse:
         r"""Get Destination
         Retrieve a destination based on its Hightouch ID
@@ -239,6 +244,7 @@ class Hightouch:
 
         return res
 
+    
     def get_model(self, request: operations.GetModelRequest, security: operations.GetModelSecurity) -> operations.GetModelResponse:
         r"""Get Model
         Retrieve models from model ID
@@ -266,6 +272,7 @@ class Hightouch:
 
         return res
 
+    
     def get_source(self, request: operations.GetSourceRequest, security: operations.GetSourceSecurity) -> operations.GetSourceResponse:
         r"""Get Source
         Retrieve source from source ID
@@ -297,6 +304,7 @@ class Hightouch:
 
         return res
 
+    
     def get_sync(self, request: operations.GetSyncRequest, security: operations.GetSyncSecurity) -> operations.GetSyncResponse:
         r"""Get Sync
         Retrieve sync from sync ID
@@ -324,6 +332,7 @@ class Hightouch:
 
         return res
 
+    
     def list_destination(self, request: operations.ListDestinationRequest, security: operations.ListDestinationSecurity) -> operations.ListDestinationResponse:
         r"""List Destinations
         List the destinations in the user's workspace
@@ -356,6 +365,7 @@ class Hightouch:
 
         return res
 
+    
     def list_model(self, request: operations.ListModelRequest, security: operations.ListModelSecurity) -> operations.ListModelResponse:
         r"""List Models
         List all the models in the current workspace including parent and related models
@@ -388,6 +398,7 @@ class Hightouch:
 
         return res
 
+    
     def list_source(self, request: operations.ListSourceRequest, security: operations.ListSourceSecurity) -> operations.ListSourceResponse:
         r"""List Sources
         List all the sources in the current workspace
@@ -416,6 +427,7 @@ class Hightouch:
 
         return res
 
+    
     def list_sync(self, request: operations.ListSyncRequest, security: operations.ListSyncSecurity) -> operations.ListSyncResponse:
         r"""List Syncs
         List all the syncs in the current workspace
@@ -448,6 +460,7 @@ class Hightouch:
 
         return res
 
+    
     def list_sync_runs(self, request: operations.ListSyncRunsRequest, security: operations.ListSyncRunsSecurity) -> operations.ListSyncRunsResponse:
         r"""List Sync Runs
         List all sync runs under a sync
@@ -480,6 +493,7 @@ class Hightouch:
 
         return res
 
+    
     def trigger_run(self, request: operations.TriggerRunRequest, security: operations.TriggerRunSecurity) -> operations.TriggerRunResponse:
         r"""Trigger Sync
         Trigger a new run for the given sync.
@@ -517,6 +531,7 @@ class Hightouch:
 
         return res
 
+    
     def trigger_run_custom(self, request: shared.TriggerRunCustomInput, security: operations.TriggerRunCustomSecurity) -> operations.TriggerRunCustomResponse:
         r"""Trigger Sync From ID or Slug
         Trigger a new run globally based on sync id or sync slug
@@ -556,6 +571,7 @@ class Hightouch:
 
         return res
 
+    
     def update_destination(self, request: operations.UpdateDestinationRequest, security: operations.UpdateDestinationSecurity) -> operations.UpdateDestinationResponse:
         r"""Update Destination
         Update an existing destination
@@ -598,6 +614,7 @@ class Hightouch:
 
         return res
 
+    
     def update_model(self, request: operations.UpdateModelRequest, security: operations.UpdateModelSecurity) -> operations.UpdateModelResponse:
         r"""Update Model
         Update an existing model
@@ -640,6 +657,7 @@ class Hightouch:
 
         return res
 
+    
     def update_source(self, request: operations.UpdateSourceRequest, security: operations.UpdateSourceSecurity) -> operations.UpdateSourceResponse:
         r"""Update Source
         Update an existing source
@@ -682,6 +700,7 @@ class Hightouch:
 
         return res
 
+    
     def update_sync(self, request: operations.UpdateSyncRequest, security: operations.UpdateSyncSecurity) -> operations.UpdateSyncResponse:
         r"""Update Sync
         Update an existing sync

@@ -38,7 +38,6 @@ from hightouch.models import operations, shared
 
 s = hightouch.Hightouch()
 
-
 req = shared.DestinationCreate(
     configuration={
         "ipsa": 'delectus',
@@ -70,7 +69,6 @@ import hightouch
 from hightouch.models import operations, shared
 
 s = hightouch.Hightouch()
-
 
 req = shared.ModelCreate(
     custom=shared.ModelCreateCustom(
@@ -119,7 +117,6 @@ from hightouch.models import operations, shared
 
 s = hightouch.Hightouch()
 
-
 req = shared.SourceCreate(
     configuration={
         "fugit": 'deleniti',
@@ -150,7 +147,6 @@ import hightouch
 from hightouch.models import operations, shared
 
 s = hightouch.Hightouch()
-
 
 req = shared.SyncCreate(
     configuration={
@@ -201,7 +197,6 @@ from hightouch.models import operations
 
 s = hightouch.Hightouch()
 
-
 req = operations.GetDestinationRequest(
     destination_id=3864.89,
 )
@@ -225,7 +220,6 @@ import hightouch
 from hightouch.models import operations
 
 s = hightouch.Hightouch()
-
 
 req = operations.GetModelRequest(
     model_id=9437.49,
@@ -251,7 +245,6 @@ from hightouch.models import operations
 
 s = hightouch.Hightouch()
 
-
 req = operations.GetSourceRequest(
     source_id=9025.99,
 )
@@ -276,7 +269,6 @@ from hightouch.models import operations
 
 s = hightouch.Hightouch()
 
-
 req = operations.GetSyncRequest(
     sync_id=6818.2,
 )
@@ -300,7 +292,6 @@ import hightouch
 from hightouch.models import operations
 
 s = hightouch.Hightouch()
-
 
 req = operations.ListDestinationRequest(
     limit=4499.5,
@@ -330,7 +321,6 @@ from hightouch.models import operations
 
 s = hightouch.Hightouch()
 
-
 req = operations.ListModelRequest(
     limit=6667.67,
     name='Cameron Dach',
@@ -358,7 +348,6 @@ import hightouch
 from hightouch.models import operations
 
 s = hightouch.Hightouch()
-
 
 req = operations.ListSourceRequest(
     limit=6078.31,
@@ -388,7 +377,6 @@ import dateutil.parser
 from hightouch.models import operations
 
 s = hightouch.Hightouch()
-
 
 req = operations.ListSyncRequest(
     after=dateutil.parser.isoparse('2022-08-01T12:28:44.292Z'),
@@ -420,7 +408,6 @@ import dateutil.parser
 from hightouch.models import operations
 
 s = hightouch.Hightouch()
-
 
 req = operations.ListSyncRunsRequest(
     after=dateutil.parser.isoparse('2022-07-11T17:38:58.953Z'),
@@ -456,7 +443,6 @@ from hightouch.models import operations, shared
 
 s = hightouch.Hightouch()
 
-
 req = operations.TriggerRunRequest(
     trigger_run_input=shared.TriggerRunInput(
         full_resync=False,
@@ -487,7 +473,6 @@ from hightouch.models import operations, shared
 
 s = hightouch.Hightouch()
 
-
 req = shared.TriggerRunCustomInput(
     full_resync=False,
     sync_id='quo',
@@ -515,7 +500,6 @@ import hightouch
 from hightouch.models import operations, shared
 
 s = hightouch.Hightouch()
-
 
 req = operations.UpdateDestinationRequest(
     destination_update=shared.DestinationUpdate(
@@ -551,7 +535,6 @@ import hightouch
 from hightouch.models import operations, shared
 
 s = hightouch.Hightouch()
-
 
 req = operations.UpdateModelRequest(
     model_update=shared.ModelUpdate(
@@ -602,7 +585,6 @@ from hightouch.models import operations, shared
 
 s = hightouch.Hightouch()
 
-
 req = operations.UpdateSourceRequest(
     source_update=shared.SourceUpdate(
         configuration={
@@ -634,7 +616,6 @@ import hightouch
 from hightouch.models import operations, shared
 
 s = hightouch.Hightouch()
-
 
 req = operations.UpdateSyncRequest(
     sync_update=shared.SyncUpdate(
