@@ -5,7 +5,6 @@ from hightouch.models import operations, shared
 
 s = hightouch.Hightouch()
 
-
 req = shared.DestinationCreate(
     configuration={
         "provident": 'distinctio',
