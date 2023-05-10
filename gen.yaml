@@ -10,5 +10,6 @@ generation:
 python:
   version: 1.24.0
   author: Speakeasy
+  maxMethodParms: 4
   description: Python SDK for Hightouch API
   packageName: hightouch
