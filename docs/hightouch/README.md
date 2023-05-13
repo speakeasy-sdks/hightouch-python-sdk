@@ -51,7 +51,7 @@ req = shared.DestinationCreate(
 )
 
 res = s.hightouch.create_destination(req, operations.CreateDestinationSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.create_destination_200_application_json_any_of is not None:
@@ -98,7 +98,7 @@ req = shared.ModelCreate(
 )
 
 res = s.hightouch.create_model(req, operations.CreateModelSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.create_model_200_application_json_any_of is not None:
@@ -129,7 +129,7 @@ req = shared.SourceCreate(
 )
 
 res = s.hightouch.create_source(req, operations.CreateSourceSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.create_source_200_application_json_any_of is not None:
@@ -178,7 +178,7 @@ req = shared.SyncCreate(
 )
 
 res = s.hightouch.create_sync(req, operations.CreateSyncSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.create_sync_200_application_json_any_of is not None:
@@ -202,7 +202,7 @@ req = operations.GetDestinationRequest(
 )
 
 res = s.hightouch.get_destination(req, operations.GetDestinationSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.destination is not None:
@@ -226,7 +226,7 @@ req = operations.GetModelRequest(
 )
 
 res = s.hightouch.get_model(req, operations.GetModelSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.model is not None:
@@ -250,7 +250,7 @@ req = operations.GetSourceRequest(
 )
 
 res = s.hightouch.get_source(req, operations.GetSourceSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.source is not None:
@@ -274,7 +274,7 @@ req = operations.GetSyncRequest(
 )
 
 res = s.hightouch.get_sync(req, operations.GetSyncSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.sync is not None:
@@ -302,7 +302,7 @@ req = operations.ListDestinationRequest(
 )
 
 res = s.hightouch.list_destination(req, operations.ListDestinationSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.list_destination_200_application_json_object is not None:
@@ -330,7 +330,7 @@ req = operations.ListModelRequest(
 )
 
 res = s.hightouch.list_model(req, operations.ListModelSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.list_model_200_application_json_object is not None:
@@ -358,7 +358,7 @@ req = operations.ListSourceRequest(
 )
 
 res = s.hightouch.list_source(req, operations.ListSourceSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.list_source_200_application_json_object is not None:
@@ -389,7 +389,7 @@ req = operations.ListSyncRequest(
 )
 
 res = s.hightouch.list_sync(req, operations.ListSyncSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.list_sync_200_application_json_object is not None:
@@ -421,7 +421,7 @@ req = operations.ListSyncRunsRequest(
 )
 
 res = s.hightouch.list_sync_runs(req, operations.ListSyncRunsSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.list_sync_runs_200_application_json_object is not None:
@@ -451,7 +451,7 @@ req = operations.TriggerRunRequest(
 )
 
 res = s.hightouch.trigger_run(req, operations.TriggerRunSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.trigger_run_output is not None:
@@ -480,7 +480,7 @@ req = shared.TriggerRunCustomInput(
 )
 
 res = s.hightouch.trigger_run_custom(req, operations.TriggerRunCustomSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.trigger_run_custom_200_application_json_any_of is not None:
@@ -515,7 +515,7 @@ req = operations.UpdateDestinationRequest(
 )
 
 res = s.hightouch.update_destination(req, operations.UpdateDestinationSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.update_destination_200_application_json_any_of is not None:
@@ -564,7 +564,7 @@ req = operations.UpdateModelRequest(
 )
 
 res = s.hightouch.update_model(req, operations.UpdateModelSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.update_model_200_application_json_any_of is not None:
@@ -596,7 +596,7 @@ req = operations.UpdateSourceRequest(
 )
 
 res = s.hightouch.update_source(req, operations.UpdateSourceSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.update_source_200_application_json_any_of is not None:
@@ -637,7 +637,7 @@ req = operations.UpdateSyncRequest(
 )
 
 res = s.hightouch.update_sync(req, operations.UpdateSyncSecurity(
-    bearer_auth="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.update_sync_200_application_json_any_of is not None:
