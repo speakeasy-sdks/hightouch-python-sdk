@@ -17,8 +17,8 @@ class Hightouch:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "1.29.0"
-    _gen_version: str = "2.29.0"
+    _sdk_version: str = "1.30.0"
+    _gen_version: str = "2.30.0"
 
     def __init__(self,
                  server_url: str = None,
@@ -60,7 +60,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/destinations'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -101,7 +100,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/models'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -142,7 +140,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/sources'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -183,7 +180,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/syncs'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -224,7 +220,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetDestinationRequest, base_url, '/destinations/{destinationId}', request)
-        
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -252,7 +247,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetModelRequest, base_url, '/models/{modelId}', request)
-        
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -280,7 +274,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetSourceRequest, base_url, '/sources/{sourceId}', request)
-        
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -312,7 +305,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GetSyncRequest, base_url, '/syncs/{syncId}', request)
-        
         headers = {}
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
@@ -340,7 +332,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/destinations'
-        
         headers = {}
         query_params = utils.get_query_params(operations.ListDestinationRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -373,7 +364,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/models'
-        
         headers = {}
         query_params = utils.get_query_params(operations.ListModelRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -406,7 +396,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/sources'
-        
         headers = {}
         query_params = utils.get_query_params(operations.ListSourceRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -435,7 +424,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/syncs'
-        
         headers = {}
         query_params = utils.get_query_params(operations.ListSyncRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -468,7 +456,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListSyncRunsRequest, base_url, '/syncs/{syncId}/runs', request)
-        
         headers = {}
         query_params = utils.get_query_params(operations.ListSyncRunsRequest, request)
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
@@ -504,7 +491,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = utils.generate_url(operations.TriggerRunRequest, base_url, '/syncs/{syncId}/trigger', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "trigger_run_input", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -542,7 +528,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/syncs/trigger'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -581,7 +566,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = utils.generate_url(operations.UpdateDestinationRequest, base_url, '/destinations/{destinationId}', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "destination_update", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -624,7 +608,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = utils.generate_url(operations.UpdateModelRequest, base_url, '/models/{modelId}', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "model_update", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -667,7 +650,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = utils.generate_url(operations.UpdateSourceRequest, base_url, '/sources/{sourceId}', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "source_update", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -710,7 +692,6 @@ class Hightouch:
         base_url = self._server_url
         
         url = utils.generate_url(operations.UpdateSyncRequest, base_url, '/syncs/{syncId}', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "sync_update", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
