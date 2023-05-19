@@ -17,8 +17,8 @@ class Hightouch:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "1.30.0"
-    _gen_version: str = "2.30.0"
+    _sdk_version: str = "1.31.0"
+    _gen_version: str = "2.31.0"
 
     def __init__(self,
                  server_url: str = None,
@@ -66,6 +66,7 @@ class Hightouch:
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -87,7 +88,7 @@ class Hightouch:
                 res.validate_error_json = out
         elif http_res.status_code == 500:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.InternalServerErrorEnum])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.InternalServerError])
                 res.internal_server_error = out
 
         return res
@@ -106,6 +107,7 @@ class Hightouch:
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -127,7 +129,7 @@ class Hightouch:
                 res.validate_error_json = out
         elif http_res.status_code == 500:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.InternalServerErrorEnum])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.InternalServerError])
                 res.internal_server_error = out
 
         return res
@@ -146,6 +148,7 @@ class Hightouch:
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -167,7 +170,7 @@ class Hightouch:
                 res.validate_error_json = out
         elif http_res.status_code == 500:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.InternalServerErrorEnum])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.InternalServerError])
                 res.internal_server_error = out
 
         return res
@@ -186,6 +189,7 @@ class Hightouch:
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -207,7 +211,7 @@ class Hightouch:
                 res.validate_error_json = out
         elif http_res.status_code == 500:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.InternalServerErrorEnum])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.InternalServerError])
                 res.internal_server_error = out
 
         return res
@@ -221,6 +225,7 @@ class Hightouch:
         
         url = utils.generate_url(operations.GetDestinationRequest, base_url, '/destinations/{destinationId}', request)
         headers = {}
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -248,6 +253,7 @@ class Hightouch:
         
         url = utils.generate_url(operations.GetModelRequest, base_url, '/models/{modelId}', request)
         headers = {}
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -275,6 +281,7 @@ class Hightouch:
         
         url = utils.generate_url(operations.GetSourceRequest, base_url, '/sources/{sourceId}', request)
         headers = {}
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -306,6 +313,7 @@ class Hightouch:
         
         url = utils.generate_url(operations.GetSyncRequest, base_url, '/syncs/{syncId}', request)
         headers = {}
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -334,6 +342,7 @@ class Hightouch:
         url = base_url.removesuffix('/') + '/destinations'
         headers = {}
         query_params = utils.get_query_params(operations.ListDestinationRequest, request)
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -366,6 +375,7 @@ class Hightouch:
         url = base_url.removesuffix('/') + '/models'
         headers = {}
         query_params = utils.get_query_params(operations.ListModelRequest, request)
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -398,6 +408,7 @@ class Hightouch:
         url = base_url.removesuffix('/') + '/sources'
         headers = {}
         query_params = utils.get_query_params(operations.ListSourceRequest, request)
+        headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -426,6 +437,7 @@ class Hightouch:
         url = base_url.removesuffix('/') + '/syncs'
         headers = {}
         query_params = utils.get_query_params(operations.ListSyncRequest, request)
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -458,6 +470,7 @@ class Hightouch:
         url = utils.generate_url(operations.ListSyncRunsRequest, base_url, '/syncs/{syncId}/runs', request)
         headers = {}
         query_params = utils.get_query_params(operations.ListSyncRunsRequest, request)
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -495,6 +508,7 @@ class Hightouch:
         req_content_type, data, form = utils.serialize_request_body(request, "trigger_run_input", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -534,6 +548,7 @@ class Hightouch:
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['Accept'] = 'application/json;q=1, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -572,6 +587,7 @@ class Hightouch:
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -593,7 +609,7 @@ class Hightouch:
                 res.validate_error_json = out
         elif http_res.status_code == 500:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.InternalServerErrorEnum])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.InternalServerError])
                 res.internal_server_error = out
 
         return res
@@ -614,6 +630,7 @@ class Hightouch:
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -635,7 +652,7 @@ class Hightouch:
                 res.validate_error_json = out
         elif http_res.status_code == 500:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.InternalServerErrorEnum])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.InternalServerError])
                 res.internal_server_error = out
 
         return res
@@ -656,6 +673,7 @@ class Hightouch:
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -677,7 +695,7 @@ class Hightouch:
                 res.validate_error_json = out
         elif http_res.status_code == 500:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.InternalServerErrorEnum])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.InternalServerError])
                 res.internal_server_error = out
 
         return res
@@ -698,6 +716,7 @@ class Hightouch:
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['Accept'] = 'application/json;q=1, application/json;q=0.7, application/json;q=0'
         headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
@@ -719,7 +738,7 @@ class Hightouch:
                 res.validate_error_json = out
         elif http_res.status_code == 500:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.InternalServerErrorEnum])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.InternalServerError])
                 res.internal_server_error = out
 
         return res

@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import internalservererror_enum as shared_internalservererror_enum
+from ..shared import internalservererror as shared_internalservererror
 from ..shared import modelupdate as shared_modelupdate
 from ..shared import validateerrorjson as shared_validateerrorjson
 from typing import Any, Optional
@@ -28,7 +28,7 @@ class UpdateModelResponse:
     
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    internal_server_error: Optional[shared_internalservererror_enum.InternalServerErrorEnum] = dataclasses.field(default=None)
+    internal_server_error: Optional[shared_internalservererror.InternalServerError] = dataclasses.field(default=None)
     r"""Something went wrong"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     update_model_200_application_json_any_of: Optional[Any] = dataclasses.field(default=None)

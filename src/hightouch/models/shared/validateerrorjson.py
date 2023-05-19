@@ -7,7 +7,7 @@ from enum import Enum
 from hightouch import utils
 from typing import Any
 
-class ValidateErrorJSONMessageEnum(str, Enum):
+class ValidateErrorJSONMessage(str, Enum):
     VALIDATION_FAILED = 'Validation failed'
 
 
@@ -17,5 +17,5 @@ class ValidateErrorJSON:
     r"""Validation Failed"""
     
     details: dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details') }})
-    message: ValidateErrorJSONMessageEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})
+    message: ValidateErrorJSONMessage = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})
     

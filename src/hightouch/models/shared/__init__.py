@@ -5,10 +5,10 @@ from .dbtschedule import *
 from .destination import *
 from .destinationcreate import *
 from .destinationupdate import *
-from .internalservererror_enum import *
+from .internalservererror import *
 from .interval import *
 from .intervalschedule import *
-from .intervalunit_enum import *
+from .intervalunit import *
 from .model import *
 from .modelcreate import *
 from .modelupdate import *
@@ -19,8 +19,8 @@ from .sourceupdate import *
 from .sync import *
 from .synccreate import *
 from .syncrun import *
-from .syncrunstatus_enum import *
-from .syncstatus_enum import *
+from .syncrunstatus import *
+from .syncstatus import *
 from .syncupdate import *
 from .triggerruncustominput import *
 from .triggerruninput import *
@@ -28,4 +28,4 @@ from .triggerrunoutput import *
 from .validateerrorjson import *
 from .visualcronschedule import *
 
-__all__ = ["CronSchedule","DBTSchedule","DBTScheduleAccount","DBTScheduleJob","Destination","DestinationCreate","DestinationUpdate","InternalServerErrorEnum","Interval","IntervalSchedule","IntervalUnitEnum","Model","ModelCreate","ModelCreateCustom","ModelCreateDbt","ModelCreateRaw","ModelCreateTable","ModelCreateVisual","ModelCustom","ModelDbt","ModelRaw","ModelTable","ModelUpdate","ModelUpdateCustom","ModelUpdateDbt","ModelUpdateRaw","ModelUpdateTable","ModelUpdateVisual","ModelVisual","RecordDayBooleanOrUndefined","Source","SourceCreate","SourceUpdate","Sync","SyncCreate","SyncCreateSchedule","SyncRun","SyncRunFailedRows","SyncRunPlannedRows","SyncRunStatusEnum","SyncRunSuccessfulRows","SyncSchedule","SyncStatusEnum","SyncUpdate","SyncUpdateSchedule","TriggerRunCustomInput","TriggerRunInput","TriggerRunOutput","ValidateErrorJSON","ValidateErrorJSONMessageEnum","VisualCronSchedule","VisualCronScheduleExpressions"]
+__all__ = ["CronSchedule","DBTSchedule","DBTScheduleAccount","DBTScheduleJob","Destination","DestinationCreate","DestinationUpdate","InternalServerError","Interval","IntervalSchedule","IntervalUnit","Model","ModelCreate","ModelCreateCustom","ModelCreateDbt","ModelCreateRaw","ModelCreateTable","ModelCreateVisual","ModelCustom","ModelDbt","ModelRaw","ModelTable","ModelUpdate","ModelUpdateCustom","ModelUpdateDbt","ModelUpdateRaw","ModelUpdateTable","ModelUpdateVisual","ModelVisual","RecordDayBooleanOrUndefined","Source","SourceCreate","SourceUpdate","Sync","SyncCreate","SyncCreateSchedule","SyncRun","SyncRunFailedRows","SyncRunPlannedRows","SyncRunStatus","SyncRunSuccessfulRows","SyncSchedule","SyncStatus","SyncUpdate","SyncUpdateSchedule","TriggerRunCustomInput","TriggerRunInput","TriggerRunOutput","ValidateErrorJSON","ValidateErrorJSONMessage","VisualCronSchedule","VisualCronScheduleExpressions"]

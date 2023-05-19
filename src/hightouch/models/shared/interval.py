@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import intervalunit_enum as shared_intervalunit_enum
+from ..shared import intervalunit as shared_intervalunit
 from dataclasses_json import Undefined, dataclass_json
 from hightouch import utils
 
@@ -12,5 +12,5 @@ from hightouch import utils
 class Interval:
     
     quantity: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('quantity') }})
-    unit: shared_intervalunit_enum.IntervalUnitEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unit') }})
+    unit: shared_intervalunit.IntervalUnit = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unit') }})
     

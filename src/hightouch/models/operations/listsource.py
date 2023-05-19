@@ -15,7 +15,7 @@ class ListSourceSecurity:
     
     bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
     
-class ListSourceOrderByEnum(str, Enum):
+class ListSourceOrderBy(str, Enum):
     r"""specify the order"""
     ID = 'id'
     NAME = 'name'
@@ -33,7 +33,7 @@ class ListSourceRequest:
     r"""filter based on name"""
     offset: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'offset', 'style': 'form', 'explode': True }})
     r"""set the offset on results (for pagination)"""
-    order_by: Optional[ListSourceOrderByEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
+    order_by: Optional[ListSourceOrderBy] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
     r"""specify the order"""
     slug: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'slug', 'style': 'form', 'explode': True }})
     r"""filter based on slug"""

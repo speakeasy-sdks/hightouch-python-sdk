@@ -297,7 +297,7 @@ req = operations.ListDestinationRequest(
     limit=4499.5,
     name='Sheryl Kertzmann',
     offset=992.8,
-    order_by=operations.ListDestinationOrderByEnum.ID,
+    order_by=operations.ListDestinationOrderBy.ID,
     slug='reiciendis',
 )
 
@@ -325,7 +325,7 @@ req = operations.ListModelRequest(
     limit=6667.67,
     name='Cameron Dach',
     offset=1289.26,
-    order_by=operations.ListModelOrderByEnum.CREATED_AT,
+    order_by=operations.ListModelOrderBy.CREATED_AT,
     slug='enim',
 )
 
@@ -353,7 +353,7 @@ req = operations.ListSourceRequest(
     limit=6078.31,
     name='Ms. Cathy Marks',
     offset=9883.74,
-    order_by=operations.ListSourceOrderByEnum.UPDATED_AT,
+    order_by=operations.ListSourceOrderBy.UPDATED_AT,
     slug='architecto',
 )
 
@@ -384,7 +384,7 @@ req = operations.ListSyncRequest(
     limit=9953,
     model_id=6531.08,
     offset=5818.5,
-    order_by=operations.ListSyncOrderByEnum.NAME,
+    order_by=operations.ListSyncOrderBy.NAME,
     slug='commodi',
 )
 
@@ -414,7 +414,7 @@ req = operations.ListSyncRunsRequest(
     before=dateutil.parser.isoparse('2022-05-18T10:03:04.921Z'),
     limit=1589.69,
     offset=3380.07,
-    order_by=operations.ListSyncRunsOrderByEnum.ID,
+    order_by=operations.ListSyncRunsOrderBy.ID,
     run_id=6747.52,
     sync_id=6563.3,
     within=3172.02,
@@ -627,7 +627,7 @@ req = operations.UpdateSyncRequest(
             schedule=shared.IntervalSchedule(
                 interval=shared.Interval(
                     quantity=9292.97,
-                    unit=shared.IntervalUnitEnum.HOUR,
+                    unit=shared.IntervalUnit.HOUR,
                 ),
             ),
             type='enim',

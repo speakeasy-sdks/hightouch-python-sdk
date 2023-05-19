@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class SyncStatusEnum(str, Enum):
+class SyncStatus(str, Enum):
     DISABLED = 'disabled'
     PENDING = 'pending'
     CANCELLED = 'cancelled'

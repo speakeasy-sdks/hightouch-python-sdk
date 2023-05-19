@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import dateutil.parser
-from ..shared import syncrunstatus_enum as shared_syncrunstatus_enum
+from ..shared import syncrunstatus as shared_syncrunstatus
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from hightouch import utils
@@ -92,7 +92,7 @@ class SyncRun:
     r"""The number of rows in the query."""
     started_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('startedAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
     r"""The timestamp when the sync run started"""
-    status: shared_syncrunstatus_enum.SyncRunStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: shared_syncrunstatus.SyncRunStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""The status of sync runs"""
     successful_rows: SyncRunSuccessfulRows = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('successfulRows') }})
     r"""The number of rows that were successfully processed by the destination."""
