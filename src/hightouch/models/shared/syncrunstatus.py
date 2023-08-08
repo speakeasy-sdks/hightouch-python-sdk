@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class SyncRunStatusEnum(str, Enum):
+class SyncRunStatus(str, Enum):
     r"""The status of sync runs"""
     CANCELLED = 'cancelled'
     FAILED = 'failed'

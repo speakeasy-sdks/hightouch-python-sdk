@@ -3,8 +3,6 @@
 from __future__ import annotations
 from enum import Enum
 
-class IntervalUnitEnum(str, Enum):
-    MINUTE = 'minute'
-    HOUR = 'hour'
-    DAY = 'day'
-    WEEK = 'week'
+class InternalServerError(str, Enum):
+    r"""Something went wrong"""
+    INTERNAL_SERVER_ERROR = 'Internal Server Error'

@@ -17,7 +17,7 @@ class ListSyncRunsSecurity:
     
     bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
     
-class ListSyncRunsOrderByEnum(str, Enum):
+class ListSyncRunsOrderBy(str, Enum):
     r"""specify the order"""
     ID = 'id'
     CREATED_AT = 'createdAt'
@@ -37,7 +37,7 @@ class ListSyncRunsRequest:
     r"""limit the number of objects returned (default is 5)"""
     offset: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'offset', 'style': 'form', 'explode': True }})
     r"""set the offset on results (for pagination)"""
-    order_by: Optional[ListSyncRunsOrderByEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
+    order_by: Optional[ListSyncRunsOrderBy] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
     r"""specify the order"""
     run_id: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'runId', 'style': 'form', 'explode': True }})
     r"""query for specific run id"""

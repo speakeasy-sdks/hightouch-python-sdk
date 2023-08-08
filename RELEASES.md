@@ -359,3 +359,51 @@ Based on:
 - Speakeasy CLI 1.30.0 https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v1.26.0] https://pypi.org/project/hightouch/1.26.0 - .
+
+## 2023-05-12 01:09:27
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 https://api.hightouch.io/api/swagger.json
+- Speakeasy CLI 1.30.1 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v1.26.1] https://pypi.org/project/hightouch/1.26.1 - .
+
+## 2023-05-13 01:06:54
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 https://api.hightouch.io/api/swagger.json
+- Speakeasy CLI 1.31.1 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v1.27.0] https://pypi.org/project/hightouch/1.27.0 - .
+
+## 2023-05-16 01:10:24
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 https://api.hightouch.io/api/swagger.json
+- Speakeasy CLI 1.32.0 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v1.28.0] https://pypi.org/project/hightouch/1.28.0 - .
+
+## 2023-05-17 01:11:56
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 https://api.hightouch.io/api/swagger.json
+- Speakeasy CLI 1.33.2 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v1.29.0] https://pypi.org/project/hightouch/1.29.0 - .
+
+## 2023-05-18 01:09:08
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 https://api.hightouch.io/api/swagger.json
+- Speakeasy CLI 1.34.0 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v1.30.0] https://pypi.org/project/hightouch/1.30.0 - .
+
+## 2023-05-19 01:10:44
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 https://api.hightouch.io/api/swagger.json
+- Speakeasy CLI 1.35.0 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v1.31.0] https://pypi.org/project/hightouch/1.31.0 - .
