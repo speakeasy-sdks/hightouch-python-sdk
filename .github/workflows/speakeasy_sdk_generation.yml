@@ -3,6 +3,7 @@ permissions:
   checks: write
   contents: write
   statuses: write
+  pull-requests: write
 "on":
   workflow_dispatch:
     inputs:
@@ -18,7 +19,7 @@ jobs:
     with:
       force: ${{ github.event.inputs.force }}
       languages: |
-        - typescript
+        - python
       mode: direct
       openapi_docs: |
         - https://api.hightouch.io/api/swagger.json
