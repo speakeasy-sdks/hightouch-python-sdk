@@ -3,7 +3,6 @@ permissions:
   checks: write
   contents: write
   statuses: write
-  pull-requests: write
 "on":
   workflow_dispatch:
     inputs:
@@ -19,10 +18,10 @@ jobs:
     with:
       force: ${{ github.event.inputs.force }}
       languages: |
-        - python
+        - typescript
       mode: direct
       openapi_docs: |
-        - openapi_doc_location: https://api.hightouch.io/api/swagger.json
+        - https://api.hightouch.io/api/swagger.json
       speakeasy_version: latest
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
