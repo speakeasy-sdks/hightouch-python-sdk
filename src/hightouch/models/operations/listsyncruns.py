@@ -12,11 +12,13 @@ from hightouch import utils
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class ListSyncRunsSecurity:
-    
     bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
     
+
+
 class ListSyncRunsOrderBy(str, Enum):
     r"""specify the order"""
     ID = 'id'
@@ -25,9 +27,9 @@ class ListSyncRunsOrderBy(str, Enum):
     FINISHED_AT = 'finishedAt'
 
 
+
 @dataclasses.dataclass
 class ListSyncRunsRequest:
-    
     sync_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
     after: Optional[datetime] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'after', 'style': 'form', 'explode': True }})
     r"""select sync runs that are started after given ISO timestamp"""
@@ -45,17 +47,22 @@ class ListSyncRunsRequest:
     r"""select sync runs that are started within last given minutes"""
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class ListSyncRuns200ApplicationJSON:
     r"""Ok"""
-    
     data: list[shared_syncrun.SyncRun] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
+    has_more: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hasMore') }})
     
+
+
+
 
 @dataclasses.dataclass
 class ListSyncRunsResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     list_sync_runs_200_application_json_object: Optional[ListSyncRuns200ApplicationJSON] = dataclasses.field(default=None)
@@ -64,3 +71,4 @@ class ListSyncRunsResponse:
     validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
     r"""Validation Failed"""
     
+

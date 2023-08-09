@@ -9,23 +9,27 @@ from ..shared import validateerrorjson as shared_validateerrorjson
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class TriggerRunSecurity:
-    
     bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
     
 
+
+
+
 @dataclasses.dataclass
 class TriggerRunRequest:
-    
     sync_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
     r"""The id of the sync to trigger a run"""
     trigger_run_input: Optional[shared_triggerruninput.TriggerRunInput] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
+
+
+
 @dataclasses.dataclass
 class TriggerRunResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
@@ -34,3 +38,4 @@ class TriggerRunResponse:
     validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
     r"""Validation Failed"""
     
+

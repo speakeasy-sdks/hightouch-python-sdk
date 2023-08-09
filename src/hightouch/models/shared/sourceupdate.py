@@ -8,19 +8,20 @@ from typing import Any, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class SourceUpdate:
     r"""The input for updating a Source"""
-    
     configuration: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('configuration'), 'exclude': lambda f: f is None }})
     r"""The source's configuration. This specifies general metadata about sources, like connection details
     Hightouch will use this configuration to connect to underlying source.
-    
+
     The schema depends on the source type.
-    
+
     Consumers should NOT make assumptions on the contents of the
     configuration. It may change as Hightouch updates its internal code.
     """
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     r"""The source's name"""
     
+

@@ -407,3 +407,11 @@ Based on:
 - Speakeasy CLI 1.35.0 https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v1.31.0] https://pypi.org/project/hightouch/1.31.0 - .
+
+## 2023-08-09 14:16:40
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.70.2 (2.83.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v1.32.0] .

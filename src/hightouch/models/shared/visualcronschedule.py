@@ -8,17 +8,20 @@ from hightouch import utils
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class VisualCronScheduleExpressions:
-    
     days: shared_record_day_boolean_or_undefined_.RecordDayBooleanOrUndefined = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('days') }})
     r"""Construct a type with a set of properties K of type T"""
     time: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('time') }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class VisualCronSchedule:
-    
     expressions: list[VisualCronScheduleExpressions] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expressions') }})
     
+

@@ -12,11 +12,13 @@ from hightouch import utils
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class ListSyncSecurity:
-    
     bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
     
+
+
 class ListSyncOrderBy(str, Enum):
     r"""specify the order"""
     ID = 'id'
@@ -26,9 +28,9 @@ class ListSyncOrderBy(str, Enum):
     UPDATED_AT = 'updatedAt'
 
 
+
 @dataclasses.dataclass
 class ListSyncRequest:
-    
     after: Optional[datetime] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'after', 'style': 'form', 'explode': True }})
     r"""select syncs that were run after given ISO timestamp"""
     before: Optional[datetime] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'before', 'style': 'form', 'explode': True }})
@@ -45,17 +47,22 @@ class ListSyncRequest:
     r"""filter based on slug"""
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class ListSync200ApplicationJSON:
     r"""Ok"""
-    
     data: list[shared_sync.Sync] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
+    has_more: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hasMore') }})
     
+
+
+
 
 @dataclasses.dataclass
 class ListSyncResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     list_sync_200_application_json_object: Optional[ListSync200ApplicationJSON] = dataclasses.field(default=None)
@@ -64,3 +71,4 @@ class ListSyncResponse:
     validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
     r"""Validation Failed"""
     
+

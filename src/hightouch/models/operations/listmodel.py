@@ -11,11 +11,13 @@ from hightouch import utils
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class ListModelSecurity:
-    
     bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
     
+
+
 class ListModelOrderBy(str, Enum):
     r"""specify the order"""
     ID = 'id'
@@ -25,9 +27,9 @@ class ListModelOrderBy(str, Enum):
     UPDATED_AT = 'updatedAt'
 
 
+
 @dataclasses.dataclass
 class ListModelRequest:
-    
     limit: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'limit', 'style': 'form', 'explode': True }})
     r"""limit the number of objects returned (default is 100)"""
     name: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'name', 'style': 'form', 'explode': True }})
@@ -40,17 +42,21 @@ class ListModelRequest:
     r"""filter based on slug"""
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class ListModel200ApplicationJSON:
     r"""Ok"""
-    
     data: list[shared_model.Model] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     
 
+
+
+
 @dataclasses.dataclass
 class ListModelResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     list_model_200_application_json_object: Optional[ListModel200ApplicationJSON] = dataclasses.field(default=None)
@@ -59,3 +65,4 @@ class ListModelResponse:
     validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
     r"""Validation Failed"""
     
+

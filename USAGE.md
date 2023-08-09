@@ -1,4 +1,6 @@
 <!-- Start SDK Example Usage -->
+
+
 ```python
 import hightouch
 from hightouch.models import operations, shared
@@ -17,7 +19,7 @@ req = shared.DestinationCreate(
 )
 
 res = s.create_destination(req, operations.CreateDestinationSecurity(
-    bearer_auth="YOUR_BEARER_TOKEN_HERE",
+    bearer_auth="",
 ))
 
 if res.create_destination_200_application_json_any_of is not None:

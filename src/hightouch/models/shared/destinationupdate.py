@@ -8,19 +8,20 @@ from typing import Any, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class DestinationUpdate:
     r"""The input for updating a Destination"""
-    
     configuration: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('configuration'), 'exclude': lambda f: f is None }})
     r"""The destination's configuration. This specifies general metadata about destination, like hostname and username.
     Hightouch will be using this configuration to connect to destination.
-    
+
     The schema depends on the destination type.
-    
+
     Consumers should NOT make assumptions on the contents of the
     configuration. It may change as Hightouch updates its internal code.
     """
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     r"""The destination's name"""
     
+

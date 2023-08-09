@@ -12,15 +12,15 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class SyncRunFailedRows:
     r"""The number of rows that we attempted to sync, but were rejected by the
     destination.
-    
+
     This does not include rows that weren't attempted due to the sync being
     cancelled.
     """
-    
     added_count: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addedCount') }})
     r"""The number of failed adds."""
     changed_count: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('changedCount') }})
@@ -29,15 +29,17 @@ class SyncRunFailedRows:
     r"""The number of failed removes."""
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class SyncRunPlannedRows:
     r"""The number of planned rows that this sync run was supposed to execute.
-    
+
     Note that the counts for `successfulRows` and `failedRows` may not add up
     to `plannedRows` if the sync was cancelled.
     """
-    
     added_count: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addedCount') }})
     r"""The number of added rows."""
     changed_count: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('changedCount') }})
@@ -46,11 +48,13 @@ class SyncRunPlannedRows:
     r"""The number of removed rows."""
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class SyncRunSuccessfulRows:
     r"""The number of rows that were successfully processed by the destination."""
-    
     added_count: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('addedCount') }})
     r"""The number of successful adds."""
     changed_count: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('changedCount') }})
@@ -59,10 +63,12 @@ class SyncRunSuccessfulRows:
     r"""The number of successful removes."""
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class SyncRun:
-    
     completion_ratio: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('completionRatio') }})
     r"""The completion ratio of sync run, showing the progress of a sync run"""
     created_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
@@ -74,17 +80,17 @@ class SyncRun:
     failed_rows: SyncRunFailedRows = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('failedRows') }})
     r"""The number of rows that we attempted to sync, but were rejected by the
     destination.
-    
+
     This does not include rows that weren't attempted due to the sync being
     cancelled.
     """
     finished_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finishedAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
     r"""The timestamp when the sync run finished"""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-    r"""Number as a string"""
+    r"""The sync run's id"""
     planned_rows: SyncRunPlannedRows = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('plannedRows') }})
     r"""The number of planned rows that this sync run was supposed to execute.
-    
+
     Note that the counts for `successfulRows` and `failedRows` may not add up
     to `plannedRows` if the sync was cancelled.
     """
@@ -99,3 +105,4 @@ class SyncRun:
     error: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('error'), 'exclude': lambda f: f is None }})
     r"""Error message if the sync run didn't finish successfully"""
     
+

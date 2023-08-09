@@ -8,15 +8,17 @@ from ..shared import validateerrorjson as shared_validateerrorjson
 from typing import Any, Optional
 
 
+
 @dataclasses.dataclass
 class CreateSyncSecurity:
-    
     bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
     
 
+
+
+
 @dataclasses.dataclass
 class CreateSyncResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     create_sync_200_application_json_any_of: Optional[Any] = dataclasses.field(default=None)
@@ -27,3 +29,4 @@ class CreateSyncResponse:
     validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
     r"""Conflict"""
     
+

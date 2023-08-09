@@ -1,0 +1,12 @@
+# GetSourceResponse
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `content_type`                                                                        | *str*                                                                                 | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `source`                                                                              | [Optional[shared.Source]](../../models/shared/source.md)                              | :heavy_minus_sign:                                                                    | Ok                                                                                    |
+| `status_code`                                                                         | *int*                                                                                 | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `raw_response`                                                                        | [requests.Response](https://requests.readthedocs.io/en/latest/api/#requests.Response) | :heavy_minus_sign:                                                                    | N/A                                                                                   |
+| `validate_error_json`                                                                 | [Optional[shared.ValidateErrorJSON]](../../models/shared/validateerrorjson.md)        | :heavy_minus_sign:                                                                    | Validation Failed                                                                     |

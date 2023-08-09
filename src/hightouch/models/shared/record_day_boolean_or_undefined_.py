@@ -8,10 +8,10 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class RecordDayBooleanOrUndefined:
     r"""Construct a type with a set of properties K of type T"""
-    
     friday: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('friday'), 'exclude': lambda f: f is None }})
     monday: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('monday'), 'exclude': lambda f: f is None }})
     saturday: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('saturday'), 'exclude': lambda f: f is None }})
@@ -20,3 +20,4 @@ class RecordDayBooleanOrUndefined:
     tuesday: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tuesday'), 'exclude': lambda f: f is None }})
     wednesday: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('wednesday'), 'exclude': lambda f: f is None }})
     
+

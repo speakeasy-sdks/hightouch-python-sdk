@@ -11,25 +11,25 @@ from typing import Any
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class Source:
     r"""The database or warehouse where your data is stored. The starting point for
     a Hightouch data pipeline.
     """
-    
     configuration: dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('configuration') }})
     r"""The source's configuration. This specifies general metadata about sources, like connection details
     Hightouch will use this configuration to connect to underlying source.
-    
+
     The schema depends on the source type.
-    
+
     Consumers should NOT make assumptions on the contents of the
     configuration. It may change as Hightouch updates its internal code.
     """
     created_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
     r"""The timestamp when the source was created"""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-    r"""Number as a string"""
+    r"""The source's id"""
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
     r"""The source's name"""
     slug: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('slug') }})
@@ -39,5 +39,6 @@ class Source:
     updated_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updatedAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
     r"""The timestamp when the source was last updated"""
     workspace_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('workspaceId') }})
-    r"""Number as a string"""
+    r"""The id of the workspace that the source belongs to"""
     
+
