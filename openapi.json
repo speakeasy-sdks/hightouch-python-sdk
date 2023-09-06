@@ -1,0 +1,3531 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"Destination": {
+				"description": "The service receiving your data (e.g. Salesforce, Hubspot, Customer.io, or a\nSFTP server)",
+				"properties": {
+					"id": {
+						"type": "string",
+						"description": "The destination's id",
+						"pattern": "^[0-9]+$"
+					},
+					"name": {
+						"type": "string",
+						"description": "The destination's name"
+					},
+					"slug": {
+						"type": "string",
+						"description": "The destination's slug"
+					},
+					"workspaceId": {
+						"type": "string",
+						"description": "The id of the workspace that the destination belongs to",
+						"pattern": "^[0-9]+$"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "The timestamp when the destination was created"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "The timestamp when the destination was last updated"
+					},
+					"type": {
+						"type": "string",
+						"description": "The destination's type (e.g. salesforce or hubspot)."
+					},
+					"configuration": {
+						"properties": {},
+						"additionalProperties": {},
+						"type": "object",
+						"description": "The destination's configuration. This specifies general metadata about destination, like hostname and username.\nHightouch will be using this configuration to connect to destination.\n\nThe schema depends on the destination type.\n\nConsumers should NOT make assumptions on the contents of the\nconfiguration. It may change as Hightouch updates its internal code."
+					},
+					"syncs": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array",
+						"description": "A list of syncs that sync to this destination."
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"slug",
+					"workspaceId",
+					"createdAt",
+					"updatedAt",
+					"type",
+					"configuration",
+					"syncs"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ValidateErrorJSON": {
+				"properties": {
+					"message": {
+						"type": "string",
+						"enum": [
+							"Validation failed"
+						],
+						"nullable": false
+					},
+					"details": {
+						"properties": {},
+						"additionalProperties": {},
+						"type": "object"
+					}
+				},
+				"required": [
+					"message",
+					"details"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"InternalServerError": {
+				"type": "string",
+				"enum": [
+					"Internal Server Error"
+				],
+				"nullable": false
+			},
+			"DestinationCreate": {
+				"description": "The input for creating a Destination",
+				"properties": {
+					"name": {
+						"type": "string",
+						"description": "The destination's name"
+					},
+					"slug": {
+						"type": "string",
+						"description": "The destination's slug"
+					},
+					"type": {
+						"type": "string",
+						"description": "The destination's type (e.g. salesforce or hubspot)."
+					},
+					"configuration": {
+						"properties": {},
+						"additionalProperties": {},
+						"type": "object",
+						"description": "The destination's configuration. This specifies general metadata about destination, like hostname and username.\nHightouch will be using this configuration to connect to destination.\n\nThe schema depends on the destination type.\n\nConsumers should NOT make assumptions on the contents of the\nconfiguration. It may change as Hightouch updates its internal code."
+					}
+				},
+				"required": [
+					"name",
+					"slug",
+					"type",
+					"configuration"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DestinationUpdate": {
+				"description": "The input for updating a Destination",
+				"properties": {
+					"name": {
+						"type": "string",
+						"description": "The destination's name"
+					},
+					"configuration": {
+						"properties": {},
+						"additionalProperties": {},
+						"type": "object",
+						"description": "The destination's configuration. This specifies general metadata about destination, like hostname and username.\nHightouch will be using this configuration to connect to destination.\n\nThe schema depends on the destination type.\n\nConsumers should NOT make assumptions on the contents of the\nconfiguration. It may change as Hightouch updates its internal code."
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TriggerRunIdGraphOutput": {
+				"properties": {
+					"id": {
+						"type": "string",
+						"description": "The id of the triggered run."
+					}
+				},
+				"required": [
+					"id"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TriggerRunIdGraphInput": {
+				"properties": {
+					"fullRerun": {
+						"type": "boolean",
+						"description": "Whether to resync the entire Identity Graph or process incrementally.",
+						"default": "false"
+					}
+				},
+				"type": "object",
+				"description": "The input of a trigger action to run IDR."
+			},
+			"Source": {
+				"description": "The database or warehouse where your data is stored. The starting point for\na Hightouch data pipeline.",
+				"properties": {
+					"id": {
+						"type": "string",
+						"description": "The source's id",
+						"pattern": "^[0-9]+$"
+					},
+					"name": {
+						"type": "string",
+						"description": "The source's name"
+					},
+					"slug": {
+						"type": "string",
+						"description": "The source's slug"
+					},
+					"workspaceId": {
+						"type": "string",
+						"description": "The id of the workspace that the source belongs to",
+						"pattern": "^[0-9]+$"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "The timestamp when the source was created"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "The timestamp when the source was last updated"
+					},
+					"configuration": {
+						"properties": {},
+						"additionalProperties": {},
+						"type": "object",
+						"description": "The source's configuration. This specifies general metadata about sources, like connection details\nHightouch will use this configuration to connect to underlying source.\n\nThe schema depends on the source type.\n\nConsumers should NOT make assumptions on the contents of the\nconfiguration. It may change as Hightouch updates its internal code."
+					},
+					"type": {
+						"type": "string",
+						"description": "The source's type (e.g. snowflake or postgres)."
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"slug",
+					"workspaceId",
+					"createdAt",
+					"updatedAt",
+					"configuration",
+					"type"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SourceCreate": {
+				"description": "The input for creating a Source",
+				"properties": {
+					"name": {
+						"type": "string",
+						"description": "The source's name"
+					},
+					"slug": {
+						"type": "string",
+						"description": "The source's slug"
+					},
+					"type": {
+						"type": "string",
+						"description": "The source's type (e.g. snowflake or postgres)."
+					},
+					"configuration": {
+						"properties": {},
+						"additionalProperties": {},
+						"type": "object",
+						"description": "The source's configuration. This specifies general metadata about sources, like connection details\nHightouch will use this configuration to connect to underlying source.\n\nThe schema depends on the source type.\n\nConsumers should NOT make assumptions on the contents of the\nconfiguration. It may change as Hightouch updates its internal code."
+					}
+				},
+				"required": [
+					"name",
+					"slug",
+					"type",
+					"configuration"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SourceUpdate": {
+				"description": "The input for updating a Source",
+				"properties": {
+					"name": {
+						"type": "string",
+						"description": "The source's name"
+					},
+					"configuration": {
+						"properties": {},
+						"additionalProperties": {},
+						"type": "object",
+						"description": "The source's configuration. This specifies general metadata about sources, like connection details\nHightouch will use this configuration to connect to underlying source.\n\nThe schema depends on the source type.\n\nConsumers should NOT make assumptions on the contents of the\nconfiguration. It may change as Hightouch updates its internal code."
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Model": {
+				"description": "The SQL query that pulls data from your source to send to your destination.\nWe send your SQL query directly to your source so any SQL that is valid for your source (including functions) is valid in Hightouch.",
+				"properties": {
+					"id": {
+						"type": "string",
+						"description": "The id of the model",
+						"pattern": "^[0-9]+$"
+					},
+					"name": {
+						"type": "string",
+						"description": "The name of the model"
+					},
+					"slug": {
+						"type": "string",
+						"description": "The slug of the model"
+					},
+					"workspaceId": {
+						"type": "string",
+						"description": "The id of the workspace where the model belongs to",
+						"pattern": "^[0-9]+$"
+					},
+					"primaryKey": {
+						"type": "string",
+						"description": "The primary key will be null if the query doesn't get directly synced (e.g. a relationship table for visual querying)"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "The timestamp when model was created"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "The timestamp when model was lastly updated"
+					},
+					"sourceId": {
+						"type": "string",
+						"description": "The id of the source that model is connected to",
+						"pattern": "^[0-9]+$"
+					},
+					"queryType": {
+						"type": "string",
+						"description": "The type of the query. Available options: custom, raw_sql, tabel, dbt and visual."
+					},
+					"tags": {
+						"properties": {},
+						"additionalProperties": {
+							"type": "string"
+						},
+						"type": "object",
+						"description": "The tags of the model"
+					},
+					"isSchema": {
+						"type": "boolean",
+						"description": "If is_schema is true, the model is just used to build other models.\nEither as part of visual querying, or as the root of a visual query."
+					},
+					"syncs": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array",
+						"description": "The list of id of syncs that uses this model"
+					},
+					"visual": {
+						"properties": {
+							"secondaryLabel": {
+								"type": "string"
+							},
+							"primaryLabel": {
+								"type": "string"
+							},
+							"filter": {},
+							"parentId": {
+								"type": "string",
+								"description": "Parent id of the schema that visual query is based on",
+								"pattern": "^[0-9]+$"
+							}
+						},
+						"required": [
+							"secondaryLabel",
+							"primaryLabel",
+							"filter",
+							"parentId"
+						],
+						"type": "object",
+						"description": "Visual query, used by audience"
+					},
+					"custom": {
+						"properties": {
+							"query": {}
+						},
+						"required": [
+							"query"
+						],
+						"type": "object",
+						"description": "Custom query for sources that doesn't support sql. For example, Airtable."
+					},
+					"table": {
+						"properties": {
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"name"
+						],
+						"type": "object",
+						"description": "Table-based query that fetches on a table instead of SQL"
+					},
+					"dbt": {
+						"properties": {
+							"dbtUniqueId": {
+								"type": "string",
+								"description": "Unique ID of the model assigned by dbt (usually some combination of the schema and table name)"
+							},
+							"compiledSql": {
+								"type": "string",
+								"description": "Compiled SQL in the dbt model"
+							},
+							"rawSql": {
+								"type": "string",
+								"description": "Raw SQL in the dbt model"
+							},
+							"database": {
+								"type": "string",
+								"description": "Name of the database containing the generated table"
+							},
+							"schema": {
+								"type": "string",
+								"description": "Name of the schema containing the generated table"
+							},
+							"name": {
+								"type": "string",
+								"description": "Name of the table generated by the dbt model"
+							},
+							"modelId": {
+								"type": "string",
+								"description": "Model id that refer to a dbt model",
+								"pattern": "^[0-9]+$"
+							}
+						},
+						"required": [
+							"dbtUniqueId",
+							"compiledSql",
+							"rawSql",
+							"database",
+							"schema",
+							"name",
+							"modelId"
+						],
+						"type": "object",
+						"description": "Query that is based on a dbt model"
+					},
+					"raw": {
+						"properties": {
+							"sql": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"sql"
+						],
+						"type": "object",
+						"description": "Standard raw SQL query"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"slug",
+					"workspaceId",
+					"primaryKey",
+					"createdAt",
+					"updatedAt",
+					"sourceId",
+					"queryType",
+					"tags",
+					"isSchema",
+					"syncs"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ModelCreate": {
+				"description": "The input for creating a Model",
+				"properties": {
+					"name": {
+						"type": "string",
+						"description": "The name of the model"
+					},
+					"slug": {
+						"type": "string",
+						"description": "The slug of the model"
+					},
+					"queryType": {
+						"type": "string",
+						"description": "The type of the query. Available options: custom, raw_sql, tabel, dbt and visual."
+					},
+					"sourceId": {
+						"type": "string",
+						"description": "The id of the source that model is connected to",
+						"pattern": "^[0-9]+$"
+					},
+					"isSchema": {
+						"type": "boolean",
+						"description": "If is_schema is true, the model is just used to build other models.\nEither as part of visual querying, or as the root of a visual query."
+					},
+					"primaryKey": {
+						"type": "string",
+						"description": "The primary key will be null if the query doesn't get directly synced (e.g. a relationship table for visual querying)"
+					},
+					"visual": {
+						"properties": {
+							"secondaryLabel": {
+								"type": "string"
+							},
+							"primaryLabel": {
+								"type": "string"
+							},
+							"filter": {},
+							"parentId": {
+								"type": "string",
+								"description": "Parent id of the schema that visual query is based on",
+								"pattern": "^[0-9]+$"
+							}
+						},
+						"required": [
+							"secondaryLabel",
+							"primaryLabel",
+							"filter",
+							"parentId"
+						],
+						"type": "object",
+						"description": "Visual query, used by audience"
+					},
+					"custom": {
+						"properties": {
+							"query": {}
+						},
+						"required": [
+							"query"
+						],
+						"type": "object",
+						"description": "Custom query for sources that doesn't support sql. For example, Airtable."
+					},
+					"table": {
+						"properties": {
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"name"
+						],
+						"type": "object",
+						"description": "Table-based query that fetches on a table instead of SQL"
+					},
+					"raw": {
+						"properties": {
+							"sql": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"sql"
+						],
+						"type": "object",
+						"description": "Standard raw SQL query"
+					},
+					"dbt": {
+						"properties": {
+							"modelId": {
+								"type": "string",
+								"description": "Model id that refers to a dbt model",
+								"pattern": "^[0-9]+$"
+							}
+						},
+						"required": [
+							"modelId"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"name",
+					"slug",
+					"queryType",
+					"sourceId",
+					"isSchema",
+					"primaryKey"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ModelUpdate": {
+				"description": "The input for updating a Model",
+				"properties": {
+					"name": {
+						"type": "string",
+						"description": "The name of the model"
+					},
+					"isSchema": {
+						"type": "boolean",
+						"description": "If is_schema is true, the model is just used to build other models.\nEither as part of visual querying, or as the root of a visual query."
+					},
+					"primaryKey": {
+						"type": "string",
+						"description": "The primary key will be null if the query doesn't get directly synced (e.g. a relationship table for visual querying)"
+					},
+					"visual": {
+						"properties": {
+							"secondaryLabel": {
+								"type": "string"
+							},
+							"primaryLabel": {
+								"type": "string"
+							},
+							"filter": {},
+							"parentId": {
+								"type": "string",
+								"description": "Parent id of the schema that visual query is based on",
+								"pattern": "^[0-9]+$"
+							}
+						},
+						"required": [
+							"secondaryLabel",
+							"primaryLabel",
+							"filter",
+							"parentId"
+						],
+						"type": "object",
+						"description": "Visual query, used by audience"
+					},
+					"custom": {
+						"properties": {
+							"query": {}
+						},
+						"required": [
+							"query"
+						],
+						"type": "object",
+						"description": "Custom query for sources that doesn't support sql. For example, Airtable."
+					},
+					"table": {
+						"properties": {
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"name"
+						],
+						"type": "object",
+						"description": "Table-based query that fetches on a table instead of SQL"
+					},
+					"raw": {
+						"properties": {
+							"sql": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"sql"
+						],
+						"type": "object",
+						"description": "Standard raw SQL query"
+					},
+					"dbt": {
+						"properties": {
+							"modelId": {
+								"type": "string",
+								"description": "Model id that refers to a dbt model",
+								"pattern": "^[0-9]+$"
+							}
+						},
+						"required": [
+							"modelId"
+						],
+						"type": "object"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IntervalUnit": {
+				"enum": [
+					"minute",
+					"hour",
+					"day",
+					"week"
+				],
+				"type": "string"
+			},
+			"Interval": {
+				"properties": {
+					"unit": {
+						"$ref": "#/components/schemas/IntervalUnit"
+					},
+					"quantity": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"unit",
+					"quantity"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IntervalSchedule": {
+				"properties": {
+					"interval": {
+						"$ref": "#/components/schemas/Interval"
+					}
+				},
+				"required": [
+					"interval"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CronSchedule": {
+				"properties": {
+					"expression": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"expression"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Record_Day.boolean-or-undefined_": {
+				"properties": {
+					"monday": {
+						"type": "boolean"
+					},
+					"tuesday": {
+						"type": "boolean"
+					},
+					"wednesday": {
+						"type": "boolean"
+					},
+					"thursday": {
+						"type": "boolean"
+					},
+					"friday": {
+						"type": "boolean"
+					},
+					"saturday": {
+						"type": "boolean"
+					},
+					"sunday": {
+						"type": "boolean"
+					}
+				},
+				"type": "object",
+				"description": "Construct a type with a set of properties K of type T"
+			},
+			"VisualCronSchedule": {
+				"properties": {
+					"expressions": {
+						"items": {
+							"properties": {
+								"days": {
+									"$ref": "#/components/schemas/Record_Day.boolean-or-undefined_"
+								},
+								"time": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"days",
+								"time"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"expressions"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DBTSchedule": {
+				"properties": {
+					"dbtCredentialId": {
+						"type": "string"
+					},
+					"account": {
+						"properties": {
+							"id": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"id"
+						],
+						"type": "object"
+					},
+					"job": {
+						"properties": {
+							"id": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"id"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"dbtCredentialId",
+					"account",
+					"job"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SyncStatus": {
+				"description": "SyncStatus",
+				"enum": [
+					"disabled",
+					"pending",
+					"cancelled",
+					"failed",
+					"queued",
+					"success",
+					"warning",
+					"querying",
+					"processing",
+					"reporting",
+					"interrupted"
+				],
+				"type": "string"
+			},
+			"Sync": {
+				"description": "Syncs define how data from models are mapped to destinations. Each time a\nsync runs, Hightouch calculates the rows that have changed since the last\nrun, and syncs them to Sync's destination.",
+				"properties": {
+					"id": {
+						"type": "string",
+						"description": "The sync's id",
+						"pattern": "^[0-9]+$"
+					},
+					"slug": {
+						"type": "string",
+						"description": "The sync's slug"
+					},
+					"workspaceId": {
+						"type": "string",
+						"description": "The id of the workspace that the sync belongs to",
+						"pattern": "^[0-9]+$"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "The timestamp when the sync was created"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "The timestamp when the sync was last updated"
+					},
+					"destinationId": {
+						"type": "string",
+						"description": "The id of the Destination that sync is connected to",
+						"pattern": "^[0-9]+$"
+					},
+					"modelId": {
+						"type": "string",
+						"description": "The id of the Model that sync is connected to",
+						"pattern": "^[0-9]+$"
+					},
+					"configuration": {
+						"properties": {},
+						"additionalProperties": {},
+						"type": "object",
+						"description": "The sync's configuration. This specifies how data is mapped, among other\nconfiguration.\n\nThe schema depends on the destination type.\n\nConsumers should NOT make assumptions on the contents of the\nconfiguration. It may change as Hightouch updates its internal code."
+					},
+					"schedule": {
+						"properties": {
+							"schedule": {
+								"anyOf": [
+									{
+										"$ref": "#/components/schemas/IntervalSchedule"
+									},
+									{
+										"$ref": "#/components/schemas/CronSchedule"
+									},
+									{
+										"$ref": "#/components/schemas/VisualCronSchedule"
+									},
+									{
+										"$ref": "#/components/schemas/DBTSchedule"
+									}
+								]
+							},
+							"type": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"schedule",
+							"type"
+						],
+						"type": "object",
+						"nullable": true,
+						"description": "The scheduling configuration. It can be triggerd based on several ways:\n\nInterval: the sync will be trigged based on certain interval(minutes/hours/days/weeks)\n\nCron: the sync will be trigged based on cron expression https://en.wikipedia.org/wiki/Cron.\n\nVisual: the sync will be trigged based a visual cron configuration on UI\n\nDBT-cloud: the sync will be trigged based on a dbt cloud job"
+					},
+					"status": {
+						"$ref": "#/components/schemas/SyncStatus",
+						"description": "The overall status of the sync"
+					},
+					"disabled": {
+						"type": "boolean",
+						"description": "Whether the sync has been disabled by the user."
+					},
+					"lastRunAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true,
+						"description": "The timestamp of the last sync run"
+					},
+					"referencedColumns": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array",
+						"description": "The reference column that sync depends on to sync data from source"
+					},
+					"primaryKey": {
+						"type": "string",
+						"description": "The primary key that sync uses to identify data from source"
+					}
+				},
+				"required": [
+					"id",
+					"slug",
+					"workspaceId",
+					"createdAt",
+					"updatedAt",
+					"destinationId",
+					"modelId",
+					"configuration",
+					"schedule",
+					"status",
+					"disabled",
+					"lastRunAt",
+					"referencedColumns",
+					"primaryKey"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SyncCreate": {
+				"description": "The input for creating a Sync",
+				"properties": {
+					"slug": {
+						"type": "string",
+						"description": "The sync's slug"
+					},
+					"configuration": {
+						"properties": {},
+						"additionalProperties": {},
+						"type": "object",
+						"description": "The sync's configuration. This specifies how data is mapped, among other\nconfiguration.\n\nThe schema depends on the destination type.\n\nConsumers should NOT make assumptions on the contents of the\nconfiguration. It may change as Hightouch updates its internal code."
+					},
+					"destinationId": {
+						"type": "string",
+						"description": "The id of the Destination that sync is connected to",
+						"pattern": "^[0-9]+$"
+					},
+					"modelId": {
+						"type": "string",
+						"description": "The id of the Model that sync is connected to",
+						"pattern": "^[0-9]+$"
+					},
+					"schedule": {
+						"properties": {
+							"schedule": {
+								"anyOf": [
+									{
+										"$ref": "#/components/schemas/IntervalSchedule"
+									},
+									{
+										"$ref": "#/components/schemas/CronSchedule"
+									},
+									{
+										"$ref": "#/components/schemas/VisualCronSchedule"
+									},
+									{
+										"$ref": "#/components/schemas/DBTSchedule"
+									}
+								]
+							},
+							"type": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"schedule",
+							"type"
+						],
+						"type": "object",
+						"nullable": true,
+						"description": "The scheduling configuration. It can be triggerd based on several ways:\n\nInterval: the sync will be trigged based on certain interval(minutes/hours/days/weeks)\n\nCron: the sync will be trigged based on cron expression https://en.wikipedia.org/wiki/Cron.\n\nVisual: the sync will be trigged based a visual cron configuration on UI\n\nDBT-cloud: the sync will be trigged based on a dbt cloud job"
+					},
+					"disabled": {
+						"type": "boolean",
+						"description": "Whether the sync has been disabled by the user."
+					}
+				},
+				"required": [
+					"slug",
+					"configuration",
+					"destinationId",
+					"modelId",
+					"schedule",
+					"disabled"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SyncUpdate": {
+				"description": "The input for updating a Sync",
+				"properties": {
+					"configuration": {
+						"properties": {},
+						"additionalProperties": {},
+						"type": "object",
+						"description": "The sync's configuration. This specifies how data is mapped, among other\nconfiguration.\n\nThe schema depends on the destination type.\n\nConsumers should NOT make assumptions on the contents of the\nconfiguration. It may change as Hightouch updates its internal code."
+					},
+					"schedule": {
+						"properties": {
+							"schedule": {
+								"anyOf": [
+									{
+										"$ref": "#/components/schemas/IntervalSchedule"
+									},
+									{
+										"$ref": "#/components/schemas/CronSchedule"
+									},
+									{
+										"$ref": "#/components/schemas/VisualCronSchedule"
+									},
+									{
+										"$ref": "#/components/schemas/DBTSchedule"
+									}
+								]
+							},
+							"type": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"schedule",
+							"type"
+						],
+						"type": "object",
+						"nullable": true,
+						"description": "The scheduling configuration. It can be triggerd based on several ways:\n\nInterval: the sync will be trigged based on certain interval(minutes/hours/days/weeks)\n\nCron: the sync will be trigged based on cron expression https://en.wikipedia.org/wiki/Cron.\n\nVisual: the sync will be trigged based a visual cron configuration on UI\n\nDBT-cloud: the sync will be trigged based on a dbt cloud job"
+					},
+					"disabled": {
+						"type": "boolean",
+						"description": "Whether the sync has been disabled by the user."
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SyncRunStatus": {
+				"description": "The status of sync runs",
+				"enum": [
+					"cancelled",
+					"failed",
+					"queued",
+					"success",
+					"warning",
+					"querying",
+					"processing",
+					"reporting",
+					"interrupted"
+				],
+				"type": "string"
+			},
+			"SyncRun": {
+				"properties": {
+					"id": {
+						"type": "string",
+						"description": "The sync run's id",
+						"pattern": "^[0-9]+$"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "The timestamp when sync run was created. In most cases this will be\nequivalent to `startedAt`, but it may be earlier if the sync was triggered\nwhile a run was already in progress, and the new run didn't start for\na while."
+					},
+					"startedAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "The timestamp when the sync run started"
+					},
+					"finishedAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "The timestamp when the sync run finished"
+					},
+					"querySize": {
+						"type": "number",
+						"format": "double",
+						"description": "The number of rows in the query."
+					},
+					"status": {
+						"$ref": "#/components/schemas/SyncRunStatus",
+						"description": "The status of sync run"
+					},
+					"completionRatio": {
+						"type": "number",
+						"format": "double",
+						"description": "The completion ratio of sync run, showing the progress of a sync run"
+					},
+					"plannedRows": {
+						"properties": {
+							"removedCount": {
+								"type": "number",
+								"format": "double",
+								"description": "The number of removed rows."
+							},
+							"changedCount": {
+								"type": "number",
+								"format": "double",
+								"description": "The number of changed rows."
+							},
+							"addedCount": {
+								"type": "number",
+								"format": "double",
+								"description": "The number of added rows."
+							}
+						},
+						"required": [
+							"removedCount",
+							"changedCount",
+							"addedCount"
+						],
+						"type": "object",
+						"description": "The number of planned rows that this sync run was supposed to execute.\n\nNote that the counts for `successfulRows` and `failedRows` may not add up\nto `plannedRows` if the sync was cancelled."
+					},
+					"successfulRows": {
+						"properties": {
+							"removedCount": {
+								"type": "number",
+								"format": "double",
+								"description": "The number of successful removes."
+							},
+							"changedCount": {
+								"type": "number",
+								"format": "double",
+								"description": "The number of successful changes."
+							},
+							"addedCount": {
+								"type": "number",
+								"format": "double",
+								"description": "The number of successful adds."
+							}
+						},
+						"required": [
+							"removedCount",
+							"changedCount",
+							"addedCount"
+						],
+						"type": "object",
+						"description": "The number of rows that were successfully processed by the destination."
+					},
+					"failedRows": {
+						"properties": {
+							"removedCount": {
+								"type": "number",
+								"format": "double",
+								"description": "The number of failed removes."
+							},
+							"changedCount": {
+								"type": "number",
+								"format": "double",
+								"description": "The number of failed changes."
+							},
+							"addedCount": {
+								"type": "number",
+								"format": "double",
+								"description": "The number of failed adds."
+							}
+						},
+						"required": [
+							"removedCount",
+							"changedCount",
+							"addedCount"
+						],
+						"type": "object",
+						"description": "The number of rows that we attempted to sync, but were rejected by the\ndestination.\n\nThis does not include rows that weren't attempted due to the sync being\ncancelled."
+					},
+					"error": {
+						"type": "string",
+						"description": "Error message if the sync run didn't finish successfully"
+					}
+				},
+				"required": [
+					"id",
+					"createdAt",
+					"startedAt",
+					"finishedAt",
+					"querySize",
+					"status",
+					"completionRatio",
+					"plannedRows",
+					"successfulRows",
+					"failedRows"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TriggerRunOutput": {
+				"description": "The output of a trigger action to run syncs",
+				"properties": {
+					"id": {
+						"type": "string",
+						"description": "The id of the triggered sync run. This can be passed to `/sync/runs` to\nget the run's status."
+					}
+				},
+				"required": [
+					"id"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TriggerRunInput": {
+				"properties": {
+					"fullResync": {
+						"type": "boolean",
+						"description": "Whether to resync all the rows in the query (i.e. ignoring previously\nsynced rows).",
+						"default": "false"
+					}
+				},
+				"type": "object",
+				"description": "The input of a trigger action to run syncs"
+			},
+			"TriggerRunCustomInput": {
+				"properties": {
+					"syncSlug": {
+						"type": "string",
+						"description": "Trigger run based on sync slug"
+					},
+					"syncId": {
+						"type": "string",
+						"description": "Trigger run based on sync id",
+						"pattern": "^[0-9]+$"
+					},
+					"fullResync": {
+						"type": "boolean",
+						"description": "Whether to resync all the rows in the query (i.e. ignoring previously\nsynced rows).",
+						"default": "false"
+					}
+				},
+				"type": "object",
+				"description": "The input of a trigger action to run syncs based on sync ID, slug or other filters"
+			}
+		},
+		"securitySchemes": {
+			"bearerAuth": {
+				"type": "http",
+				"scheme": "bearer",
+				"bearerFormat": "Bearer"
+			}
+		}
+	},
+	"info": {
+		"title": "Hightouch API",
+		"version": "1.0.0",
+		"description": "Hightouch Public Rest API to access syncs, models, sources and destinations",
+		"contact": {
+			"name": "Hightouch",
+			"email": "hello@hightouch.com",
+			"url": "https://hightouch.com"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/destinations/{destinationId}": {
+			"get": {
+				"operationId": "GetDestination",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Destination"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"id": "1",
+											"name": "testdestination",
+											"slug": "testdestination",
+											"workspaceId": "1",
+											"createdAt": "2022-02-16T21:37:58.510Z",
+											"updatedAt": "2022-02-16T21:37:58.510Z",
+											"type": "salesforce",
+											"syncs": [
+												"1",
+												"2"
+											],
+											"configuration": {
+												"hostname": "foo",
+												"region": "bar"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not found"
+					}
+				},
+				"description": "Retrieve a destination based on its Hightouch ID",
+				"summary": "Get Destination",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "The destination's ID",
+						"in": "path",
+						"name": "destinationId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "UpdateDestination",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/Destination"
+										},
+										{
+											"$ref": "#/components/schemas/ValidateErrorJSON"
+										},
+										{
+											"$ref": "#/components/schemas/InternalServerError"
+										}
+									]
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"id": "1",
+											"name": "Webhook Website code 201",
+											"slug": "webhookwebsite",
+											"workspaceId": "1",
+											"createdAt": "2022-11-09T18:39:24.957Z",
+											"updatedAt": "2022-12-10T00:14:17.938Z",
+											"type": "webhook",
+											"syncs": [],
+											"configuration": {
+												"url": "http://httpstat.us/201",
+												"methodKey": "url"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not found"
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Something went wrong",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/InternalServerError"
+								}
+							}
+						}
+					}
+				},
+				"description": "Update an existing destination\n\nPatch a destination based on its Hightouch ID",
+				"summary": "Update Destination",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "The destination's ID",
+						"in": "path",
+						"name": "destinationId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/DestinationUpdate"
+							},
+							"example": {
+								"name": "Webhook Website code 201",
+								"configuration": {
+									"url": "http://httpstat.us/201",
+									"methodKey": "url"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/destinations": {
+			"get": {
+				"operationId": "ListDestination",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"data": {
+											"items": {
+												"$ref": "#/components/schemas/Destination"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"data"
+									],
+									"type": "object"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"data": [
+												{
+													"id": "1",
+													"name": "testdestination1",
+													"slug": "testdestination1",
+													"workspaceId": "1",
+													"createdAt": "2022-02-16T21:37:58.510Z",
+													"updatedAt": "2022-02-16T21:37:58.510Z",
+													"type": "salesforce",
+													"syncs": [
+														"1",
+														"2"
+													],
+													"configuration": {
+														"hostname": "foo",
+														"region": "bar"
+													}
+												},
+												{
+													"id": "2",
+													"name": "testdestination2",
+													"slug": "testdestination2",
+													"workspaceId": "1",
+													"createdAt": "2022-02-16T21:37:58.510Z",
+													"updatedAt": "2022-02-16T21:37:58.510Z",
+													"type": "hubspot",
+													"syncs": [
+														"1",
+														"2"
+													],
+													"configuration": {
+														"hostname": "foo",
+														"region": "bar"
+													}
+												}
+											],
+											"hasMore": false
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					}
+				},
+				"description": "List the destinations in the user's workspace",
+				"summary": "List Destinations",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "Filter based on the destination's name",
+						"in": "query",
+						"name": "name",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Filter based on destination's slug",
+						"in": "query",
+						"name": "slug",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "set the offset on results (for pagination)",
+						"in": "query",
+						"name": "offset",
+						"required": false,
+						"schema": {
+							"default": 0,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "limit the number of objects returned (default is 100)",
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"schema": {
+							"default": 100,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "Order the returned destinations",
+						"in": "query",
+						"name": "orderBy",
+						"required": false,
+						"schema": {
+							"default": "id",
+							"type": "string",
+							"enum": [
+								"id",
+								"name",
+								"slug",
+								"createdAt",
+								"updatedAt"
+							]
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "CreateDestination",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/Destination"
+										},
+										{
+											"$ref": "#/components/schemas/ValidateErrorJSON"
+										},
+										{
+											"$ref": "#/components/schemas/InternalServerError"
+										}
+									]
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"id": "1",
+											"name": "Webhook Website",
+											"slug": "webhookwebsite",
+											"workspaceId": "1",
+											"createdAt": "2022-11-09T18:39:24.957Z",
+											"updatedAt": "2022-11-09T18:39:24.957Z",
+											"type": "webhook",
+											"syncs": [],
+											"configuration": {
+												"url": "http://httpstat.us/200",
+												"methodKey": "url"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"409": {
+						"description": "Conflict",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Something went wrong",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/InternalServerError"
+								}
+							}
+						}
+					}
+				},
+				"description": "Create a new destination",
+				"summary": "Create Destination",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/DestinationCreate"
+							},
+							"example": {
+								"name": "Webhook Website",
+								"slug": "webhookwebsite",
+								"type": "webhook",
+								"configuration": {
+									"url": "http://httpstat.us/200",
+									"methodKey": "url"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/id_graphs/{graphId}/trigger": {
+			"post": {
+				"operationId": "TriggerRunIdGraph",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/TriggerRunIdGraphOutput"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "graphId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": false,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/TriggerRunIdGraphInput"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/sources/{sourceId}": {
+			"get": {
+				"operationId": "GetSource",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Source"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"id": "1",
+											"name": "testSource",
+											"slug": "testSource",
+											"workspaceId": "1",
+											"createdAt": "2022-02-16T21:37:58.510Z",
+											"updatedAt": "2022-02-16T21:37:58.510Z",
+											"type": "snowflake",
+											"configuration": {
+												"hostname": "foo",
+												"region": "bar"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not found"
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					}
+				},
+				"description": "Retrieve source from source ID",
+				"summary": "Get Source",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "The id of the source",
+						"in": "path",
+						"name": "sourceId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "UpdateSource",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/Source"
+										},
+										{
+											"$ref": "#/components/schemas/ValidateErrorJSON"
+										},
+										{
+											"$ref": "#/components/schemas/InternalServerError"
+										}
+									]
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"id": "426",
+											"name": "postgres-connection2",
+											"slug": "postgres-connection2",
+											"workspaceId": "1",
+											"createdAt": "2022-12-12T22:46:57.618Z",
+											"updatedAt": "2022-12-15T20:23:22.319Z",
+											"type": "postgres",
+											"configuration": {
+												"host": "example.example.us-east-1.rds.amazonaws.com",
+												"port": "5555",
+												"user": "dbUserName",
+												"database": "dbName"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not found"
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Something went wrong",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/InternalServerError"
+								}
+							}
+						}
+					}
+				},
+				"description": "Update an existing source\n\nPatch a source based on its Hightouch ID",
+				"summary": "Update Source",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "The source's ID",
+						"in": "path",
+						"name": "sourceId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SourceUpdate"
+							},
+							"example": {
+								"name": "postgres-connection2",
+								"configuration": {
+									"port": "5555"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/sources": {
+			"get": {
+				"operationId": "ListSource",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"data": {
+											"items": {
+												"$ref": "#/components/schemas/Source"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"data"
+									],
+									"type": "object"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"data": [
+												{
+													"id": "1",
+													"name": "testSource1",
+													"slug": "testSource1",
+													"workspaceId": "1",
+													"createdAt": "2022-02-16T21:37:58.510Z",
+													"updatedAt": "2022-02-16T21:37:58.510Z",
+													"type": "snowflake",
+													"configuration": {
+														"hostname": "foo",
+														"region": "bar"
+													}
+												},
+												{
+													"id": "2",
+													"name": "testSource2",
+													"slug": "testSource2",
+													"workspaceId": "1",
+													"createdAt": "2022-02-16T21:37:58.510Z",
+													"updatedAt": "2022-02-16T21:37:58.510Z",
+													"type": "googlesheet",
+													"configuration": {
+														"hostname": "foo",
+														"region": "bar"
+													}
+												}
+											],
+											"hasMore": false
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"description": "List all the sources in the current workspace",
+				"summary": "List Sources",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "filter based on name",
+						"in": "query",
+						"name": "name",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "filter based on slug",
+						"in": "query",
+						"name": "slug",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "set the offset on results (for pagination)",
+						"in": "query",
+						"name": "offset",
+						"required": false,
+						"schema": {
+							"default": 0,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "limit the number of objects returned (default is 100)",
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"schema": {
+							"default": 100,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "specify the order",
+						"in": "query",
+						"name": "orderBy",
+						"required": false,
+						"schema": {
+							"default": "id",
+							"type": "string",
+							"enum": [
+								"id",
+								"name",
+								"slug",
+								"createdAt",
+								"updatedAt"
+							]
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "CreateSource",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/Source"
+										},
+										{
+											"$ref": "#/components/schemas/ValidateErrorJSON"
+										},
+										{
+											"$ref": "#/components/schemas/InternalServerError"
+										}
+									]
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"id": "426",
+											"name": "postgres-connection2",
+											"slug": "postgres-connection2",
+											"workspaceId": "1",
+											"createdAt": "2022-12-12T22:46:57.618Z",
+											"updatedAt": "2022-12-12T22:46:57.618Z",
+											"type": "postgres",
+											"configuration": {
+												"host": "example.example.us-east-1.rds.amazonaws.com",
+												"port": "5432",
+												"user": "dbUserName",
+												"database": "dbName"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"409": {
+						"description": "Conflict",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Something went wrong",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/InternalServerError"
+								}
+							}
+						}
+					}
+				},
+				"description": "Create a new source",
+				"summary": "Create Source",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SourceCreate"
+							},
+							"example": {
+								"name": "postgres-connection2",
+								"slug": "postgres-connection2",
+								"type": "postgres",
+								"configuration": {
+									"host": "example.example.us-east-1.rds.amazonaws.com",
+									"port": "5432",
+									"user": "dbUserName",
+									"database": "dbName",
+									"password": "password!123"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/models/{modelId}": {
+			"get": {
+				"operationId": "GetModel",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Model"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"id": "1",
+											"name": "testModel",
+											"slug": "testModel",
+											"workspaceId": "1",
+											"primaryKey": "id",
+											"createdAt": "2022-02-16T21:37:58.510Z",
+											"updatedAt": "2022-02-16T21:37:58.510Z",
+											"sourceId": "1",
+											"queryType": "raw_sql",
+											"tags": {
+												"foo": "bar"
+											},
+											"isSchema": false,
+											"raw": {
+												"sql": "select * from users"
+											},
+											"syncs": [
+												"1",
+												"2"
+											]
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not found"
+					}
+				},
+				"description": "Retrieve models from model ID",
+				"summary": "Get Model",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "The id of the model",
+						"in": "path",
+						"name": "modelId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "UpdateModel",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/Model"
+										},
+										{
+											"$ref": "#/components/schemas/ValidateErrorJSON"
+										},
+										{
+											"$ref": "#/components/schemas/InternalServerError"
+										}
+									]
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"id": "1",
+											"name": "testModel",
+											"slug": "testModel",
+											"workspaceId": "1",
+											"primaryKey": "id",
+											"createdAt": "2022-02-16T21:37:58.510Z",
+											"updatedAt": "2022-02-17T23:19:05.000Z",
+											"sourceId": "1",
+											"queryType": "raw_sql",
+											"tags": {
+												"foo": "bar"
+											},
+											"isSchema": false,
+											"raw": {
+												"sql": "select name from users"
+											},
+											"syncs": [
+												"1",
+												"2"
+											]
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not found"
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Something went wrong",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/InternalServerError"
+								}
+							}
+						}
+					}
+				},
+				"description": "Update an existing model\n\nPatch a model based on its Hightouch ID",
+				"summary": "Update Model",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "The model's ID",
+						"in": "path",
+						"name": "modelId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ModelUpdate"
+							},
+							"example": {
+								"name": "testmodel",
+								"primaryKey": "id",
+								"raw": {
+									"sql": "select name from users"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/models": {
+			"get": {
+				"operationId": "ListModel",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"data": {
+											"items": {
+												"$ref": "#/components/schemas/Model"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"data"
+									],
+									"type": "object"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"data": [
+												{
+													"id": "1",
+													"name": "testModel",
+													"slug": "testModel",
+													"workspaceId": "1",
+													"primaryKey": "id",
+													"createdAt": "2022-02-16T21:37:58.510Z",
+													"updatedAt": "2022-02-16T21:37:58.510Z",
+													"sourceId": "1",
+													"queryType": "raw_sql",
+													"tags": {
+														"foo": "bar"
+													},
+													"isSchema": false,
+													"raw": {
+														"sql": "select * from users"
+													},
+													"syncs": [
+														"1",
+														"2"
+													]
+												},
+												{
+													"id": "2",
+													"name": "testModel2",
+													"slug": "testModel2",
+													"workspaceId": "1",
+													"primaryKey": "id",
+													"createdAt": "2022-02-16T21:37:58.510Z",
+													"updatedAt": "2022-02-16T21:37:58.510Z",
+													"sourceId": "1",
+													"queryType": "raw_sql",
+													"tags": {
+														"foo": "baz"
+													},
+													"isSchema": false,
+													"raw": {
+														"sql": "select * from accounts"
+													},
+													"syncs": [
+														"1",
+														"2"
+													]
+												}
+											],
+											"hasMore": false
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					}
+				},
+				"description": "List all the models in the current workspace including parent and related models",
+				"summary": "List Models",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "filter based on name",
+						"in": "query",
+						"name": "name",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "filter based on slug",
+						"in": "query",
+						"name": "slug",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "set the offset on results (for pagination)",
+						"in": "query",
+						"name": "offset",
+						"required": false,
+						"schema": {
+							"default": 0,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "limit the number of objects returned (default is 100)",
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"schema": {
+							"default": 100,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "specify the order",
+						"in": "query",
+						"name": "orderBy",
+						"required": false,
+						"schema": {
+							"default": "id",
+							"type": "string",
+							"enum": [
+								"id",
+								"name",
+								"slug",
+								"createdAt",
+								"updatedAt"
+							]
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "CreateModel",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/Model"
+										},
+										{
+											"$ref": "#/components/schemas/ValidateErrorJSON"
+										},
+										{
+											"$ref": "#/components/schemas/InternalServerError"
+										}
+									]
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"id": "3",
+											"name": "testModel3",
+											"slug": "testModel3",
+											"workspaceId": "1",
+											"primaryKey": "id",
+											"createdAt": "2022-02-16T21:37:58.510Z",
+											"updatedAt": "2022-02-16T21:37:58.510Z",
+											"sourceId": "1",
+											"queryType": "raw_sql",
+											"tags": {},
+											"isSchema": false,
+											"raw": {
+												"sql": "select id, last_name from users"
+											},
+											"syncs": []
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"409": {
+						"description": "Conflict",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Something went wrong",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/InternalServerError"
+								}
+							}
+						}
+					}
+				},
+				"description": "Create a new model",
+				"summary": "Create Model",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ModelCreate"
+							},
+							"example": {
+								"name": "testModel3",
+								"slug": "testModel3",
+								"primaryKey": "id",
+								"sourceId": "1",
+								"queryType": "raw_sql",
+								"isSchema": false,
+								"raw": {
+									"sql": "select id, last_name from users"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/syncs/{syncId}": {
+			"get": {
+				"operationId": "GetSync",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Sync"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"id": "1",
+											"slug": "testsync",
+											"workspaceId": "1",
+											"createdAt": "2022-02-16T21:37:58.510Z",
+											"updatedAt": "2022-02-16T21:37:58.510Z",
+											"destinationId": "1",
+											"modelId": "1",
+											"configuration": {
+												"mode": "upsert",
+												"object": "contacts",
+												"mappings": [
+													{
+														"to": "email",
+														"from": "email",
+														"type": "standard"
+													},
+													{
+														"to": "phone",
+														"from": "phone",
+														"type": "standard"
+													}
+												],
+												"objectId": "0-1",
+												"externalIdMapping": {
+													"to": "firstname",
+													"from": "test_id",
+													"type": "standard"
+												},
+												"associationMappings": []
+											},
+											"schedule": {
+												"type": "interval",
+												"schedule": {
+													"interval": {
+														"unit": "day",
+														"quantity": 1
+													}
+												}
+											},
+											"disabled": false,
+											"status": "success",
+											"lastRunAt": "2022-02-16T21:37:58.510Z",
+											"referencedColumns": [
+												"email",
+												"name"
+											],
+											"primaryKey": "id"
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not found"
+					}
+				},
+				"description": "Retrieve sync from sync ID",
+				"summary": "Get Sync",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "The id of the sync",
+						"in": "path",
+						"name": "syncId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "UpdateSync",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/Sync"
+										},
+										{
+											"$ref": "#/components/schemas/ValidateErrorJSON"
+										},
+										{
+											"$ref": "#/components/schemas/InternalServerError"
+										}
+									]
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"id": "1",
+											"slug": "testsync3",
+											"workspaceId": "1",
+											"createdAt": "2022-02-16T21:37:58.510Z",
+											"updatedAt": "2022-03-19T19:24:34.320Z",
+											"destinationId": "1",
+											"modelId": "4",
+											"configuration": {
+												"mode": "upsert",
+												"object": "contacts",
+												"mappings": [
+													{
+														"to": "email",
+														"from": "email",
+														"type": "standard"
+													}
+												],
+												"objectId": "0-1",
+												"externalIdMapping": {
+													"to": "firstname",
+													"from": "test_id",
+													"type": "standard"
+												},
+												"associationMappings": []
+											},
+											"schedule": {
+												"type": "interval",
+												"schedule": {
+													"interval": {
+														"unit": "day",
+														"quantity": 1
+													}
+												}
+											},
+											"status": "success",
+											"disabled": true,
+											"lastRunAt": "2022-02-16T21:37:58.510Z",
+											"referencedColumns": [
+												"email",
+												"name"
+											],
+											"primaryKey": "id"
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not found"
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Something went wrong",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/InternalServerError"
+								}
+							}
+						}
+					}
+				},
+				"description": "Update an existing sync\n\nPatch a sync based on its Hightouch ID",
+				"summary": "Update Sync",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "The sync's ID",
+						"in": "path",
+						"name": "syncId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SyncUpdate"
+							},
+							"example": {
+								"configuration": {
+									"mode": "upsert",
+									"object": "contacts",
+									"mappings": [
+										{
+											"to": "email",
+											"from": "email",
+											"type": "standard"
+										}
+									],
+									"objectId": "0-1",
+									"externalIdMapping": {
+										"to": "firstname",
+										"from": "test_id",
+										"type": "standard"
+									},
+									"associationMappings": []
+								},
+								"schedule": null,
+								"disabled": true
+							}
+						}
+					}
+				}
+			}
+		},
+		"/syncs": {
+			"get": {
+				"operationId": "ListSync",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"hasMore": {
+											"type": "boolean"
+										},
+										"data": {
+											"items": {
+												"$ref": "#/components/schemas/Sync"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"hasMore",
+										"data"
+									],
+									"type": "object"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"hasMore": false,
+											"data": [
+												{
+													"id": "1",
+													"slug": "testsync",
+													"workspaceId": "1",
+													"createdAt": "2022-02-16T21:37:58.510Z",
+													"updatedAt": "2022-02-16T21:37:58.510Z",
+													"destinationId": "1",
+													"modelId": "1",
+													"configuration": {
+														"mode": "upsert",
+														"object": "contacts",
+														"mappings": [
+															{
+																"to": "email",
+																"from": "email",
+																"type": "standard"
+															},
+															{
+																"to": "phone",
+																"from": "phone",
+																"type": "standard"
+															}
+														],
+														"objectId": "0-1",
+														"externalIdMapping": {
+															"to": "firstname",
+															"from": "test_id",
+															"type": "standard"
+														},
+														"associationMappings": []
+													},
+													"schedule": {
+														"type": "interval",
+														"schedule": {
+															"interval": {
+																"unit": "day",
+																"quantity": 1
+															}
+														}
+													},
+													"status": "success",
+													"disabled": false,
+													"lastRunAt": "2022-02-16T21:37:58.510Z",
+													"referencedColumns": [
+														"email",
+														"name"
+													],
+													"primaryKey": "id"
+												}
+											]
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					}
+				},
+				"description": "List all the syncs in the current workspace",
+				"summary": "List Syncs",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "filter based on slug",
+						"in": "query",
+						"name": "slug",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "filter based on modelId",
+						"in": "query",
+						"name": "modelId",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "select syncs that were run after given ISO timestamp",
+						"in": "query",
+						"name": "after",
+						"required": false,
+						"schema": {
+							"format": "date-time",
+							"type": "string"
+						}
+					},
+					{
+						"description": "select syncs that were run before given ISO timestamp",
+						"in": "query",
+						"name": "before",
+						"required": false,
+						"schema": {
+							"format": "date-time",
+							"type": "string"
+						}
+					},
+					{
+						"description": "set the offset on results (for pagination)",
+						"in": "query",
+						"name": "offset",
+						"required": false,
+						"schema": {
+							"default": 0,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "limit the number of objects returned (default is 100)",
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"schema": {
+							"default": 100,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "specify the order",
+						"in": "query",
+						"name": "orderBy",
+						"required": false,
+						"schema": {
+							"default": "id",
+							"type": "string",
+							"enum": [
+								"id",
+								"name",
+								"slug",
+								"createdAt",
+								"updatedAt"
+							]
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "CreateSync",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/Sync"
+										},
+										{
+											"$ref": "#/components/schemas/ValidateErrorJSON"
+										},
+										{
+											"$ref": "#/components/schemas/InternalServerError"
+										}
+									]
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"id": "1",
+											"slug": "testsync3",
+											"workspaceId": "1",
+											"createdAt": "2022-02-16T21:37:58.510Z",
+											"updatedAt": "2022-02-16T21:37:58.510Z",
+											"destinationId": "1",
+											"modelId": "4",
+											"configuration": {
+												"mode": "upsert",
+												"object": "contacts",
+												"mappings": [
+													{
+														"to": "email",
+														"from": "email",
+														"type": "standard"
+													}
+												],
+												"objectId": "0-1",
+												"externalIdMapping": {
+													"to": "firstname",
+													"from": "test_id",
+													"type": "standard"
+												},
+												"associationMappings": []
+											},
+											"schedule": {
+												"type": "interval",
+												"schedule": {
+													"interval": {
+														"unit": "day",
+														"quantity": 1
+													}
+												}
+											},
+											"status": "success",
+											"disabled": false,
+											"lastRunAt": null,
+											"referencedColumns": [
+												"email",
+												"name"
+											],
+											"primaryKey": "id"
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"409": {
+						"description": "Conflict",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Something went wrong",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/InternalServerError"
+								}
+							}
+						}
+					}
+				},
+				"description": "Create a new sync",
+				"summary": "Create Sync",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SyncCreate"
+							},
+							"example": {
+								"slug": "testsync3",
+								"destinationId": "1",
+								"modelId": "4",
+								"configuration": {
+									"mode": "upsert",
+									"object": "contacts",
+									"mappings": [
+										{
+											"to": "email",
+											"from": "email",
+											"type": "standard"
+										}
+									],
+									"objectId": "0-1",
+									"externalIdMapping": {
+										"to": "firstname",
+										"from": "test_id",
+										"type": "standard"
+									},
+									"associationMappings": []
+								},
+								"schedule": null,
+								"disabled": false
+							}
+						}
+					}
+				}
+			}
+		},
+		"/syncs/{syncId}/runs": {
+			"get": {
+				"operationId": "ListSyncRuns",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"hasMore": {
+											"type": "boolean"
+										},
+										"data": {
+											"items": {
+												"$ref": "#/components/schemas/SyncRun"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"hasMore",
+										"data"
+									],
+									"type": "object"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"data": [
+												{
+													"id": "42",
+													"startedAt": "2022-02-08T16:11:04.712Z",
+													"createdAt": "2022-02-08T16:11:04.712Z",
+													"finishedAt": "2022-02-08T16:11:11.698Z",
+													"querySize": 773,
+													"status": "success",
+													"completionRatio": 0.54,
+													"plannedRows": {
+														"addedCount": 773,
+														"changedCount": 0,
+														"removedCount": 0
+													},
+													"successfulRows": {
+														"addedCount": 773,
+														"changedCount": 0,
+														"removedCount": 0
+													},
+													"failedRows": {
+														"addedCount": 0,
+														"changedCount": 0,
+														"removedCount": 0
+													},
+													"error": null
+												},
+												{
+													"id": "43",
+													"startedAt": "2022-02-08T16:11:04.712Z",
+													"createdAt": "2022-02-08T17:44:05.198Z",
+													"finishedAt": "2022-02-08T17:44:25.366Z",
+													"querySize": 773,
+													"status": "success",
+													"completionRatio": 0.54,
+													"plannedRows": {
+														"addedCount": 0,
+														"changedCount": 765,
+														"removedCount": 0
+													},
+													"successfulRows": {
+														"addedCount": 0,
+														"changedCount": 765,
+														"removedCount": 0
+													},
+													"failedRows": {
+														"addedCount": 0,
+														"changedCount": 0,
+														"removedCount": 0
+													},
+													"error": null
+												}
+											],
+											"hasMore": false
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					}
+				},
+				"description": "List all sync runs under a sync",
+				"summary": "List Sync Runs",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "syncId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "query for specific run id",
+						"in": "query",
+						"name": "runId",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "select sync runs that are started after given ISO timestamp",
+						"in": "query",
+						"name": "after",
+						"required": false,
+						"schema": {
+							"format": "date-time",
+							"type": "string"
+						}
+					},
+					{
+						"description": "select sync runs that are started before certain ISO timestamp",
+						"in": "query",
+						"name": "before",
+						"required": false,
+						"schema": {
+							"format": "date-time",
+							"type": "string"
+						}
+					},
+					{
+						"description": "select sync runs that are started within last given minutes",
+						"in": "query",
+						"name": "within",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "set the offset on results (for pagination)",
+						"in": "query",
+						"name": "offset",
+						"required": false,
+						"schema": {
+							"default": 0,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "limit the number of objects returned (default is 5)",
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"schema": {
+							"default": 100,
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "specify the order",
+						"in": "query",
+						"name": "orderBy",
+						"required": false,
+						"schema": {
+							"default": "id",
+							"type": "string",
+							"enum": [
+								"id",
+								"createdAt",
+								"startedAt",
+								"finishedAt"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/syncs/{syncId}/trigger": {
+			"post": {
+				"operationId": "TriggerRun",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/TriggerRunOutput"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					}
+				},
+				"description": "Trigger a new run for the given sync.\n\nIf a run is already in progress, this queues a sync run that will get\nexecuted immediately after the current run completes.",
+				"summary": "Trigger Sync",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "The id of the sync to trigger a run",
+						"in": "path",
+						"name": "syncId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": false,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/TriggerRunInput"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/syncs/trigger": {
+			"post": {
+				"operationId": "TriggerRunCustom",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/TriggerRunOutput"
+										},
+										{
+											"$ref": "#/components/schemas/ValidateErrorJSON"
+										}
+									]
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
+					}
+				},
+				"description": "Trigger a new run globally based on sync id or sync slug\n\nIf a run is already in progress, this queues a sync run that will get\nexecuted immediately after the current run completes.",
+				"summary": "Trigger Sync From ID or Slug",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/TriggerRunCustomInput"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "https://api.hightouch.com/api/v1"
+		}
+	]
+}
