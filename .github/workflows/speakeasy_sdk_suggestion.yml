@@ -1,0 +1,21 @@
+name: Suggest Hightouch Spec
+
+on:
+  workflow_dispatch: {} # Allows manual triggering of the workflow to suggest OpenAPI document
+  push:
+    branches:    
+      - test-suggestion  
+
+jobs:
+  suggest:
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-suggestion.yaml@v14
+    with:
+      speakeasy_version: latest
+      openapi_docs: |
+        - ./openapi.json
+      openapi_doc_output: ./openapi.json
+      max_suggestions: 3
+    secrets:
+      github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+      openai_api_key: ${{ secrets.OPENAI_API_KEY }}
