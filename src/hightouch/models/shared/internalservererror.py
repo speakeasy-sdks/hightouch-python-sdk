@@ -4,5 +4,4 @@ from __future__ import annotations
 from enum import Enum
 
 class InternalServerError(str, Enum):
-    r"""Something went wrong"""
     INTERNAL_SERVER_ERROR = 'Internal Server Error'

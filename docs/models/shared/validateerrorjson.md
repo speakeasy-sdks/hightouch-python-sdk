@@ -1,7 +1,5 @@
 # ValidateErrorJSON
 
-Validation Failed
-
 
 ## Fields
 

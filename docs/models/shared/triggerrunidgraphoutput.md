@@ -1,7 +1,5 @@
 # TriggerRunIDGraphOutput
 
-Ok
-
 
 ## Fields
 

@@ -10,7 +10,6 @@ from hightouch import utils
 
 @dataclasses.dataclass
 class TriggerRunIDGraphOutput:
-    r"""Ok"""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""The id of the triggered run."""
     

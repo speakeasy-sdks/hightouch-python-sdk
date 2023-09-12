@@ -36,13 +36,11 @@ s = hightouch.Hightouch()
 
 req = shared.DestinationCreate(
     configuration={
-        "provident": 'distinctio',
-        "quibusdam": 'unde',
-        "nulla": 'corrupti',
+        "corrupti": 'provident',
     },
-    name='Ben Mueller',
-    slug='iure',
-    type='magnam',
+    name='Ellis Mitchell',
+    slug='illum',
+    type='vel',
 )
 
 res = s.create_destination(req, operations.CreateDestinationSecurity(

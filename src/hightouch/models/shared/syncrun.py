@@ -7,7 +7,6 @@ from ..shared import syncrunstatus as shared_syncrunstatus
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from hightouch import utils
-from marshmallow import fields
 from typing import Optional
 
 
@@ -71,7 +70,7 @@ class SyncRunSuccessfulRows:
 class SyncRun:
     completion_ratio: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('completionRatio') }})
     r"""The completion ratio of sync run, showing the progress of a sync run"""
-    created_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
+    created_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }})
     r"""The timestamp when sync run was created. In most cases this will be
     equivalent to `startedAt`, but it may be earlier if the sync was triggered
     while a run was already in progress, and the new run didn't start for
@@ -84,7 +83,7 @@ class SyncRun:
     This does not include rows that weren't attempted due to the sync being
     cancelled.
     """
-    finished_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finishedAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
+    finished_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finishedAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }})
     r"""The timestamp when the sync run finished"""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""The sync run's id"""
@@ -96,7 +95,7 @@ class SyncRun:
     """
     query_size: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('querySize') }})
     r"""The number of rows in the query."""
-    started_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('startedAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
+    started_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('startedAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }})
     r"""The timestamp when the sync run started"""
     status: shared_syncrunstatus.SyncRunStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""The status of sync runs"""

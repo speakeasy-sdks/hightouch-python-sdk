@@ -1,7 +1,5 @@
 # InternalServerError
 
-Something went wrong
-
 
 ## Values
 

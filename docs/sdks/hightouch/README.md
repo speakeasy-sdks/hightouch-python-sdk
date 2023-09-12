@@ -41,14 +41,11 @@ s = hightouch.Hightouch()
 
 req = shared.DestinationCreate(
     configuration={
-        "ipsa": 'delectus',
-        "tempora": 'suscipit',
-        "molestiae": 'minus',
-        "placeat": 'voluptatum',
+        "error": 'deserunt',
     },
-    name='Miriam Huel',
-    slug='ab',
-    type='quis',
+    name='Willie Gulgowski DVM',
+    slug='tempora',
+    type='suscipit',
 )
 
 res = s.hightouch.create_destination(req, operations.CreateDestinationSecurity(
@@ -86,28 +83,28 @@ s = hightouch.Hightouch()
 
 req = shared.ModelCreate(
     custom=shared.ModelCreateCustom(
-        query='veritatis',
+        query='molestiae',
     ),
     dbt=shared.ModelCreateDbt(
-        model_id='deserunt',
+        model_id='minus',
     ),
     is_schema=False,
-    name='Roberta Sipes',
-    primary_key='odit',
-    query_type='at',
+    name='Ken Kshlerin',
+    primary_key='recusandae',
+    query_type='temporibus',
     raw=shared.ModelCreateRaw(
-        sql='at',
+        sql='ab',
     ),
-    slug='maiores',
-    source_id='molestiae',
+    slug='quis',
+    source_id='veritatis',
     table=shared.ModelCreateTable(
-        name='Forrest Koepp',
+        name='Christopher Hills',
     ),
     visual=shared.ModelCreateVisual(
-        filter='dolorum',
-        parent_id='dicta',
-        primary_label='nam',
-        secondary_label='officia',
+        filter='quo',
+        parent_id='odit',
+        primary_label='at',
+        secondary_label='at',
     ),
 )
 
@@ -146,13 +143,11 @@ s = hightouch.Hightouch()
 
 req = shared.SourceCreate(
     configuration={
-        "fugit": 'deleniti',
-        "hic": 'optio',
-        "totam": 'beatae',
+        "maiores": 'molestiae',
     },
-    name='Tanya Gleason',
-    slug='cum',
-    type='esse',
+    name='Forrest Koepp',
+    slug='dolorum',
+    type='dicta',
 )
 
 res = s.hightouch.create_source(req, operations.CreateSourceSecurity(
@@ -190,11 +185,11 @@ s = hightouch.Hightouch()
 
 req = shared.SyncCreate(
     configuration={
-        "excepturi": 'aspernatur',
+        "nam": 'officia',
     },
-    destination_id='perferendis',
+    destination_id='occaecati',
     disabled=False,
-    model_id='ad',
+    model_id='fugit',
     schedule=shared.SyncCreateSchedule(
         schedule=shared.VisualCronSchedule(
             expressions=[
@@ -208,13 +203,13 @@ req = shared.SyncCreate(
                         tuesday=False,
                         wednesday=False,
                     ),
-                    time='iste',
+                    time='hic',
                 ),
             ],
         ),
-        type='dolor',
+        type='optio',
     ),
-    slug='natus',
+    slug='totam',
 )
 
 res = s.hightouch.create_sync(req, operations.CreateSyncSecurity(
@@ -251,7 +246,7 @@ from hightouch.models import operations
 s = hightouch.Hightouch()
 
 req = operations.GetDestinationRequest(
-    destination_id=3864.89,
+    destination_id=1059.07,
 )
 
 res = s.hightouch.get_destination(req, operations.GetDestinationSecurity(
@@ -288,7 +283,7 @@ from hightouch.models import operations
 s = hightouch.Hightouch()
 
 req = operations.GetModelRequest(
-    model_id=9437.49,
+    model_id=4146.62,
 )
 
 res = s.hightouch.get_model(req, operations.GetModelSecurity(
@@ -325,7 +320,7 @@ from hightouch.models import operations
 s = hightouch.Hightouch()
 
 req = operations.GetSourceRequest(
-    source_id=9025.99,
+    source_id=4736,
 )
 
 res = s.hightouch.get_source(req, operations.GetSourceSecurity(
@@ -362,7 +357,7 @@ from hightouch.models import operations
 s = hightouch.Hightouch()
 
 req = operations.GetSyncRequest(
-    sync_id=6818.2,
+    sync_id=2645.55,
 )
 
 res = s.hightouch.get_sync(req, operations.GetSyncSecurity(
@@ -399,11 +394,11 @@ from hightouch.models import operations
 s = hightouch.Hightouch()
 
 req = operations.ListDestinationRequest(
-    limit=4499.5,
-    name='Sheryl Kertzmann',
-    offset=992.8,
+    limit=1863.32,
+    name='Jonathon Klocko',
+    offset=1352.18,
     order_by=operations.ListDestinationOrderBy.ID,
-    slug='reiciendis',
+    slug='ad',
 )
 
 res = s.hightouch.list_destination(req, operations.ListDestinationSecurity(
@@ -440,11 +435,11 @@ from hightouch.models import operations
 s = hightouch.Hightouch()
 
 req = operations.ListModelRequest(
-    limit=6667.67,
-    name='Cameron Dach',
-    offset=1289.26,
-    order_by=operations.ListModelOrderBy.CREATED_AT,
-    slug='enim',
+    limit=6176.36,
+    name='Sheryl Fadel',
+    offset=9437.49,
+    order_by=operations.ListModelOrderBy.UPDATED_AT,
+    slug='fuga',
 )
 
 res = s.hightouch.list_model(req, operations.ListModelSecurity(
@@ -481,11 +476,11 @@ from hightouch.models import operations
 s = hightouch.Hightouch()
 
 req = operations.ListSourceRequest(
-    limit=6078.31,
-    name='Ms. Cathy Marks',
-    offset=9883.74,
-    order_by=operations.ListSourceOrderBy.UPDATED_AT,
-    slug='architecto',
+    limit=4499.5,
+    name='Sheryl Kertzmann',
+    offset=992.8,
+    order_by=operations.ListSourceOrderBy.ID,
+    slug='reiciendis',
 )
 
 res = s.hightouch.list_source(req, operations.ListSourceSecurity(
@@ -523,13 +518,13 @@ from hightouch.models import operations
 s = hightouch.Hightouch()
 
 req = operations.ListSyncRequest(
-    after=dateutil.parser.isoparse('2022-08-01T12:28:44.292Z'),
-    before=dateutil.parser.isoparse('2022-09-05T05:51:25.673Z'),
-    limit=9953,
-    model_id=6531.08,
-    offset=5818.5,
-    order_by=operations.ListSyncOrderBy.NAME,
-    slug='commodi',
+    after=dateutil.parser.isoparse('2021-09-11T04:59:11.542Z'),
+    before=dateutil.parser.isoparse('2022-08-29T05:39:49.755Z'),
+    limit=2103.82,
+    model_id=3581.52,
+    offset=1289.26,
+    order_by=operations.ListSyncOrderBy.CREATED_AT,
+    slug='enim',
 )
 
 res = s.hightouch.list_sync(req, operations.ListSyncSecurity(
@@ -567,14 +562,14 @@ from hightouch.models import operations
 s = hightouch.Hightouch()
 
 req = operations.ListSyncRunsRequest(
-    after=dateutil.parser.isoparse('2022-07-11T17:38:58.953Z'),
-    before=dateutil.parser.isoparse('2022-05-18T10:03:04.921Z'),
-    limit=1589.69,
-    offset=3380.07,
-    order_by=operations.ListSyncRunsOrderBy.ID,
-    run_id=6747.52,
-    sync_id=6563.3,
-    within=3172.02,
+    after=dateutil.parser.isoparse('2022-04-10T11:47:13.463Z'),
+    before=dateutil.parser.isoparse('2022-06-06T21:04:34.044Z'),
+    limit=384.25,
+    offset=4386.01,
+    order_by=operations.ListSyncRunsOrderBy.STARTED_AT,
+    run_id=9883.74,
+    sync_id=9589.5,
+    within=1020.44,
 )
 
 res = s.hightouch.list_sync_runs(req, operations.ListSyncRunsSecurity(
@@ -617,7 +612,7 @@ req = operations.TriggerRunRequest(
     trigger_run_input=shared.TriggerRunInput(
         full_resync=False,
     ),
-    sync_id='odit',
+    sync_id='mollitia',
 )
 
 res = s.hightouch.trigger_run(req, operations.TriggerRunSecurity(
@@ -658,8 +653,8 @@ s = hightouch.Hightouch()
 
 req = shared.TriggerRunCustomInput(
     full_resync=False,
-    sync_id='quo',
-    sync_slug='sequi',
+    sync_id='dolorem',
+    sync_slug='culpa',
 )
 
 res = s.hightouch.trigger_run_custom(req, operations.TriggerRunCustomSecurity(
@@ -697,7 +692,7 @@ req = operations.TriggerRunIDGraphRequest(
     trigger_run_id_graph_input=shared.TriggerRunIDGraphInput(
         full_rerun=False,
     ),
-    graph_id='tenetur',
+    graph_id='consequuntur',
 )
 
 res = s.hightouch.trigger_run_id_graph(req, operations.TriggerRunIDGraphSecurity(
@@ -738,12 +733,11 @@ s = hightouch.Hightouch()
 req = operations.UpdateDestinationRequest(
     destination_update=shared.DestinationUpdate(
         configuration={
-            "id": 'possimus',
-            "aut": 'quasi',
+            "repellat": 'mollitia',
         },
-        name='Dr. Jake Pacocha',
+        name='Francis Jerde',
     ),
-    destination_id=8781.94,
+    destination_id=2444.25,
 )
 
 res = s.hightouch.update_destination(req, operations.UpdateDestinationSecurity(
@@ -784,28 +778,28 @@ s = hightouch.Hightouch()
 req = operations.UpdateModelRequest(
     model_update=shared.ModelUpdate(
         custom=shared.ModelUpdateCustom(
-            query='nihil',
+            query='error',
         ),
         dbt=shared.ModelUpdateDbt(
-            model_id='praesentium',
+            model_id='quia',
         ),
         is_schema=False,
-        name='Jose Moen',
-        primary_key='perferendis',
+        name='Gloria Padberg',
+        primary_key='odit',
         raw=shared.ModelUpdateRaw(
-            sql='doloremque',
+            sql='quo',
         ),
         table=shared.ModelUpdateTable(
-            name='Mrs. April Wuckert',
+            name='Mandy Hills',
         ),
         visual=shared.ModelUpdateVisual(
-            filter='iusto',
-            parent_id='dicta',
-            primary_label='harum',
-            secondary_label='enim',
+            filter='aut',
+            parent_id='quasi',
+            primary_label='error',
+            secondary_label='temporibus',
         ),
     ),
-    model_id=8804.76,
+    model_id=6736.6,
 )
 
 res = s.hightouch.update_model(req, operations.UpdateModelSecurity(
@@ -846,12 +840,11 @@ s = hightouch.Hightouch()
 req = operations.UpdateSourceRequest(
     source_update=shared.SourceUpdate(
         configuration={
-            "repudiandae": 'quae',
-            "ipsum": 'quidem',
+            "quasi": 'reiciendis',
         },
-        name='Andy Streich',
+        name='Caleb Koss',
     ),
-    source_id=5232.48,
+    source_id=557.14,
 )
 
 res = s.hightouch.update_source(req, operations.UpdateSourceSecurity(
@@ -892,10 +885,7 @@ s = hightouch.Hightouch()
 req = operations.UpdateSyncRequest(
     sync_update=shared.SyncUpdate(
         configuration={
-            "quasi": 'repudiandae',
-            "sint": 'veritatis',
-            "itaque": 'incidunt',
-            "enim": 'consequatur',
+            "omnis": 'voluptate',
         },
         disabled=False,
         schedule=shared.SyncUpdateSchedule(
@@ -911,50 +901,14 @@ req = operations.UpdateSyncRequest(
                             tuesday=False,
                             wednesday=False,
                         ),
-                        time='explicabo',
-                    ),
-                    shared.VisualCronScheduleExpressions(
-                        days=shared.RecordDayBooleanOrUndefined(
-                            friday=False,
-                            monday=False,
-                            saturday=False,
-                            sunday=False,
-                            thursday=False,
-                            tuesday=False,
-                            wednesday=False,
-                        ),
-                        time='deserunt',
-                    ),
-                    shared.VisualCronScheduleExpressions(
-                        days=shared.RecordDayBooleanOrUndefined(
-                            friday=False,
-                            monday=False,
-                            saturday=False,
-                            sunday=False,
-                            thursday=False,
-                            tuesday=False,
-                            wednesday=False,
-                        ),
-                        time='distinctio',
-                    ),
-                    shared.VisualCronScheduleExpressions(
-                        days=shared.RecordDayBooleanOrUndefined(
-                            friday=False,
-                            monday=False,
-                            saturday=False,
-                            sunday=False,
-                            thursday=False,
-                            tuesday=False,
-                            wednesday=False,
-                        ),
-                        time='quibusdam',
+                        time='perferendis',
                     ),
                 ],
             ),
-            type='labore',
+            type='doloremque',
         ),
     ),
-    sync_id=2647.3,
+    sync_id=4417.11,
 )
 
 res = s.hightouch.update_sync(req, operations.UpdateSyncSecurity(
