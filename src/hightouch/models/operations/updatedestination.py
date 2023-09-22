@@ -11,14 +11,6 @@ from typing import Any, Optional
 
 
 @dataclasses.dataclass
-class UpdateDestinationSecurity:
-    bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
-    
-
-
-
-
-@dataclasses.dataclass
 class UpdateDestinationRequest:
     destination_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'destinationId', 'style': 'simple', 'explode': False }})
     r"""The destination's ID"""
@@ -35,7 +27,7 @@ class UpdateDestinationResponse:
     internal_server_error: Optional[shared_internalservererror.InternalServerError] = dataclasses.field(default=None)
     r"""Something went wrong"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    update_destination_200_application_json_any_of: Optional[Any] = dataclasses.field(default=None)
+    update_destination_200_application_json_one_of: Optional[Any] = dataclasses.field(default=None)
     r"""Ok"""
     validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
     r"""Validation Failed"""

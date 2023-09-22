@@ -9,14 +9,6 @@ from enum import Enum
 from hightouch import utils
 from typing import Optional
 
-
-
-@dataclasses.dataclass
-class ListSourceSecurity:
-    bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
-    
-
-
 class ListSourceOrderBy(str, Enum):
     r"""specify the order"""
     ID = 'id'

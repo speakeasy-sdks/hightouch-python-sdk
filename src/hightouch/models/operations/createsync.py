@@ -10,18 +10,10 @@ from typing import Any, Optional
 
 
 @dataclasses.dataclass
-class CreateSyncSecurity:
-    bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
-    
-
-
-
-
-@dataclasses.dataclass
 class CreateSyncResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    create_sync_200_application_json_any_of: Optional[Any] = dataclasses.field(default=None)
+    create_sync_200_application_json_one_of: Optional[Any] = dataclasses.field(default=None)
     r"""Ok"""
     internal_server_error: Optional[shared_internalservererror.InternalServerError] = dataclasses.field(default=None)
     r"""Something went wrong"""

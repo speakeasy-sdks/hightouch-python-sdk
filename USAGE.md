@@ -3,9 +3,13 @@
 
 ```python
 import hightouch
-from hightouch.models import operations, shared
+from hightouch.models import shared
 
-s = hightouch.Hightouch()
+s = hightouch.Hightouch(
+    security=shared.Security(
+        bearer_auth="",
+    ),
+)
 
 req = shared.DestinationCreate(
     configuration={
@@ -16,11 +20,9 @@ req = shared.DestinationCreate(
     type='vel',
 )
 
-res = s.create_destination(req, operations.CreateDestinationSecurity(
-    bearer_auth="",
-))
+res = s.create_destination(req)
 
-if res.create_destination_200_application_json_any_of is not None:
+if res.create_destination_200_application_json_one_of is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->

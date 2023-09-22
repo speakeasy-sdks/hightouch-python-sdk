@@ -12,6 +12,7 @@ class Hightouch:
     sdk_configuration: SDKConfiguration
 
     def __init__(self,
+                 security: shared.Security = None,
                  server_idx: int = None,
                  server_url: str = None,
                  url_params: dict[str, str] = None,
@@ -20,6 +21,8 @@ class Hightouch:
                  ) -> None:
         """Instantiates the SDK configuring it with the provided parameters.
         
+        :param security: The security details required for authentication
+        :type security: shared.Security
         :param server_idx: The index of the server to use for all operations
         :type server_idx: int
         :param server_url: The server URL to use for all operations
@@ -34,7 +37,7 @@ class Hightouch:
         if client is None:
             client = requests_http.Session()
         
-        security_client = client
+        security_client = utils.configure_security_client(client, security)
         
         if server_url is not None:
             if url_params is not None:
@@ -46,7 +49,7 @@ class Hightouch:
     
     
     
-    def create_destination(self, request: shared.DestinationCreate, security: operations.CreateDestinationSecurity) -> operations.CreateDestinationResponse:
+    def create_destination(self, request: shared.DestinationCreate) -> operations.CreateDestinationResponse:
         r"""Create Destination
         Create a new destination
         """
@@ -62,7 +65,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -72,7 +75,7 @@ class Hightouch:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[Any])
-                res.create_destination_200_application_json_any_of = out
+                res.create_destination_200_application_json_one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code == 401:
@@ -93,7 +96,7 @@ class Hightouch:
         return res
 
     
-    def create_model(self, request: shared.ModelCreate, security: operations.CreateModelSecurity) -> operations.CreateModelResponse:
+    def create_model(self, request: shared.ModelCreate) -> operations.CreateModelResponse:
         r"""Create Model
         Create a new model
         """
@@ -109,7 +112,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -119,7 +122,7 @@ class Hightouch:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[Any])
-                res.create_model_200_application_json_any_of = out
+                res.create_model_200_application_json_one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code == 401:
@@ -140,7 +143,7 @@ class Hightouch:
         return res
 
     
-    def create_source(self, request: shared.SourceCreate, security: operations.CreateSourceSecurity) -> operations.CreateSourceResponse:
+    def create_source(self, request: shared.SourceCreate) -> operations.CreateSourceResponse:
         r"""Create Source
         Create a new source
         """
@@ -156,7 +159,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -166,7 +169,7 @@ class Hightouch:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[Any])
-                res.create_source_200_application_json_any_of = out
+                res.create_source_200_application_json_one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code == 401:
@@ -187,7 +190,7 @@ class Hightouch:
         return res
 
     
-    def create_sync(self, request: shared.SyncCreate, security: operations.CreateSyncSecurity) -> operations.CreateSyncResponse:
+    def create_sync(self, request: shared.SyncCreate) -> operations.CreateSyncResponse:
         r"""Create Sync
         Create a new sync
         """
@@ -203,7 +206,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -213,7 +216,7 @@ class Hightouch:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[Any])
-                res.create_sync_200_application_json_any_of = out
+                res.create_sync_200_application_json_one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code == 401:
@@ -234,7 +237,7 @@ class Hightouch:
         return res
 
     
-    def get_destination(self, request: operations.GetDestinationRequest, security: operations.GetDestinationSecurity) -> operations.GetDestinationResponse:
+    def get_destination(self, request: operations.GetDestinationRequest) -> operations.GetDestinationResponse:
         r"""Get Destination
         Retrieve a destination based on its Hightouch ID
         """
@@ -245,7 +248,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -264,7 +267,7 @@ class Hightouch:
         return res
 
     
-    def get_model(self, request: operations.GetModelRequest, security: operations.GetModelSecurity) -> operations.GetModelResponse:
+    def get_model(self, request: operations.GetModelRequest) -> operations.GetModelResponse:
         r"""Get Model
         Retrieve models from model ID
         """
@@ -275,7 +278,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -294,7 +297,7 @@ class Hightouch:
         return res
 
     
-    def get_source(self, request: operations.GetSourceRequest, security: operations.GetSourceSecurity) -> operations.GetSourceResponse:
+    def get_source(self, request: operations.GetSourceRequest) -> operations.GetSourceResponse:
         r"""Get Source
         Retrieve source from source ID
         """
@@ -305,7 +308,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -330,7 +333,7 @@ class Hightouch:
         return res
 
     
-    def get_sync(self, request: operations.GetSyncRequest, security: operations.GetSyncSecurity) -> operations.GetSyncResponse:
+    def get_sync(self, request: operations.GetSyncRequest) -> operations.GetSyncResponse:
         r"""Get Sync
         Retrieve sync from sync ID
         """
@@ -341,7 +344,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -360,7 +363,7 @@ class Hightouch:
         return res
 
     
-    def list_destination(self, request: operations.ListDestinationRequest, security: operations.ListDestinationSecurity) -> operations.ListDestinationResponse:
+    def list_destination(self, request: operations.ListDestinationRequest) -> operations.ListDestinationResponse:
         r"""List Destinations
         List the destinations in the user's workspace
         """
@@ -372,7 +375,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -397,7 +400,7 @@ class Hightouch:
         return res
 
     
-    def list_model(self, request: operations.ListModelRequest, security: operations.ListModelSecurity) -> operations.ListModelResponse:
+    def list_model(self, request: operations.ListModelRequest) -> operations.ListModelResponse:
         r"""List Models
         List all the models in the current workspace including parent and related models
         """
@@ -409,7 +412,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -434,7 +437,7 @@ class Hightouch:
         return res
 
     
-    def list_source(self, request: operations.ListSourceRequest, security: operations.ListSourceSecurity) -> operations.ListSourceResponse:
+    def list_source(self, request: operations.ListSourceRequest) -> operations.ListSourceResponse:
         r"""List Sources
         List all the sources in the current workspace
         """
@@ -446,7 +449,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -465,7 +468,7 @@ class Hightouch:
         return res
 
     
-    def list_sync(self, request: operations.ListSyncRequest, security: operations.ListSyncSecurity) -> operations.ListSyncResponse:
+    def list_sync(self, request: operations.ListSyncRequest) -> operations.ListSyncResponse:
         r"""List Syncs
         List all the syncs in the current workspace
         """
@@ -477,7 +480,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -502,7 +505,7 @@ class Hightouch:
         return res
 
     
-    def list_sync_runs(self, request: operations.ListSyncRunsRequest, security: operations.ListSyncRunsSecurity) -> operations.ListSyncRunsResponse:
+    def list_sync_runs(self, request: operations.ListSyncRunsRequest) -> operations.ListSyncRunsResponse:
         r"""List Sync Runs
         List all sync runs under a sync
         """
@@ -514,7 +517,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -539,7 +542,7 @@ class Hightouch:
         return res
 
     
-    def trigger_run(self, request: operations.TriggerRunRequest, security: operations.TriggerRunSecurity) -> operations.TriggerRunResponse:
+    def trigger_run(self, request: operations.TriggerRunRequest) -> operations.TriggerRunResponse:
         r"""Trigger Sync
         Trigger a new run for the given sync.
 
@@ -556,7 +559,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -581,7 +584,7 @@ class Hightouch:
         return res
 
     
-    def trigger_run_custom(self, request: shared.TriggerRunCustomInput, security: operations.TriggerRunCustomSecurity) -> operations.TriggerRunCustomResponse:
+    def trigger_run_custom(self, request: shared.TriggerRunCustomInput) -> operations.TriggerRunCustomResponse:
         r"""Trigger Sync From ID or Slug
         Trigger a new run globally based on sync id or sync slug
 
@@ -600,7 +603,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -610,7 +613,7 @@ class Hightouch:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[Any])
-                res.trigger_run_custom_200_application_json_any_of = out
+                res.trigger_run_custom_200_application_json_one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [400, 401]:
@@ -625,7 +628,7 @@ class Hightouch:
         return res
 
     
-    def trigger_run_id_graph(self, request: operations.TriggerRunIDGraphRequest, security: operations.TriggerRunIDGraphSecurity) -> operations.TriggerRunIDGraphResponse:
+    def trigger_run_id_graph(self, request: operations.TriggerRunIDGraphRequest) -> operations.TriggerRunIDGraphResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.TriggerRunIDGraphRequest, base_url, '/id_graphs/{graphId}/trigger', request)
@@ -636,7 +639,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -661,7 +664,7 @@ class Hightouch:
         return res
 
     
-    def update_destination(self, request: operations.UpdateDestinationRequest, security: operations.UpdateDestinationSecurity) -> operations.UpdateDestinationResponse:
+    def update_destination(self, request: operations.UpdateDestinationRequest) -> operations.UpdateDestinationResponse:
         r"""Update Destination
         Update an existing destination
 
@@ -679,7 +682,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -689,7 +692,7 @@ class Hightouch:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[Any])
-                res.update_destination_200_application_json_any_of = out
+                res.update_destination_200_application_json_one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 404]:
@@ -710,7 +713,7 @@ class Hightouch:
         return res
 
     
-    def update_model(self, request: operations.UpdateModelRequest, security: operations.UpdateModelSecurity) -> operations.UpdateModelResponse:
+    def update_model(self, request: operations.UpdateModelRequest) -> operations.UpdateModelResponse:
         r"""Update Model
         Update an existing model
 
@@ -728,7 +731,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -738,7 +741,7 @@ class Hightouch:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[Any])
-                res.update_model_200_application_json_any_of = out
+                res.update_model_200_application_json_one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 404]:
@@ -759,7 +762,7 @@ class Hightouch:
         return res
 
     
-    def update_source(self, request: operations.UpdateSourceRequest, security: operations.UpdateSourceSecurity) -> operations.UpdateSourceResponse:
+    def update_source(self, request: operations.UpdateSourceRequest) -> operations.UpdateSourceResponse:
         r"""Update Source
         Update an existing source
 
@@ -777,7 +780,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -787,7 +790,7 @@ class Hightouch:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[Any])
-                res.update_source_200_application_json_any_of = out
+                res.update_source_200_application_json_one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 404]:
@@ -808,7 +811,7 @@ class Hightouch:
         return res
 
     
-    def update_sync(self, request: operations.UpdateSyncRequest, security: operations.UpdateSyncSecurity) -> operations.UpdateSyncResponse:
+    def update_sync(self, request: operations.UpdateSyncRequest) -> operations.UpdateSyncResponse:
         r"""Update Sync
         Update an existing sync
 
@@ -826,7 +829,7 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
         
-        client = utils.configure_security_client(self.sdk_configuration.client, security)
+        client = self.sdk_configuration.security_client
         
         http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -836,7 +839,7 @@ class Hightouch:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[Any])
-                res.update_sync_200_application_json_any_of = out
+                res.update_sync_200_application_json_one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [401, 404]:
