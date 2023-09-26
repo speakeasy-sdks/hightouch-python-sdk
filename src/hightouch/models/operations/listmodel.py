@@ -50,10 +50,13 @@ class ListModel200ApplicationJSON:
 @dataclasses.dataclass
 class ListModelResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     list_model_200_application_json_object: Optional[ListModel200ApplicationJSON] = dataclasses.field(default=None)
     r"""Ok"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
     r"""Validation Failed"""
     

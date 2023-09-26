@@ -21,8 +21,11 @@ class GetSourceRequest:
 @dataclasses.dataclass
 class GetSourceResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     source: Optional[shared_source.Source] = dataclasses.field(default=None)
     r"""Ok"""
     validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)

@@ -23,10 +23,13 @@ class UpdateModelRequest:
 @dataclasses.dataclass
 class UpdateModelResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     internal_server_error: Optional[shared_internalservererror.InternalServerError] = dataclasses.field(default=None)
     r"""Something went wrong"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     update_model_200_application_json_one_of: Optional[Any] = dataclasses.field(default=None)
     r"""Ok"""
     validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)

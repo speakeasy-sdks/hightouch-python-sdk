@@ -22,8 +22,11 @@ class TriggerRunIDGraphRequest:
 @dataclasses.dataclass
 class TriggerRunIDGraphResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     trigger_run_id_graph_output: Optional[shared_triggerrunidgraphoutput.TriggerRunIDGraphOutput] = dataclasses.field(default=None)
     r"""Ok"""
     validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)

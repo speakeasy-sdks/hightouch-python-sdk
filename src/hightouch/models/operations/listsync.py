@@ -56,10 +56,13 @@ class ListSync200ApplicationJSON:
 @dataclasses.dataclass
 class ListSyncResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     list_sync_200_application_json_object: Optional[ListSync200ApplicationJSON] = dataclasses.field(default=None)
     r"""Ok"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
     r"""Validation Failed"""
     
