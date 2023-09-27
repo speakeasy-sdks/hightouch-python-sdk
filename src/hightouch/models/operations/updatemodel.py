@@ -4,9 +4,10 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import internalservererror as shared_internalservererror
+from ..shared import model as shared_model
 from ..shared import modelupdate as shared_modelupdate
 from ..shared import validateerrorjson as shared_validateerrorjson
-from typing import Any, Optional
+from typing import Optional, Union
 
 
 
@@ -15,6 +16,14 @@ class UpdateModelRequest:
     model_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
     r"""The model's ID"""
     model_update: shared_modelupdate.ModelUpdate = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
+    
+
+
+
+
+@dataclasses.dataclass
+class UpdateModel200ApplicationJSON:
+    r"""Ok"""
     
 
 
@@ -30,7 +39,7 @@ class UpdateModelResponse:
     r"""Something went wrong"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    update_model_200_application_json_one_of: Optional[Any] = dataclasses.field(default=None)
+    update_model_200_application_json_one_of: Optional[Union[shared_model.Model, shared_validateerrorjson.ValidateErrorJSON, shared_internalservererror.InternalServerError]] = dataclasses.field(default=None)
     r"""Ok"""
     validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
     r"""Validation Failed"""

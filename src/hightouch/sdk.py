@@ -4,7 +4,7 @@ import requests as requests_http
 from .sdkconfiguration import SDKConfiguration
 from hightouch import utils
 from hightouch.models import errors, operations, shared
-from typing import Any, Optional
+from typing import Optional, Union
 
 class Hightouch:
     r"""Hightouch API: Hightouch Public Rest API to access syncs, models, sources and destinations"""
@@ -74,7 +74,7 @@ class Hightouch:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[Union[shared.Destination, shared.ValidateErrorJSON, shared.InternalServerError]])
                 res.create_destination_200_application_json_one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -121,7 +121,7 @@ class Hightouch:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[Union[shared.Model, shared.ValidateErrorJSON, shared.InternalServerError]])
                 res.create_model_200_application_json_one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -168,7 +168,7 @@ class Hightouch:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[Union[shared.Source, shared.ValidateErrorJSON, shared.InternalServerError]])
                 res.create_source_200_application_json_one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -215,7 +215,7 @@ class Hightouch:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[Union[shared.Sync, shared.ValidateErrorJSON, shared.InternalServerError]])
                 res.create_sync_200_application_json_one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -612,7 +612,7 @@ class Hightouch:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[Union[shared.TriggerRunOutput, shared.ValidateErrorJSON]])
                 res.trigger_run_custom_200_application_json_one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -691,7 +691,7 @@ class Hightouch:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[Union[shared.Destination, shared.ValidateErrorJSON, shared.InternalServerError]])
                 res.update_destination_200_application_json_one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -740,7 +740,7 @@ class Hightouch:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[Union[shared.Model, shared.ValidateErrorJSON, shared.InternalServerError]])
                 res.update_model_200_application_json_one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -789,7 +789,7 @@ class Hightouch:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[Union[shared.Source, shared.ValidateErrorJSON, shared.InternalServerError]])
                 res.update_source_200_application_json_one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -838,7 +838,7 @@ class Hightouch:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[Union[shared.Sync, shared.ValidateErrorJSON, shared.InternalServerError]])
                 res.update_sync_200_application_json_one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
