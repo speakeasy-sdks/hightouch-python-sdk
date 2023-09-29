@@ -12,7 +12,7 @@ from typing import Optional
 @dataclasses.dataclass
 class TriggerRunIDGraphInput:
     r"""The input of a trigger action to run IDR."""
-    full_rerun: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fullRerun'), 'exclude': lambda f: f is None }})
+    full_rerun: Optional[bool] = dataclasses.field(default=True, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fullRerun'), 'exclude': lambda f: f is None }})
     r"""Whether to resync the entire Identity Graph or process incrementally."""
     
 

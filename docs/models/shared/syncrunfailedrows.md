@@ -11,6 +11,6 @@ cancelled.
 
 | Field                         | Type                          | Required                      | Description                   |
 | ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
-| `added_count`                 | *float*                       | :heavy_check_mark:            | The number of failed adds.    |
-| `changed_count`               | *float*                       | :heavy_check_mark:            | The number of failed changes. |
-| `removed_count`               | *float*                       | :heavy_check_mark:            | The number of failed removes. |
+| `added_count`                 | *Optional[float]*             | :heavy_check_mark:            | The number of failed adds.    |
+| `changed_count`               | *Optional[float]*             | :heavy_check_mark:            | The number of failed changes. |
+| `removed_count`               | *Optional[float]*             | :heavy_check_mark:            | The number of failed removes. |

@@ -3,12 +3,8 @@
 from __future__ import annotations
 import dataclasses
 from dataclasses_json import Undefined, dataclass_json
-from enum import Enum
 from hightouch import utils
-from typing import Any
-
-class ValidateErrorJSONMessage(str, Enum):
-    VALIDATION_FAILED = 'Validation failed'
+from typing import Any, Final
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -16,6 +12,6 @@ class ValidateErrorJSONMessage(str, Enum):
 @dataclasses.dataclass
 class ValidateErrorJSON:
     details: dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details') }})
-    message: ValidateErrorJSONMessage = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})
+    MESSAGE: Final[str] = dataclasses.field(default='Validation failed', metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})
     
 

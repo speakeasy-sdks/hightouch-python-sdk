@@ -10,6 +10,6 @@ to `plannedRows` if the sync was cancelled.
 
 | Field                       | Type                        | Required                    | Description                 |
 | --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `added_count`               | *float*                     | :heavy_check_mark:          | The number of added rows.   |
-| `changed_count`             | *float*                     | :heavy_check_mark:          | The number of changed rows. |
-| `removed_count`             | *float*                     | :heavy_check_mark:          | The number of removed rows. |
+| `added_count`               | *Optional[float]*           | :heavy_check_mark:          | The number of added rows.   |
+| `changed_count`             | *Optional[float]*           | :heavy_check_mark:          | The number of changed rows. |
+| `removed_count`             | *Optional[float]*           | :heavy_check_mark:          | The number of removed rows. |

@@ -8,7 +8,7 @@ from ..shared import intervalschedule as shared_intervalschedule
 from ..shared import visualcronschedule as shared_visualcronschedule
 from dataclasses_json import Undefined, dataclass_json
 from hightouch import utils
-from typing import Any, Union
+from typing import Any, Optional, Union
 
 
 
@@ -57,7 +57,7 @@ class SyncCreate:
     r"""Whether the sync has been disabled by the user."""
     model_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modelId') }})
     r"""The id of the Model that sync is connected to"""
-    schedule: SyncCreateSchedule = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})
+    schedule: Optional[SyncCreateSchedule] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})
     r"""The scheduling configuration. It can be triggerd based on several ways:
 
     Interval: the sync will be trigged based on certain interval(minutes/hours/days/weeks)

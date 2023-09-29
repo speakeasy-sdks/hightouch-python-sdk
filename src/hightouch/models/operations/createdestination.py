@@ -4,7 +4,6 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import destination as shared_destination
-from ..shared import internalservererror as shared_internalservererror
 from ..shared import validateerrorjson as shared_validateerrorjson
 from typing import Optional, Union
 
@@ -24,9 +23,9 @@ class CreateDestinationResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    create_destination_200_application_json_one_of: Optional[Union[shared_destination.Destination, shared_validateerrorjson.ValidateErrorJSON, shared_internalservererror.InternalServerError]] = dataclasses.field(default=None)
+    create_destination_200_application_json_one_of: Optional[Union[shared_destination.Destination, shared_validateerrorjson.ValidateErrorJSON, str]] = dataclasses.field(default=None)
     r"""Ok"""
-    internal_server_error: Optional[shared_internalservererror.InternalServerError] = dataclasses.field(default=None)
+    internal_server_error: Optional[str] = dataclasses.field(default=None)
     r"""Something went wrong"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""

@@ -27,11 +27,11 @@ class ListSyncRunsRequest:
     r"""select sync runs that are started after given ISO timestamp"""
     before: Optional[datetime] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'before', 'style': 'form', 'explode': True }})
     r"""select sync runs that are started before certain ISO timestamp"""
-    limit: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'limit', 'style': 'form', 'explode': True }})
+    limit: Optional[float] = dataclasses.field(default=100, metadata={'query_param': { 'field_name': 'limit', 'style': 'form', 'explode': True }})
     r"""limit the number of objects returned (default is 5)"""
-    offset: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'offset', 'style': 'form', 'explode': True }})
+    offset: Optional[float] = dataclasses.field(default=0, metadata={'query_param': { 'field_name': 'offset', 'style': 'form', 'explode': True }})
     r"""set the offset on results (for pagination)"""
-    order_by: Optional[ListSyncRunsOrderBy] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
+    order_by: Optional[ListSyncRunsOrderBy] = dataclasses.field(default=ListSyncRunsOrderBy.ID, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
     r"""specify the order"""
     run_id: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'runId', 'style': 'form', 'explode': True }})
     r"""query for specific run id"""

@@ -7,4 +7,4 @@ Standard raw SQL query
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `sql`              | *str*              | :heavy_check_mark: | N/A                |
+| `sql`              | *Optional[str]*    | :heavy_check_mark: | N/A                |

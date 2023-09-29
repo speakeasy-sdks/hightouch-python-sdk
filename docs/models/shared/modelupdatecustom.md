@@ -7,4 +7,4 @@ Custom query for sources that doesn't support sql. For example, Airtable.
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `query`            | *Any*              | :heavy_check_mark: | N/A                |
+| `query`            | *Optional[Any]*    | :heavy_check_mark: | N/A                |

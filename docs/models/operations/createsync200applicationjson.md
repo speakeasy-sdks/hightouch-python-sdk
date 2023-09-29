@@ -17,9 +17,9 @@ createSync200ApplicationJSON: shared.Sync = /* values here */
 createSync200ApplicationJSON: shared.ValidateErrorJSON = /* values here */
 ```
 
-### InternalServerError
+### 
 
 ```python
-createSync200ApplicationJSON: shared.InternalServerError = /* values here */
+createSync200ApplicationJSON: str = /* values here */
 ```
 

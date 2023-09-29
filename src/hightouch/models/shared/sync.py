@@ -11,7 +11,7 @@ from ..shared import visualcronschedule as shared_visualcronschedule
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from hightouch import utils
-from typing import Any, Union
+from typing import Any, Optional, Union
 
 
 
@@ -65,7 +65,7 @@ class Sync:
     r"""Whether the sync has been disabled by the user."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""The sync's id"""
-    last_run_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lastRunAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }})
+    last_run_at: Optional[datetime] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('lastRunAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }})
     r"""The timestamp of the last sync run"""
     model_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modelId') }})
     r"""The id of the Model that sync is connected to"""
@@ -73,7 +73,7 @@ class Sync:
     r"""The primary key that sync uses to identify data from source"""
     referenced_columns: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('referencedColumns') }})
     r"""The reference column that sync depends on to sync data from source"""
-    schedule: SyncSchedule = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})
+    schedule: Optional[SyncSchedule] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})
     r"""The scheduling configuration. It can be triggerd based on several ways:
 
     Interval: the sync will be trigged based on certain interval(minutes/hours/days/weeks)

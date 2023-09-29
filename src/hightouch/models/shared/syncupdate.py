@@ -53,7 +53,7 @@ class SyncUpdate:
     """
     disabled: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('disabled'), 'exclude': lambda f: f is None }})
     r"""Whether the sync has been disabled by the user."""
-    schedule: Optional[SyncUpdateSchedule] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule'), 'exclude': lambda f: f is None }})
+    schedule: Optional[SyncUpdateSchedule] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})
     r"""The scheduling configuration. It can be triggerd based on several ways:
 
     Interval: the sync will be trigged based on certain interval(minutes/hours/days/weeks)

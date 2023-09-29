@@ -13,11 +13,11 @@ s = hightouch.Hightouch(
 
 req = shared.DestinationCreate(
     configuration={
-        "corrupti": 'provident',
+        "dignissimos": 'Bugatti',
     },
-    name='Ellis Mitchell',
-    slug='illum',
-    type='vel',
+    name='greatly',
+    slug='kilogram Southwest',
+    type='blue wilt',
 )
 
 res = s.create_destination(req)

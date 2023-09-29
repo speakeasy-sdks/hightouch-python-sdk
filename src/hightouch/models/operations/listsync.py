@@ -27,13 +27,13 @@ class ListSyncRequest:
     r"""select syncs that were run after given ISO timestamp"""
     before: Optional[datetime] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'before', 'style': 'form', 'explode': True }})
     r"""select syncs that were run before given ISO timestamp"""
-    limit: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'limit', 'style': 'form', 'explode': True }})
+    limit: Optional[float] = dataclasses.field(default=100, metadata={'query_param': { 'field_name': 'limit', 'style': 'form', 'explode': True }})
     r"""limit the number of objects returned (default is 100)"""
     model_id: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'modelId', 'style': 'form', 'explode': True }})
     r"""filter based on modelId"""
-    offset: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'offset', 'style': 'form', 'explode': True }})
+    offset: Optional[float] = dataclasses.field(default=0, metadata={'query_param': { 'field_name': 'offset', 'style': 'form', 'explode': True }})
     r"""set the offset on results (for pagination)"""
-    order_by: Optional[ListSyncOrderBy] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
+    order_by: Optional[ListSyncOrderBy] = dataclasses.field(default=ListSyncOrderBy.ID, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
     r"""specify the order"""
     slug: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'slug', 'style': 'form', 'explode': True }})
     r"""filter based on slug"""
