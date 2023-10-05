@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `details`          | dict[str, *Any*]   | :heavy_check_mark: | N/A                |
-| `message`          | *Optional[str]*    | :heavy_check_mark: | N/A                |
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `details`                                                                                        | dict[str, *Any*]                                                                                 | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `message`                                                                                        | [Optional[shared.ValidateErrorJSONMessage]](undefined/models/shared/validateerrorjsonmessage.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |

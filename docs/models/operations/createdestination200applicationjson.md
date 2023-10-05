@@ -17,9 +17,9 @@ createDestination200ApplicationJSON: shared.Destination = /* values here */
 createDestination200ApplicationJSON: shared.ValidateErrorJSON = /* values here */
 ```
 
-### 
+### InternalServerError
 
 ```python
-createDestination200ApplicationJSON: str = /* values here */
+createDestination200ApplicationJSON: shared.InternalServerError = /* values here */
 ```
 

@@ -17,9 +17,9 @@ updateSource200ApplicationJSON: shared.Source = /* values here */
 updateSource200ApplicationJSON: shared.ValidateErrorJSON = /* values here */
 ```
 
-### 
+### InternalServerError
 
 ```python
-updateSource200ApplicationJSON: str = /* values here */
+updateSource200ApplicationJSON: shared.InternalServerError = /* values here */
 ```
 
