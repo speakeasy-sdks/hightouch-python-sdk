@@ -113,6 +113,7 @@ class Model:
     r"""Custom query for sources that doesn't support sql. For example, Airtable."""
     dbt: Optional[ModelDbt] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dbt'), 'exclude': lambda f: f is None }})
     r"""Query that is based on a dbt model"""
+    folder_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('folderId'), 'exclude': lambda f: f is None }})
     raw: Optional[ModelRaw] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('raw'), 'exclude': lambda f: f is None }})
     r"""Standard raw SQL query"""
     table: Optional[ModelTable] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('table'), 'exclude': lambda f: f is None }})

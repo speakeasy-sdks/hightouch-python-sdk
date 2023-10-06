@@ -69,6 +69,7 @@ class ModelUpdate:
     custom: Optional[ModelUpdateCustom] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('custom'), 'exclude': lambda f: f is None }})
     r"""Custom query for sources that doesn't support sql. For example, Airtable."""
     dbt: Optional[ModelUpdateDbt] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dbt'), 'exclude': lambda f: f is None }})
+    folder_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('folderId'), 'exclude': lambda f: f is None }})
     is_schema: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('isSchema'), 'exclude': lambda f: f is None }})
     r"""If is_schema is true, the model is just used to build other models.
     Either as part of visual querying, or as the root of a visual query.

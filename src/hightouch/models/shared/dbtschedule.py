@@ -29,7 +29,6 @@ class DBTScheduleJob:
 @dataclasses.dataclass
 class DBTSchedule:
     account: DBTScheduleAccount = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('account') }})
-    dbt_credential_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dbtCredentialId') }})
     job: DBTScheduleJob = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('job') }})
     
 

@@ -94,23 +94,24 @@ req = shared.ModelCreate(
     dbt=shared.ModelCreateDbt(
         model_id='Northwest enterprise',
     ),
+    folder_id='Libyan Data Non',
     is_schema=False,
-    name='Libyan Data Non',
-    primary_key='Dakota',
-    query_type='success Rochester Non',
+    name='Dakota',
+    primary_key='success Rochester Non',
+    query_type='Metal',
     raw=shared.ModelCreateRaw(
-        sql='Metal',
+        sql='payment',
     ),
-    slug='payment',
-    source_id='Division',
+    slug='Division',
+    source_id='application unloosen yahoo',
     table=shared.ModelCreateTable(
-        name='application unloosen yahoo',
+        name='Practical Bike',
     ),
     visual=shared.ModelCreateVisual(
-        filter='conglomeration',
-        parent_id='Bugatti',
-        primary_label='invoice',
-        secondary_label='Usability',
+        filter='Bugatti',
+        parent_id='invoice',
+        primary_label='Usability',
+        secondary_label='hack AI instead',
     ),
 )
 
@@ -790,23 +791,24 @@ req = operations.UpdateModelRequest(
         dbt=shared.ModelUpdateDbt(
             model_id='Ford till Customer',
         ),
+        folder_id='users content',
         is_schema=False,
-        name='users content',
-        primary_key='New',
+        name='New',
+        primary_key='reinvent male indigo',
         raw=shared.ModelUpdateRaw(
-            sql='reinvent male indigo',
+            sql='Rhodium mint Steel',
         ),
         table=shared.ModelUpdateTable(
-            name='Rhodium mint Steel',
+            name='systematic Gasoline',
         ),
         visual=shared.ModelUpdateVisual(
-            filter='array',
-            parent_id='Gasoline Paradigm Mazda',
-            primary_label='whenever Palladium Brand',
-            secondary_label='Buckinghamshire',
+            filter='Paradigm',
+            parent_id='Accountability whenever Palladium',
+            primary_label='Metal green becquerel',
+            secondary_label='Hyundai bluetooth',
         ),
     ),
-    model_id=6828.56,
+    model_id=8592.48,
 )
 
 res = s.hightouch.update_model(req)
