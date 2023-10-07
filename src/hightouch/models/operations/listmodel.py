@@ -3,12 +3,10 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import model as shared_model
-from ..shared import validateerrorjson as shared_validateerrorjson
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from hightouch import utils
-from typing import Optional
+from typing import Any, Optional
 
 class ListModelOrderBy(str, Enum):
     r"""specify the order"""
@@ -41,7 +39,7 @@ class ListModelRequest:
 @dataclasses.dataclass
 class ListModel200ApplicationJSON:
     r"""Ok"""
-    data: list[shared_model.Model] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
+    data: list[dict[str, Any]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     
 
 
@@ -57,7 +55,7 @@ class ListModelResponse:
     r"""Ok"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
+    validate_error_json: Optional[dict[str, Any]] = dataclasses.field(default=None)
     r"""Validation Failed"""
     
 

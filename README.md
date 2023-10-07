@@ -36,14 +36,9 @@ s = hightouch.Hightouch(
     ),
 )
 
-req = shared.DestinationCreate(
-    configuration={
-        "dignissimos": 'Bugatti',
-    },
-    name='greatly',
-    slug='kilogram Southwest',
-    type='blue wilt',
-)
+req = {
+    "optical": 'Sid',
+}
 
 res = s.create_destination(req)
 
