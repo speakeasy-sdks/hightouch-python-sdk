@@ -3,13 +3,11 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import sync as shared_sync
-from ..shared import validateerrorjson as shared_validateerrorjson
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from enum import Enum
 from hightouch import utils
-from typing import Optional
+from typing import Any, Optional
 
 class ListSyncOrderBy(str, Enum):
     r"""specify the order"""
@@ -46,7 +44,7 @@ class ListSyncRequest:
 @dataclasses.dataclass
 class ListSync200ApplicationJSON:
     r"""Ok"""
-    data: list[shared_sync.Sync] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
+    data: list[dict[str, Any]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     has_more: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hasMore') }})
     
 
@@ -63,7 +61,7 @@ class ListSyncResponse:
     r"""Ok"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
+    validate_error_json: Optional[dict[str, Any]] = dataclasses.field(default=None)
     r"""Validation Failed"""
     
 

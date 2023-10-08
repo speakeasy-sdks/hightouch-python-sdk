@@ -3,11 +3,10 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import source as shared_source
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from hightouch import utils
-from typing import Optional
+from typing import Any, Optional
 
 class ListSourceOrderBy(str, Enum):
     r"""specify the order"""
@@ -40,7 +39,7 @@ class ListSourceRequest:
 @dataclasses.dataclass
 class ListSource200ApplicationJSON:
     r"""Ok"""
-    data: list[shared_source.Source] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
+    data: list[dict[str, Any]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     
 
 
