@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import model as shared_model
-from typing import Optional
+from typing import Any, Optional
 
 
 
@@ -23,7 +22,7 @@ class GetModelResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    model: Optional[shared_model.Model] = dataclasses.field(default=None)
+    model: Optional[dict[str, Any]] = dataclasses.field(default=None)
     r"""Ok"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""

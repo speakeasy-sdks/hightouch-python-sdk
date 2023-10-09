@@ -3,17 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import triggerrunoutput as shared_triggerrunoutput
-from ..shared import validateerrorjson as shared_validateerrorjson
-from typing import Optional, Union
-
-
-
-@dataclasses.dataclass
-class TriggerRunCustom200ApplicationJSON:
-    r"""Ok"""
-    
-
+from typing import Any, Optional
 
 
 
@@ -25,9 +15,9 @@ class TriggerRunCustomResponse:
     r"""HTTP response status code for this operation"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    trigger_run_custom_200_application_json_one_of: Optional[Union[shared_triggerrunoutput.TriggerRunOutput, shared_validateerrorjson.ValidateErrorJSON]] = dataclasses.field(default=None)
+    trigger_run_custom_200_application_json_one_of: Optional[Any] = dataclasses.field(default=None)
     r"""Ok"""
-    validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
+    validate_error_json: Optional[dict[str, Any]] = dataclasses.field(default=None)
     r"""Validation Failed"""
     
 
