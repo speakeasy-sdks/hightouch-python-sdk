@@ -44,14 +44,9 @@ s = hightouch.Hightouch(
     ),
 )
 
-req = shared.DestinationCreate(
-    configuration={
-        "dignissimos": 'Bugatti',
-    },
-    name='greatly',
-    slug='kilogram Southwest',
-    type='blue wilt',
-)
+req = {
+    "optical": 'Sid',
+}
 
 res = s.hightouch.create_destination(req)
 
@@ -61,9 +56,9 @@ if res.create_destination_200_application_json_one_of is not None:
 
 ### Parameters
 
-| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `request`                                                            | [shared.DestinationCreate](../../models/shared/destinationcreate.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [dict[str, Any]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -87,33 +82,9 @@ s = hightouch.Hightouch(
     ),
 )
 
-req = shared.ModelCreate(
-    custom=shared.ModelCreateCustom(
-        query='zesty',
-    ),
-    dbt=shared.ModelCreateDbt(
-        model_id='Northwest enterprise',
-    ),
-    folder_id='Libyan Data Non',
-    is_schema=False,
-    name='Dakota',
-    primary_key='success Rochester Non',
-    query_type='Metal',
-    raw=shared.ModelCreateRaw(
-        sql='payment',
-    ),
-    slug='Division',
-    source_id='application unloosen yahoo',
-    table=shared.ModelCreateTable(
-        name='Practical Bike',
-    ),
-    visual=shared.ModelCreateVisual(
-        filter='Bugatti',
-        parent_id='invoice',
-        primary_label='Usability',
-        secondary_label='hack AI instead',
-    ),
-)
+req = {
+    "zesty": 'veritatis',
+}
 
 res = s.hightouch.create_model(req)
 
@@ -123,9 +94,9 @@ if res.create_model_200_application_json_one_of is not None:
 
 ### Parameters
 
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `request`                                                | [shared.ModelCreate](../../models/shared/modelcreate.md) | :heavy_check_mark:                                       | The request object to use for the request.               |
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [dict[str, Any]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -149,14 +120,9 @@ s = hightouch.Hightouch(
     ),
 )
 
-req = shared.SourceCreate(
-    configuration={
-        "aut": 'Vermont',
-    },
-    name='Van deposit Lamborghini',
-    slug='York ouch Northwest',
-    type='Porsche Cadillac',
-)
+req = {
+    "North": 'tightly',
+}
 
 res = s.hightouch.create_source(req)
 
@@ -166,9 +132,9 @@ if res.create_source_200_application_json_one_of is not None:
 
 ### Parameters
 
-| Parameter                                                  | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `request`                                                  | [shared.SourceCreate](../../models/shared/sourcecreate.md) | :heavy_check_mark:                                         | The request object to use for the request.                 |
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [dict[str, Any]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -192,19 +158,9 @@ s = hightouch.Hightouch(
     ),
 )
 
-req = shared.SyncCreate(
-    configuration={
-        "accusamus": 'Concrete',
-    },
-    destination_id='North synergies Cambridgeshire',
-    disabled=False,
-    model_id='orchid Applications disintermediate',
-    schedule=shared.SyncCreateSchedule(
-        schedule=[],
-        type='meanwhile',
-    ),
-    slug='Electric SDD',
-)
+req = {
+    "euphoric": 'experiences',
+}
 
 res = s.hightouch.create_sync(req)
 
@@ -214,9 +170,9 @@ if res.create_sync_200_application_json_one_of is not None:
 
 ### Parameters
 
-| Parameter                                              | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `request`                                              | [shared.SyncCreate](../../models/shared/synccreate.md) | :heavy_check_mark:                                     | The request object to use for the request.             |
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [dict[str, Any]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -392,13 +348,7 @@ s = hightouch.Hightouch(
     ),
 )
 
-req = operations.ListDestinationRequest(
-    limit=898.03,
-    name='Alaska',
-    offset=1026.89,
-    order_by=operations.ListDestinationOrderBy.CREATED_AT,
-    slug='quas',
-)
+req = operations.ListDestinationRequest()
 
 res = s.hightouch.list_destination(req)
 
@@ -434,13 +384,7 @@ s = hightouch.Hightouch(
     ),
 )
 
-req = operations.ListModelRequest(
-    limit=4556.79,
-    name='times Automated portal',
-    offset=1772.52,
-    order_by=operations.ListModelOrderBy.SLUG,
-    slug='deposit definite',
-)
+req = operations.ListModelRequest()
 
 res = s.hightouch.list_model(req)
 
@@ -476,13 +420,7 @@ s = hightouch.Hightouch(
     ),
 )
 
-req = operations.ListSourceRequest(
-    limit=3667.48,
-    name='facilis',
-    offset=7285.7,
-    order_by=operations.ListSourceOrderBy.NAME,
-    slug='Francium spread Outdoors',
-)
+req = operations.ListSourceRequest()
 
 res = s.hightouch.list_source(req)
 
@@ -519,15 +457,7 @@ s = hightouch.Hightouch(
     ),
 )
 
-req = operations.ListSyncRequest(
-    after=dateutil.parser.isoparse('2021-12-29T02:44:53.348Z'),
-    before=dateutil.parser.isoparse('2023-03-08T22:11:11.682Z'),
-    limit=8056.73,
-    model_id=2244.55,
-    offset=5024.07,
-    order_by=operations.ListSyncOrderBy.SLUG,
-    slug='Automated Sausages',
-)
+req = operations.ListSyncRequest()
 
 res = s.hightouch.list_sync(req)
 
@@ -565,14 +495,7 @@ s = hightouch.Hightouch(
 )
 
 req = operations.ListSyncRunsRequest(
-    after=dateutil.parser.isoparse('2023-08-29T00:26:30.425Z'),
-    before=dateutil.parser.isoparse('2022-11-28T13:12:20.353Z'),
-    limit=3202.39,
-    offset=771.35,
-    order_by=operations.ListSyncRunsOrderBy.STARTED_AT,
-    run_id=2963.65,
-    sync_id=7146.37,
-    within=4058.13,
+    sync_id=8858.62,
 )
 
 res = s.hightouch.list_sync_runs(req)
@@ -613,9 +536,7 @@ s = hightouch.Hightouch(
 )
 
 req = operations.TriggerRunRequest(
-    trigger_run_input=shared.TriggerRunInput(
-        full_resync=False,
-    ),
+    trigger_run_input=shared.TriggerRunInput(),
     sync_id='Digitized withdrawal Midland',
 )
 
@@ -656,11 +577,7 @@ s = hightouch.Hightouch(
     ),
 )
 
-req = shared.TriggerRunCustomInput(
-    full_resync=False,
-    sync_id='female',
-    sync_slug='Tellurium core',
-)
+req = shared.TriggerRunCustomInput()
 
 res = s.hightouch.trigger_run_custom(req)
 
@@ -695,9 +612,7 @@ s = hightouch.Hightouch(
 )
 
 req = operations.TriggerRunIDGraphRequest(
-    trigger_run_id_graph_input=shared.TriggerRunIDGraphInput(
-        full_rerun=False,
-    ),
+    trigger_run_id_graph_input=shared.TriggerRunIDGraphInput(),
     graph_id='hop Bentley AI',
 )
 
@@ -738,13 +653,10 @@ s = hightouch.Hightouch(
 )
 
 req = operations.UpdateDestinationRequest(
-    destination_update=shared.DestinationUpdate(
-        configuration={
-            "debitis": 'copying',
-        },
-        name='enable Northwest woot',
-    ),
-    destination_id=8585.6,
+    request_body={
+        "nervously": 'enable',
+    },
+    destination_id=1030.32,
 )
 
 res = s.hightouch.update_destination(req)
@@ -784,31 +696,10 @@ s = hightouch.Hightouch(
 )
 
 req = operations.UpdateModelRequest(
-    model_update=shared.ModelUpdate(
-        custom=shared.ModelUpdateCustom(
-            query='Northwest',
-        ),
-        dbt=shared.ModelUpdateDbt(
-            model_id='Ford till Customer',
-        ),
-        folder_id='users content',
-        is_schema=False,
-        name='New',
-        primary_key='reinvent male indigo',
-        raw=shared.ModelUpdateRaw(
-            sql='Rhodium mint Steel',
-        ),
-        table=shared.ModelUpdateTable(
-            name='systematic Gasoline',
-        ),
-        visual=shared.ModelUpdateVisual(
-            filter='Paradigm',
-            parent_id='Accountability whenever Palladium',
-            primary_label='Metal green becquerel',
-            secondary_label='Hyundai bluetooth',
-        ),
-    ),
-    model_id=8592.48,
+    request_body={
+        "Northwest": 'gold',
+    },
+    model_id=3720.8,
 )
 
 res = s.hightouch.update_model(req)
@@ -848,13 +739,10 @@ s = hightouch.Hightouch(
 )
 
 req = operations.UpdateSourceRequest(
-    source_update=shared.SourceUpdate(
-        configuration={
-            "animi": 'Land',
-        },
-        name='Bismuth Bedfordshire Northwest',
-    ),
-    source_id=2452.92,
+    request_body={
+        "Internal": 'esse',
+    },
+    source_id=8737.26,
 )
 
 res = s.hightouch.update_source(req)
@@ -894,17 +782,10 @@ s = hightouch.Hightouch(
 )
 
 req = operations.UpdateSyncRequest(
-    sync_update=shared.SyncUpdate(
-        configuration={
-            "praesentium": 'Carolanne',
-        },
-        disabled=False,
-        schedule=shared.SyncUpdateSchedule(
-            schedule=[],
-            type='Bedfordshire Chlorine',
-        ),
-    ),
-    sync_id=6235.37,
+    request_body={
+        "hacking": 'Keyboard',
+    },
+    sync_id=4407.63,
 )
 
 res = s.hightouch.update_sync(req)
