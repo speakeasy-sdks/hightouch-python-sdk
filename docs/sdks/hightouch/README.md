@@ -44,21 +44,27 @@ s = hightouch.Hightouch(
     ),
 )
 
-req = {
-    "optical": 'Sid',
-}
+req = shared.DestinationCreate(
+    configuration={
+        "optical": 'Sid',
+    },
+    name='Ergonomic mumble blue',
+    slug='hollow Southeast Mobility',
+    type='Jaguar Ford',
+)
 
 res = s.hightouch.create_destination(req)
 
 if res.create_destination_200_application_json_one_of is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [dict[str, Any]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `request`                                                            | [shared.DestinationCreate](../../models/shared/destinationcreate.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
 
 
 ### Response
@@ -82,21 +88,45 @@ s = hightouch.Hightouch(
     ),
 )
 
-req = {
-    "zesty": 'veritatis',
-}
+req = shared.ModelCreate(
+    custom=shared.ModelCreateCustom(
+        query='zesty',
+    ),
+    dbt=shared.ModelCreateDbt(
+        model_id='Northwest enterprise',
+    ),
+    is_schema=False,
+    name='Libyan Data Non',
+    primary_key='Dakota',
+    query_type='success Rochester Non',
+    raw=shared.ModelCreateRaw(
+        sql='Metal',
+    ),
+    slug='payment',
+    source_id='Division',
+    table=shared.ModelCreateTable(
+        name='application unloosen yahoo',
+    ),
+    visual=shared.ModelCreateVisual(
+        filter='conglomeration',
+        parent_id='Bugatti',
+        primary_label='invoice',
+        secondary_label='Usability',
+    ),
+)
 
 res = s.hightouch.create_model(req)
 
 if res.create_model_200_application_json_one_of is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [dict[str, Any]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `request`                                                | [shared.ModelCreate](../../models/shared/modelcreate.md) | :heavy_check_mark:                                       | The request object to use for the request.               |
 
 
 ### Response
@@ -120,21 +150,27 @@ s = hightouch.Hightouch(
     ),
 )
 
-req = {
-    "North": 'tightly',
-}
+req = shared.SourceCreate(
+    configuration={
+        "North": 'tightly',
+    },
+    name='Agent deposit Lamborghini',
+    slug='York ouch Northwest',
+    type='Porsche Cadillac',
+)
 
 res = s.hightouch.create_source(req)
 
 if res.create_source_200_application_json_one_of is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [dict[str, Any]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                  | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `request`                                                  | [shared.SourceCreate](../../models/shared/sourcecreate.md) | :heavy_check_mark:                                         | The request object to use for the request.                 |
 
 
 ### Response
@@ -158,21 +194,39 @@ s = hightouch.Hightouch(
     ),
 )
 
-req = {
-    "euphoric": 'experiences',
-}
+req = shared.SyncCreate(
+    configuration={
+        "euphoric": 'experiences',
+    },
+    destination_id='pink',
+    disabled=False,
+    model_id='Cambridgeshire',
+    schedule=shared.SyncCreateSchedule(
+        shared.VisualCronSchedule(
+            expressions=[
+                shared.VisualCronScheduleExpressions(
+                    days=shared.RecordDayBooleanOrUndefined(),
+                    time='International',
+                ),
+            ],
+        ),
+        type='mobile',
+    ),
+    slug='disintermediate Fresh',
+)
 
 res = s.hightouch.create_sync(req)
 
 if res.create_sync_200_application_json_one_of is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [dict[str, Any]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                              | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `request`                                              | [shared.SyncCreate](../../models/shared/synccreate.md) | :heavy_check_mark:                                     | The request object to use for the request.             |
 
 
 ### Response
@@ -204,6 +258,7 @@ res = s.hightouch.get_destination(req)
 
 if res.destination is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -242,6 +297,7 @@ res = s.hightouch.get_model(req)
 
 if res.model is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -280,6 +336,7 @@ res = s.hightouch.get_source(req)
 
 if res.source is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -318,6 +375,7 @@ res = s.hightouch.get_sync(req)
 
 if res.sync is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -354,6 +412,7 @@ res = s.hightouch.list_destination(req)
 
 if res.list_destination_200_application_json_object is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -390,6 +449,7 @@ res = s.hightouch.list_model(req)
 
 if res.list_model_200_application_json_object is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -426,6 +486,7 @@ res = s.hightouch.list_source(req)
 
 if res.list_source_200_application_json_object is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -463,6 +524,7 @@ res = s.hightouch.list_sync(req)
 
 if res.list_sync_200_application_json_object is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -502,6 +564,7 @@ res = s.hightouch.list_sync_runs(req)
 
 if res.list_sync_runs_200_application_json_object is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -544,6 +607,7 @@ res = s.hightouch.trigger_run(req)
 
 if res.trigger_run_output is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -583,6 +647,7 @@ res = s.hightouch.trigger_run_custom(req)
 
 if res.trigger_run_custom_200_application_json_one_of is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -620,6 +685,7 @@ res = s.hightouch.trigger_run_id_graph(req)
 
 if res.trigger_run_id_graph_output is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -653,9 +719,11 @@ s = hightouch.Hightouch(
 )
 
 req = operations.UpdateDestinationRequest(
-    request_body={
-        "nervously": 'enable',
-    },
+    destination_update=shared.DestinationUpdate(
+        configuration={
+            "nervously": 'enable',
+        },
+    ),
     destination_id=1030.32,
 )
 
@@ -663,6 +731,7 @@ res = s.hightouch.update_destination(req)
 
 if res.update_destination_200_application_json_one_of is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -696,16 +765,34 @@ s = hightouch.Hightouch(
 )
 
 req = operations.UpdateModelRequest(
-    request_body={
-        "Northwest": 'gold',
-    },
-    model_id=3720.8,
+    model_update=shared.ModelUpdate(
+        custom=shared.ModelUpdateCustom(
+            query='Northwest',
+        ),
+        dbt=shared.ModelUpdateDbt(
+            model_id='Ford till Customer',
+        ),
+        raw=shared.ModelUpdateRaw(
+            sql='users content',
+        ),
+        table=shared.ModelUpdateTable(
+            name='New',
+        ),
+        visual=shared.ModelUpdateVisual(
+            filter='female',
+            parent_id='male',
+            primary_label='Gasoline Rhodium mint',
+            secondary_label='Madagascar',
+        ),
+    ),
+    model_id=3730.58,
 )
 
 res = s.hightouch.update_model(req)
 
 if res.update_model_200_application_json_one_of is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -739,9 +826,11 @@ s = hightouch.Hightouch(
 )
 
 req = operations.UpdateSourceRequest(
-    request_body={
-        "Internal": 'esse',
-    },
+    source_update=shared.SourceUpdate(
+        configuration={
+            "Internal": 'esse',
+        },
+    ),
     source_id=8737.26,
 )
 
@@ -749,6 +838,7 @@ res = s.hightouch.update_source(req)
 
 if res.update_source_200_application_json_one_of is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -782,16 +872,25 @@ s = hightouch.Hightouch(
 )
 
 req = operations.UpdateSyncRequest(
-    request_body={
-        "hacking": 'Keyboard',
-    },
-    sync_id=4407.63,
+    sync_update=shared.SyncUpdate(
+        configuration={
+            "hacking": 'Keyboard',
+        },
+        schedule=shared.SyncUpdateSchedule(
+            shared.CronSchedule(
+                expression='Bulgarian',
+            ),
+            type='York intensely optimize',
+        ),
+    ),
+    sync_id=7148.52,
 )
 
 res = s.hightouch.update_sync(req)
 
 if res.update_sync_200_application_json_one_of is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

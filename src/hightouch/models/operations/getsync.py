@@ -3,7 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from typing import Any, Optional
+from ..shared import sync as shared_sync
+from typing import Optional
 
 
 
@@ -24,7 +25,7 @@ class GetSyncResponse:
     r"""HTTP response status code for this operation"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    sync: Optional[dict[str, Any]] = dataclasses.field(default=None)
+    sync: Optional[shared_sync.Sync] = dataclasses.field(default=None)
     r"""Ok"""
     
 

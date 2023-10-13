@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `request_body`     | dict[str, *Any*]   | :heavy_check_mark: | N/A                |
-| `source_id`        | *Optional[float]*  | :heavy_check_mark: | The source's ID    |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `source_update`                                            | [shared.SourceUpdate](../../models/shared/sourceupdate.md) | :heavy_check_mark:                                         | N/A                                                        |
+| `source_id`                                                | *float*                                                    | :heavy_check_mark:                                         | The source's ID                                            |

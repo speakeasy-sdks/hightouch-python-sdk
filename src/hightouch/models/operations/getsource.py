@@ -3,7 +3,9 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from typing import Any, Optional
+from ..shared import source as shared_source
+from ..shared import validateerrorjson as shared_validateerrorjson
+from typing import Optional
 
 
 
@@ -24,9 +26,9 @@ class GetSourceResponse:
     r"""HTTP response status code for this operation"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    source: Optional[dict[str, Any]] = dataclasses.field(default=None)
+    source: Optional[shared_source.Source] = dataclasses.field(default=None)
     r"""Ok"""
-    validate_error_json: Optional[dict[str, Any]] = dataclasses.field(default=None)
+    validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
     r"""Validation Failed"""
     
 

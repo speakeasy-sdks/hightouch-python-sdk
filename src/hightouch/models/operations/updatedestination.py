@@ -3,8 +3,11 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ..shared import destination as shared_destination
+from ..shared import destinationupdate as shared_destinationupdate
 from ..shared import internalservererror as shared_internalservererror
-from typing import Any, Optional
+from ..shared import validateerrorjson as shared_validateerrorjson
+from typing import Optional, Union
 
 
 
@@ -12,7 +15,15 @@ from typing import Any, Optional
 class UpdateDestinationRequest:
     destination_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'destinationId', 'style': 'simple', 'explode': False }})
     r"""The destination's ID"""
-    request_body: dict[str, Any] = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
+    destination_update: shared_destinationupdate.DestinationUpdate = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
+    
+
+
+
+
+@dataclasses.dataclass
+class UpdateDestination200ApplicationJSON:
+    r"""Ok"""
     
 
 
@@ -28,9 +39,9 @@ class UpdateDestinationResponse:
     r"""Something went wrong"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    update_destination_200_application_json_one_of: Optional[Any] = dataclasses.field(default=None)
+    update_destination_200_application_json_one_of: Optional[Union[shared_destination.Destination, shared_validateerrorjson.ValidateErrorJSON, shared_internalservererror.InternalServerError]] = dataclasses.field(default=None)
     r"""Ok"""
-    validate_error_json: Optional[dict[str, Any]] = dataclasses.field(default=None)
+    validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
     r"""Validation Failed"""
     
 
