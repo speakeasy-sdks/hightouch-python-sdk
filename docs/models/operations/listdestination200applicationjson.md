@@ -7,4 +7,4 @@ Ok
 
 | Field                                                          | Type                                                           | Required                                                       | Description                                                    |
 | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `data`                                                         | list[[shared.Destination](../../models/shared/destination.md)] | :heavy_check_mark:                                             | N/A                                                            |
+| `data`                                                         | List[[shared.Destination](../../models/shared/destination.md)] | :heavy_check_mark:                                             | N/A                                                            |

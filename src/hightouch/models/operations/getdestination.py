@@ -7,13 +7,11 @@ from ..shared import destination as shared_destination
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class GetDestinationRequest:
     destination_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'destinationId', 'style': 'simple', 'explode': False }})
     r"""The destination's ID"""
     
-
 
 
 

@@ -6,11 +6,10 @@ import dateutil.parser
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from hightouch import utils
-from typing import Any, Optional
+from typing import Any, Dict, List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ModelCustom:
     r"""Custom query for sources that doesn't support sql. For example, Airtable."""
@@ -20,7 +19,6 @@ class ModelCustom:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ModelDbt:
     r"""Query that is based on a dbt model"""
@@ -43,7 +41,6 @@ class ModelDbt:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ModelRaw:
     r"""Standard raw SQL query"""
@@ -53,7 +50,6 @@ class ModelRaw:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ModelTable:
     r"""Table-based query that fetches on a table instead of SQL"""
@@ -63,7 +59,6 @@ class ModelTable:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ModelVisual:
     r"""Visual query, used by audience"""
@@ -77,7 +72,6 @@ class ModelVisual:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class Model:
     r"""The SQL query that pulls data from your source to send to your destination.
@@ -101,9 +95,9 @@ class Model:
     r"""The slug of the model"""
     source_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceId') }})
     r"""The id of the source that model is connected to"""
-    syncs: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncs') }})
+    syncs: List[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncs') }})
     r"""The list of id of syncs that uses this model"""
-    tags: dict[str, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tags') }})
+    tags: Dict[str, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tags') }})
     r"""The tags of the model"""
     updated_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updatedAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }})
     r"""The timestamp when model was lastly updated"""

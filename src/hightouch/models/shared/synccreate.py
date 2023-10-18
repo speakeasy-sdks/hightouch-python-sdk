@@ -8,8 +8,7 @@ from ..shared import intervalschedule as shared_intervalschedule
 from ..shared import visualcronschedule as shared_visualcronschedule
 from dataclasses_json import Undefined, dataclass_json
 from hightouch import utils
-from typing import Any, Optional, Union
-
+from typing import Any, Dict, Optional, Union
 
 
 @dataclasses.dataclass
@@ -18,7 +17,6 @@ class SyncCreateScheduleSchedule:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SyncCreateSchedule:
     r"""The scheduling configuration. It can be triggerd based on several ways:
@@ -38,11 +36,10 @@ class SyncCreateSchedule:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SyncCreate:
     r"""The input for creating a Sync"""
-    configuration: dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('configuration') }})
+    configuration: Dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('configuration') }})
     r"""The sync's configuration. This specifies how data is mapped, among other
     configuration.
 

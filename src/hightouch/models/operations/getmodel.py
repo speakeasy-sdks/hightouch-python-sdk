@@ -7,13 +7,11 @@ from ..shared import model as shared_model
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class GetModelRequest:
     model_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
     r"""The id of the model"""
     
-
 
 
 

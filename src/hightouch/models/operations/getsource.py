@@ -8,13 +8,11 @@ from ..shared import validateerrorjson as shared_validateerrorjson
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class GetSourceRequest:
     source_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'sourceId', 'style': 'simple', 'explode': False }})
     r"""The id of the source"""
     
-
 
 
 

@@ -10,7 +10,6 @@ from ..shared import validateerrorjson as shared_validateerrorjson
 from typing import Optional, Union
 
 
-
 @dataclasses.dataclass
 class UpdateDestinationRequest:
     destination_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'destinationId', 'style': 'simple', 'explode': False }})
@@ -20,12 +19,10 @@ class UpdateDestinationRequest:
 
 
 
-
 @dataclasses.dataclass
 class UpdateDestination200ApplicationJSON:
     r"""Ok"""
     
-
 
 
 

@@ -8,7 +8,7 @@ from ..shared import validateerrorjson as shared_validateerrorjson
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from hightouch import utils
-from typing import Optional
+from typing import List, Optional
 
 class ListDestinationOrderBy(str, Enum):
     r"""Order the returned destinations"""
@@ -17,7 +17,6 @@ class ListDestinationOrderBy(str, Enum):
     SLUG = 'slug'
     CREATED_AT = 'createdAt'
     UPDATED_AT = 'updatedAt'
-
 
 
 @dataclasses.dataclass
@@ -37,13 +36,11 @@ class ListDestinationRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ListDestination200ApplicationJSON:
     r"""Ok"""
-    data: list[shared_destination.Destination] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
+    data: List[shared_destination.Destination] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     
-
 
 
 

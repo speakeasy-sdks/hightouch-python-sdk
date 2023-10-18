@@ -7,13 +7,11 @@ from ..shared import sync as shared_sync
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class GetSyncRequest:
     sync_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
     r"""The id of the sync"""
     
-
 
 
 

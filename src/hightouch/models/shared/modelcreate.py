@@ -8,7 +8,6 @@ from typing import Any, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ModelCreateCustom:
     r"""Custom query for sources that doesn't support sql. For example, Airtable."""
@@ -18,7 +17,6 @@ class ModelCreateCustom:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ModelCreateDbt:
     model_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modelId') }})
@@ -28,7 +26,6 @@ class ModelCreateDbt:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ModelCreateRaw:
     r"""Standard raw SQL query"""
@@ -38,7 +35,6 @@ class ModelCreateRaw:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ModelCreateTable:
     r"""Table-based query that fetches on a table instead of SQL"""
@@ -48,7 +44,6 @@ class ModelCreateTable:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ModelCreateVisual:
     r"""Visual query, used by audience"""
@@ -62,7 +57,6 @@ class ModelCreateVisual:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ModelCreate:
     r"""The input for creating a Model"""

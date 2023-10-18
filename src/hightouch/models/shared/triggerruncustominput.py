@@ -8,7 +8,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class TriggerRunCustomInput:
     r"""The input of a trigger action to run syncs based on sync ID, slug or other filters"""

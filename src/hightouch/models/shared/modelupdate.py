@@ -8,7 +8,6 @@ from typing import Any, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ModelUpdateCustom:
     r"""Custom query for sources that doesn't support sql. For example, Airtable."""
@@ -18,7 +17,6 @@ class ModelUpdateCustom:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ModelUpdateDbt:
     model_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modelId') }})
@@ -28,7 +26,6 @@ class ModelUpdateDbt:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ModelUpdateRaw:
     r"""Standard raw SQL query"""
@@ -38,7 +35,6 @@ class ModelUpdateRaw:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ModelUpdateTable:
     r"""Table-based query that fetches on a table instead of SQL"""
@@ -48,7 +44,6 @@ class ModelUpdateTable:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ModelUpdateVisual:
     r"""Visual query, used by audience"""
@@ -62,7 +57,6 @@ class ModelUpdateVisual:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ModelUpdate:
     r"""The input for updating a Model"""

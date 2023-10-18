@@ -9,7 +9,7 @@ from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from enum import Enum
 from hightouch import utils
-from typing import Optional
+from typing import List, Optional
 
 class ListSyncRunsOrderBy(str, Enum):
     r"""specify the order"""
@@ -17,7 +17,6 @@ class ListSyncRunsOrderBy(str, Enum):
     CREATED_AT = 'createdAt'
     STARTED_AT = 'startedAt'
     FINISHED_AT = 'finishedAt'
-
 
 
 @dataclasses.dataclass
@@ -42,14 +41,12 @@ class ListSyncRunsRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ListSyncRuns200ApplicationJSON:
     r"""Ok"""
-    data: list[shared_syncrun.SyncRun] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
+    data: List[shared_syncrun.SyncRun] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     has_more: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hasMore') }})
     
-
 
 
 

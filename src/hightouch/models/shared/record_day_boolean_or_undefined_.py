@@ -8,7 +8,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class RecordDayBooleanOrUndefined:
     r"""Construct a type with a set of properties K of type T"""

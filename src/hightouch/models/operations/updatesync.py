@@ -10,7 +10,6 @@ from ..shared import validateerrorjson as shared_validateerrorjson
 from typing import Optional, Union
 
 
-
 @dataclasses.dataclass
 class UpdateSyncRequest:
     sync_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
@@ -20,12 +19,10 @@ class UpdateSyncRequest:
 
 
 
-
 @dataclasses.dataclass
 class UpdateSync200ApplicationJSON:
     r"""Ok"""
     
-
 
 
 

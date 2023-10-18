@@ -11,8 +11,7 @@ from ..shared import visualcronschedule as shared_visualcronschedule
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from hightouch import utils
-from typing import Any, Optional, Union
-
+from typing import Any, Dict, List, Optional, Union
 
 
 @dataclasses.dataclass
@@ -21,7 +20,6 @@ class SyncScheduleSchedule:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SyncSchedule:
     r"""The scheduling configuration. It can be triggerd based on several ways:
@@ -41,14 +39,13 @@ class SyncSchedule:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class Sync:
     r"""Syncs define how data from models are mapped to destinations. Each time a
     sync runs, Hightouch calculates the rows that have changed since the last
     run, and syncs them to Sync's destination.
     """
-    configuration: dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('configuration') }})
+    configuration: Dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('configuration') }})
     r"""The sync's configuration. This specifies how data is mapped, among other
     configuration.
 
@@ -71,7 +68,7 @@ class Sync:
     r"""The id of the Model that sync is connected to"""
     primary_key: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('primaryKey') }})
     r"""The primary key that sync uses to identify data from source"""
-    referenced_columns: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('referencedColumns') }})
+    referenced_columns: List[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('referencedColumns') }})
     r"""The reference column that sync depends on to sync data from source"""
     schedule: Optional[SyncSchedule] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})
     r"""The scheduling configuration. It can be triggerd based on several ways:

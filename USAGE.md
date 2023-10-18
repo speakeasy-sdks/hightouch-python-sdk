@@ -15,9 +15,9 @@ req = shared.DestinationCreate(
     configuration={
         "optical": 'Sid',
     },
-    name='Ergonomic mumble blue',
-    slug='hollow Southeast Mobility',
-    type='Jaguar Ford',
+    name='kilogram',
+    slug='Southwest',
+    type='transmit',
 )
 
 res = s.hightouch.create_destination(req)

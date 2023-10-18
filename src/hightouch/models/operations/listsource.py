@@ -7,7 +7,7 @@ from ..shared import source as shared_source
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from hightouch import utils
-from typing import Optional
+from typing import List, Optional
 
 class ListSourceOrderBy(str, Enum):
     r"""specify the order"""
@@ -16,7 +16,6 @@ class ListSourceOrderBy(str, Enum):
     SLUG = 'slug'
     CREATED_AT = 'createdAt'
     UPDATED_AT = 'updatedAt'
-
 
 
 @dataclasses.dataclass
@@ -36,13 +35,11 @@ class ListSourceRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ListSource200ApplicationJSON:
     r"""Ok"""
-    data: list[shared_source.Source] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
+    data: List[shared_source.Source] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     
-
 
 
 

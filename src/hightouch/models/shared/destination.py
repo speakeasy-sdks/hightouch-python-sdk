@@ -6,17 +6,16 @@ import dateutil.parser
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from hightouch import utils
-from typing import Any
+from typing import Any, Dict, List
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class Destination:
     r"""The service receiving your data (e.g. Salesforce, Hubspot, Customer.io, or a
     SFTP server)
     """
-    configuration: dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('configuration') }})
+    configuration: Dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('configuration') }})
     r"""The destination's configuration. This specifies general metadata about destination, like hostname and username.
     Hightouch will be using this configuration to connect to destination.
 
@@ -33,7 +32,7 @@ class Destination:
     r"""The destination's name"""
     slug: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('slug') }})
     r"""The destination's slug"""
-    syncs: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncs') }})
+    syncs: List[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncs') }})
     r"""A list of syncs that sync to this destination."""
     type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""The destination's type (e.g. salesforce or hubspot)."""

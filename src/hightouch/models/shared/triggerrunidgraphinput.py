@@ -8,7 +8,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class TriggerRunIDGraphInput:
     r"""The input of a trigger action to run IDR."""

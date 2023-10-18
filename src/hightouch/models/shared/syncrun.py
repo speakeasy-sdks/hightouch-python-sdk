@@ -11,7 +11,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SyncRunFailedRows:
     r"""The number of rows that we attempted to sync, but were rejected by the
@@ -31,7 +30,6 @@ class SyncRunFailedRows:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SyncRunPlannedRows:
     r"""The number of planned rows that this sync run was supposed to execute.
@@ -50,7 +48,6 @@ class SyncRunPlannedRows:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SyncRunSuccessfulRows:
     r"""The number of rows that were successfully processed by the destination."""
@@ -65,7 +62,6 @@ class SyncRunSuccessfulRows:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SyncRun:
     completion_ratio: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('completionRatio') }})

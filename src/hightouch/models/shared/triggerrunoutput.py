@@ -7,7 +7,6 @@ from hightouch import utils
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class TriggerRunOutput:
     r"""The output of a trigger action to run syncs"""

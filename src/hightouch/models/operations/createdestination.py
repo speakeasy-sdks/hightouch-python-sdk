@@ -9,12 +9,10 @@ from ..shared import validateerrorjson as shared_validateerrorjson
 from typing import Optional, Union
 
 
-
 @dataclasses.dataclass
 class CreateDestination200ApplicationJSON:
     r"""Ok"""
     
-
 
 
 

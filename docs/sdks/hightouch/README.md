@@ -48,9 +48,9 @@ req = shared.DestinationCreate(
     configuration={
         "optical": 'Sid',
     },
-    name='Ergonomic mumble blue',
-    slug='hollow Southeast Mobility',
-    type='Jaguar Ford',
+    name='kilogram',
+    slug='Southwest',
+    type='transmit',
 )
 
 res = s.hightouch.create_destination(req)
@@ -93,25 +93,25 @@ req = shared.ModelCreate(
         query='zesty',
     ),
     dbt=shared.ModelCreateDbt(
-        model_id='Northwest enterprise',
+        model_id='veritatis',
     ),
     is_schema=False,
-    name='Libyan Data Non',
-    primary_key='Dakota',
-    query_type='success Rochester Non',
+    name='Specialist',
+    primary_key='Touring',
+    query_type='digital',
     raw=shared.ModelCreateRaw(
-        sql='Metal',
+        sql='Data',
     ),
-    slug='payment',
-    source_id='Division',
+    slug='Non',
+    source_id='North',
     table=shared.ModelCreateTable(
-        name='application unloosen yahoo',
+        name='Coordinator',
     ),
     visual=shared.ModelCreateVisual(
-        filter='conglomeration',
-        parent_id='Bugatti',
-        primary_label='invoice',
-        secondary_label='Usability',
+        filter='Rochester',
+        parent_id='Non',
+        primary_label='East',
+        secondary_label='newton',
     ),
 )
 
@@ -154,9 +154,9 @@ req = shared.SourceCreate(
     configuration={
         "North": 'tightly',
     },
-    name='Agent deposit Lamborghini',
-    slug='York ouch Northwest',
-    type='Porsche Cadillac',
+    name='Van',
+    slug='deposit',
+    type='Lamborghini',
 )
 
 res = s.hightouch.create_source(req)
@@ -198,21 +198,19 @@ req = shared.SyncCreate(
     configuration={
         "euphoric": 'experiences',
     },
-    destination_id='pink',
+    destination_id='North',
     disabled=False,
-    model_id='Cambridgeshire',
+    model_id='synergies',
     schedule=shared.SyncCreateSchedule(
-        shared.VisualCronSchedule(
-            expressions=[
-                shared.VisualCronScheduleExpressions(
-                    days=shared.RecordDayBooleanOrUndefined(),
-                    time='International',
-                ),
-            ],
+        shared.IntervalSchedule(
+            interval=shared.Interval(
+                quantity=9557.24,
+                unit=shared.IntervalUnit.DAY,
+            ),
         ),
-        type='mobile',
+        type='orchid',
     ),
-    slug='disintermediate Fresh',
+    slug='Applications',
 )
 
 res = s.hightouch.create_sync(req)
@@ -600,7 +598,7 @@ s = hightouch.Hightouch(
 
 req = operations.TriggerRunRequest(
     trigger_run_input=shared.TriggerRunInput(),
-    sync_id='Digitized withdrawal Midland',
+    sync_id='incidentally',
 )
 
 res = s.hightouch.trigger_run(req)
@@ -678,7 +676,7 @@ s = hightouch.Hightouch(
 
 req = operations.TriggerRunIDGraphRequest(
     trigger_run_id_graph_input=shared.TriggerRunIDGraphInput(),
-    graph_id='hop Bentley AI',
+    graph_id='vanilla',
 )
 
 res = s.hightouch.trigger_run_id_graph(req)
@@ -770,22 +768,22 @@ req = operations.UpdateModelRequest(
             query='Northwest',
         ),
         dbt=shared.ModelUpdateDbt(
-            model_id='Ford till Customer',
+            model_id='gold',
         ),
         raw=shared.ModelUpdateRaw(
-            sql='users content',
+            sql='administration',
         ),
         table=shared.ModelUpdateTable(
-            name='New',
+            name='Customer',
         ),
         visual=shared.ModelUpdateVisual(
-            filter='female',
-            parent_id='male',
-            primary_label='Gasoline Rhodium mint',
-            secondary_label='Madagascar',
+            filter='flexibility',
+            parent_id='Fitness',
+            primary_label='Chair',
+            secondary_label='reinvent',
         ),
     ),
-    model_id=3730.58,
+    model_id=7146.06,
 )
 
 res = s.hightouch.update_model(req)
@@ -878,12 +876,12 @@ req = operations.UpdateSyncRequest(
         },
         schedule=shared.SyncUpdateSchedule(
             shared.CronSchedule(
-                expression='Bulgarian',
+                expression='Divide',
             ),
-            type='York intensely optimize',
+            type='York',
         ),
     ),
-    sync_id=7148.52,
+    sync_id=8880.52,
 )
 
 res = s.hightouch.update_sync(req)

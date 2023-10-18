@@ -4,7 +4,7 @@ import requests as requests_http
 from .sdkconfiguration import SDKConfiguration
 from hightouch import utils
 from hightouch.models import errors, operations, shared
-from typing import Optional, Union
+from typing import Dict, Optional, Union
 
 class Hightouch:
     r"""Hightouch API: Hightouch Public Rest API to access syncs, models, sources and destinations"""
@@ -15,7 +15,7 @@ class Hightouch:
                  security: shared.Security = None,
                  server_idx: int = None,
                  server_url: str = None,
-                 url_params: dict[str, str] = None,
+                 url_params: Dict[str, str] = None,
                  client: requests_http.Session = None,
                  retry_config: utils.RetryConfig = None
                  ) -> None:
@@ -28,7 +28,7 @@ class Hightouch:
         :param server_url: The server URL to use for all operations
         :type server_url: str
         :param url_params: Parameters to optionally template the server URL with
-        :type url_params: dict[str, str]
+        :type url_params: Dict[str, str]
         :param client: The requests.Session HTTP client to use for all operations
         :type client: requests_http.Session
         :param retry_config: The utils.RetryConfig to use globally

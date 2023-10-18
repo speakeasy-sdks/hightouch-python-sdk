@@ -9,13 +9,11 @@ from ..shared import validateerrorjson as shared_validateerrorjson
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class TriggerRunIDGraphRequest:
     graph_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'graphId', 'style': 'simple', 'explode': False }})
     trigger_run_id_graph_input: Optional[shared_triggerrunidgraphinput.TriggerRunIDGraphInput] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
-
 
 
 
