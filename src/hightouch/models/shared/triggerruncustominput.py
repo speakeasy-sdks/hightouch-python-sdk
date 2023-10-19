@@ -15,6 +15,8 @@ class TriggerRunCustomInput:
     r"""Whether to resync all the rows in the query (i.e. ignoring previously
     synced rows).
     """
+    reset_cdc: Optional[bool] = dataclasses.field(default=True, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('resetCDC'), 'exclude': lambda f: f is None }})
+    r"""Whether to sync all the rows in the query without executing changes on the destination."""
     sync_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncId'), 'exclude': lambda f: f is None }})
     r"""Trigger run based on sync id"""
     sync_slug: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncSlug'), 'exclude': lambda f: f is None }})

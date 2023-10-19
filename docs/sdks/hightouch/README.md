@@ -15,6 +15,7 @@ Hightouch API: Hightouch Public Rest API to access syncs, models, sources and de
 * [get_model](#get_model) - Get Model
 * [get_source](#get_source) - Get Source
 * [get_sync](#get_sync) - Get Sync
+* [get_sync_sequence_run](#get_sync_sequence_run) - Sync sequence status
 * [list_destination](#list_destination) - List Destinations
 * [list_model](#list_model) - List Models
 * [list_source](#list_source) - List Sources
@@ -23,6 +24,7 @@ Hightouch API: Hightouch Public Rest API to access syncs, models, sources and de
 * [trigger_run](#trigger_run) - Trigger Sync
 * [trigger_run_custom](#trigger_run_custom) - Trigger Sync From ID or Slug
 * [trigger_run_id_graph](#trigger_run_id_graph)
+* [trigger_sequence_run](#trigger_sequence_run) - Trigger Sync sequence
 * [update_destination](#update_destination) - Update Destination
 * [update_model](#update_model) - Update Model
 * [update_source](#update_source) - Update Source
@@ -388,6 +390,45 @@ if res.sync is not None:
 **[operations.GetSyncResponse](../../models/operations/getsyncresponse.md)**
 
 
+## get_sync_sequence_run
+
+Get the status of a sync sequence run.
+
+### Example Usage
+
+```python
+import hightouch
+from hightouch.models import operations, shared
+
+s = hightouch.Hightouch(
+    security=shared.Security(
+        bearer_auth="",
+    ),
+)
+
+req = operations.GetSyncSequenceRunRequest(
+    sync_sequence_run_id='positively',
+)
+
+res = s.hightouch.get_sync_sequence_run(req)
+
+if res.sync_sequence_status_output is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.GetSyncSequenceRunRequest](../../models/operations/getsyncsequencerunrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+
+
+### Response
+
+**[operations.GetSyncSequenceRunResponse](../../models/operations/getsyncsequencerunresponse.md)**
+
+
 ## list_destination
 
 List the destinations in the user's workspace
@@ -696,6 +737,48 @@ if res.trigger_run_id_graph_output is not None:
 ### Response
 
 **[operations.TriggerRunIDGraphResponse](../../models/operations/triggerrunidgraphresponse.md)**
+
+
+## trigger_sequence_run
+
+Trigger a new run for the given sync sequence.
+
+If a run is already in progress, this queues a sync sequence run that will be
+executed immediately after the current run completes.
+
+### Example Usage
+
+```python
+import hightouch
+from hightouch.models import operations, shared
+
+s = hightouch.Hightouch(
+    security=shared.Security(
+        bearer_auth="",
+    ),
+)
+
+req = operations.TriggerSequenceRunRequest(
+    sync_sequence_id='Frozen',
+)
+
+res = s.hightouch.trigger_sequence_run(req)
+
+if res.trigger_sequence_run_output is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.TriggerSequenceRunRequest](../../models/operations/triggersequencerunrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+
+
+### Response
+
+**[operations.TriggerSequenceRunResponse](../../models/operations/triggersequencerunresponse.md)**
 
 
 ## update_destination

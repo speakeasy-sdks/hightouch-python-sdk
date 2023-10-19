@@ -66,6 +66,7 @@ if res.create_destination_200_application_json_one_of is not None:
 * [get_model](docs/sdks/hightouch/README.md#get_model) - Get Model
 * [get_source](docs/sdks/hightouch/README.md#get_source) - Get Source
 * [get_sync](docs/sdks/hightouch/README.md#get_sync) - Get Sync
+* [get_sync_sequence_run](docs/sdks/hightouch/README.md#get_sync_sequence_run) - Sync sequence status
 * [list_destination](docs/sdks/hightouch/README.md#list_destination) - List Destinations
 * [list_model](docs/sdks/hightouch/README.md#list_model) - List Models
 * [list_source](docs/sdks/hightouch/README.md#list_source) - List Sources
@@ -74,6 +75,7 @@ if res.create_destination_200_application_json_one_of is not None:
 * [trigger_run](docs/sdks/hightouch/README.md#trigger_run) - Trigger Sync
 * [trigger_run_custom](docs/sdks/hightouch/README.md#trigger_run_custom) - Trigger Sync From ID or Slug
 * [trigger_run_id_graph](docs/sdks/hightouch/README.md#trigger_run_id_graph)
+* [trigger_sequence_run](docs/sdks/hightouch/README.md#trigger_sequence_run) - Trigger Sync sequence
 * [update_destination](docs/sdks/hightouch/README.md#update_destination) - Update Destination
 * [update_model](docs/sdks/hightouch/README.md#update_model) - Update Model
 * [update_source](docs/sdks/hightouch/README.md#update_source) - Update Source

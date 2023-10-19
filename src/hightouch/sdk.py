@@ -365,6 +365,42 @@ class Hightouch:
         return res
 
     
+    def get_sync_sequence_run(self, request: operations.GetSyncSequenceRunRequest) -> operations.GetSyncSequenceRunResponse:
+        r"""Sync sequence status
+        Get the status of a sync sequence run.
+        """
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.GetSyncSequenceRunRequest, base_url, '/sync-sequences/runs/{syncSequenceRunId}', request)
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = self.sdk_configuration.user_agent
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('GET', url, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetSyncSequenceRunResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.SyncSequenceStatusOutput])
+                res.sync_sequence_status_output = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [400, 401]:
+            pass
+        elif http_res.status_code == 422:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ValidateErrorJSON])
+                res.validate_error_json = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
     def list_destination(self, request: operations.ListDestinationRequest) -> operations.ListDestinationResponse:
         r"""List Destinations
         List the destinations in the user's workspace
@@ -652,6 +688,45 @@ class Hightouch:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.TriggerRunIDGraphOutput])
                 res.trigger_run_id_graph_output = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code in [400, 401]:
+            pass
+        elif http_res.status_code == 422:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ValidateErrorJSON])
+                res.validate_error_json = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def trigger_sequence_run(self, request: operations.TriggerSequenceRunRequest) -> operations.TriggerSequenceRunResponse:
+        r"""Trigger Sync sequence
+        Trigger a new run for the given sync sequence.
+
+        If a run is already in progress, this queues a sync sequence run that will be
+        executed immediately after the current run completes.
+        """
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.TriggerSequenceRunRequest, base_url, '/sync-sequences/{syncSequenceId}/trigger', request)
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = self.sdk_configuration.user_agent
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.TriggerSequenceRunResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.TriggerSequenceRunOutput])
+                res.trigger_sequence_run_output = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code in [400, 401]:
