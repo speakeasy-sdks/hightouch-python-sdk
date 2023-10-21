@@ -48,11 +48,11 @@ s = hightouch.Hightouch(
 
 req = shared.DestinationCreate(
     configuration={
-        "optical": 'Sid',
+        "key": 'string',
     },
-    name='kilogram',
-    slug='Southwest',
-    type='transmit',
+    name='string',
+    slug='string',
+    type='string',
 )
 
 res = s.hightouch.create_destination(req)
@@ -92,28 +92,28 @@ s = hightouch.Hightouch(
 
 req = shared.ModelCreate(
     custom=shared.ModelCreateCustom(
-        query='zesty',
+        query='string',
     ),
     dbt=shared.ModelCreateDbt(
-        model_id='veritatis',
+        model_id='string',
     ),
     is_schema=False,
-    name='Specialist',
-    primary_key='Touring',
-    query_type='digital',
+    name='string',
+    primary_key='string',
+    query_type='string',
     raw=shared.ModelCreateRaw(
-        sql='Data',
+        sql='string',
     ),
-    slug='Non',
-    source_id='North',
+    slug='string',
+    source_id='string',
     table=shared.ModelCreateTable(
-        name='Coordinator',
+        name='string',
     ),
     visual=shared.ModelCreateVisual(
-        filter='Rochester',
-        parent_id='Non',
-        primary_label='East',
-        secondary_label='newton',
+        filter='string',
+        parent_id='string',
+        primary_label='string',
+        secondary_label='string',
     ),
 )
 
@@ -154,11 +154,11 @@ s = hightouch.Hightouch(
 
 req = shared.SourceCreate(
     configuration={
-        "North": 'tightly',
+        "key": 'string',
     },
-    name='Van',
-    slug='deposit',
-    type='Lamborghini',
+    name='string',
+    slug='string',
+    type='string',
 )
 
 res = s.hightouch.create_source(req)
@@ -198,21 +198,23 @@ s = hightouch.Hightouch(
 
 req = shared.SyncCreate(
     configuration={
-        "euphoric": 'experiences',
+        "key": 'string',
     },
-    destination_id='North',
+    destination_id='string',
     disabled=False,
-    model_id='synergies',
+    model_id='string',
     schedule=shared.SyncCreateSchedule(
-        shared.IntervalSchedule(
-            interval=shared.Interval(
-                quantity=9557.24,
-                unit=shared.IntervalUnit.DAY,
+        shared.DBTSchedule(
+            account=shared.DBTScheduleAccount(
+                id='<ID>',
+            ),
+            job=shared.DBTScheduleJob(
+                id='<ID>',
             ),
         ),
-        type='orchid',
+        type='string',
     ),
-    slug='Applications',
+    slug='string',
 )
 
 res = s.hightouch.create_sync(req)
@@ -407,7 +409,7 @@ s = hightouch.Hightouch(
 )
 
 req = operations.GetSyncSequenceRunRequest(
-    sync_sequence_run_id='positively',
+    sync_sequence_run_id='string',
 )
 
 res = s.hightouch.get_sync_sequence_run(req)
@@ -639,7 +641,7 @@ s = hightouch.Hightouch(
 
 req = operations.TriggerRunRequest(
     trigger_run_input=shared.TriggerRunInput(),
-    sync_id='incidentally',
+    sync_id='string',
 )
 
 res = s.hightouch.trigger_run(req)
@@ -717,7 +719,7 @@ s = hightouch.Hightouch(
 
 req = operations.TriggerRunIDGraphRequest(
     trigger_run_id_graph_input=shared.TriggerRunIDGraphInput(),
-    graph_id='vanilla',
+    graph_id='string',
 )
 
 res = s.hightouch.trigger_run_id_graph(req)
@@ -759,7 +761,7 @@ s = hightouch.Hightouch(
 )
 
 req = operations.TriggerSequenceRunRequest(
-    sync_sequence_id='Frozen',
+    sync_sequence_id='string',
 )
 
 res = s.hightouch.trigger_sequence_run(req)
@@ -802,10 +804,10 @@ s = hightouch.Hightouch(
 req = operations.UpdateDestinationRequest(
     destination_update=shared.DestinationUpdate(
         configuration={
-            "nervously": 'enable',
+            "key": 'string',
         },
     ),
-    destination_id=1030.32,
+    destination_id=8928.88,
 )
 
 res = s.hightouch.update_destination(req)
@@ -848,25 +850,25 @@ s = hightouch.Hightouch(
 req = operations.UpdateModelRequest(
     model_update=shared.ModelUpdate(
         custom=shared.ModelUpdateCustom(
-            query='Northwest',
+            query='string',
         ),
         dbt=shared.ModelUpdateDbt(
-            model_id='gold',
+            model_id='string',
         ),
         raw=shared.ModelUpdateRaw(
-            sql='administration',
+            sql='string',
         ),
         table=shared.ModelUpdateTable(
-            name='Customer',
+            name='string',
         ),
         visual=shared.ModelUpdateVisual(
-            filter='flexibility',
-            parent_id='Fitness',
-            primary_label='Chair',
-            secondary_label='reinvent',
+            filter='string',
+            parent_id='string',
+            primary_label='string',
+            secondary_label='string',
         ),
     ),
-    model_id=7146.06,
+    model_id=1027.03,
 )
 
 res = s.hightouch.update_model(req)
@@ -909,10 +911,10 @@ s = hightouch.Hightouch(
 req = operations.UpdateSourceRequest(
     source_update=shared.SourceUpdate(
         configuration={
-            "Internal": 'esse',
+            "key": 'string',
         },
     ),
-    source_id=8737.26,
+    source_id=6585.68,
 )
 
 res = s.hightouch.update_source(req)
@@ -955,16 +957,21 @@ s = hightouch.Hightouch(
 req = operations.UpdateSyncRequest(
     sync_update=shared.SyncUpdate(
         configuration={
-            "hacking": 'Keyboard',
+            "key": 'string',
         },
         schedule=shared.SyncUpdateSchedule(
-            shared.CronSchedule(
-                expression='Divide',
+            shared.VisualCronSchedule(
+                expressions=[
+                    shared.VisualCronScheduleExpressions(
+                        days=shared.RecordDayBooleanOrUndefined(),
+                        time='string',
+                    ),
+                ],
             ),
-            type='York',
+            type='string',
         ),
     ),
-    sync_id=8880.52,
+    sync_id=1402.89,
 )
 
 res = s.hightouch.update_sync(req)

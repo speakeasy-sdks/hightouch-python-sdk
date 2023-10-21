@@ -13,11 +13,11 @@ s = hightouch.Hightouch(
 
 req = shared.DestinationCreate(
     configuration={
-        "optical": 'Sid',
+        "key": 'string',
     },
-    name='kilogram',
-    slug='Southwest',
-    type='transmit',
+    name='string',
+    slug='string',
+    type='string',
 )
 
 res = s.hightouch.create_destination(req)
