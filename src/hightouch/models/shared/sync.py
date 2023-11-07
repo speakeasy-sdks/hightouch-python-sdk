@@ -3,11 +3,11 @@
 from __future__ import annotations
 import dataclasses
 import dateutil.parser
-from ..shared import cronschedule as shared_cronschedule
-from ..shared import dbtschedule as shared_dbtschedule
-from ..shared import intervalschedule as shared_intervalschedule
-from ..shared import syncstatus as shared_syncstatus
-from ..shared import visualcronschedule as shared_visualcronschedule
+from .cronschedule import CronSchedule
+from .dbtschedule import DBTSchedule
+from .intervalschedule import IntervalSchedule
+from .syncstatus import SyncStatus
+from .visualcronschedule import VisualCronSchedule
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from hightouch import utils
@@ -15,13 +15,13 @@ from typing import Any, Dict, List, Optional, Union
 
 
 @dataclasses.dataclass
-class SyncScheduleSchedule:
+class SyncSchedule:
     pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class SyncSchedule:
+class Schedule:
     r"""The scheduling configuration. It can be triggerd based on several ways:
 
     Interval: the sync will be trigged based on certain interval(minutes/hours/days/weeks)
@@ -32,7 +32,7 @@ class SyncSchedule:
 
     DBT-cloud: the sync will be trigged based on a dbt cloud job
     """
-    schedule: Union[shared_intervalschedule.IntervalSchedule, shared_cronschedule.CronSchedule, shared_visualcronschedule.VisualCronSchedule, shared_dbtschedule.DBTSchedule] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})
+    schedule: Union[IntervalSchedule, CronSchedule, VisualCronSchedule, DBTSchedule] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})
     type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     
 
@@ -70,7 +70,7 @@ class Sync:
     r"""The primary key that sync uses to identify data from source"""
     referenced_columns: List[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('referencedColumns') }})
     r"""The reference column that sync depends on to sync data from source"""
-    schedule: Optional[SyncSchedule] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})
+    schedule: Optional[Schedule] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})
     r"""The scheduling configuration. It can be triggerd based on several ways:
 
     Interval: the sync will be trigged based on certain interval(minutes/hours/days/weeks)
@@ -83,7 +83,7 @@ class Sync:
     """
     slug: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('slug') }})
     r"""The sync's slug"""
-    status: shared_syncstatus.SyncStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    status: SyncStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""SyncStatus"""
     updated_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updatedAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }})
     r"""The timestamp when the sync was last updated"""

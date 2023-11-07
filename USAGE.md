@@ -20,9 +20,9 @@ req = shared.DestinationCreate(
     type='string',
 )
 
-res = s.hightouch.create_destination(req)
+res = s.create_destination(req)
 
-if res.create_destination_200_application_json_one_of is not None:
+if res.one_of is not None:
     # handle response
     pass
 ```

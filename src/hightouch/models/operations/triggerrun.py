@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import triggerruninput as shared_triggerruninput
-from ..shared import triggerrunoutput as shared_triggerrunoutput
-from ..shared import validateerrorjson as shared_validateerrorjson
+from ...models.shared import triggerruninput as shared_triggerruninput
+from ...models.shared import triggerrunoutput as shared_triggerrunoutput
 from typing import Optional
 
 
@@ -28,7 +27,5 @@ class TriggerRunResponse:
     r"""Raw HTTP response; suitable for custom response parsing"""
     trigger_run_output: Optional[shared_triggerrunoutput.TriggerRunOutput] = dataclasses.field(default=None)
     r"""Ok"""
-    validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
-    r"""Validation Failed"""
     
 

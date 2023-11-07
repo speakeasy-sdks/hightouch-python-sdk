@@ -3,14 +3,13 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import model as shared_model
-from ..shared import validateerrorjson as shared_validateerrorjson
+from ...models.shared import model as shared_model
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from hightouch import utils
 from typing import List, Optional
 
-class ListModelOrderBy(str, Enum):
+class QueryParamOrderBy(str, Enum):
     r"""specify the order"""
     ID = 'id'
     NAME = 'name'
@@ -27,7 +26,7 @@ class ListModelRequest:
     r"""filter based on name"""
     offset: Optional[float] = dataclasses.field(default=0, metadata={'query_param': { 'field_name': 'offset', 'style': 'form', 'explode': True }})
     r"""set the offset on results (for pagination)"""
-    order_by: Optional[ListModelOrderBy] = dataclasses.field(default=ListModelOrderBy.ID, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
+    order_by: Optional[QueryParamOrderBy] = dataclasses.field(default=QueryParamOrderBy.ID, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
     r"""specify the order"""
     slug: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'slug', 'style': 'form', 'explode': True }})
     r"""filter based on slug"""
@@ -37,7 +36,7 @@ class ListModelRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListModel200ApplicationJSON:
+class ListModelResponseBody:
     r"""Ok"""
     data: List[shared_model.Model] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     
@@ -50,11 +49,9 @@ class ListModelResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    list_model_200_application_json_object: Optional[ListModel200ApplicationJSON] = dataclasses.field(default=None)
+    object: Optional[ListModelResponseBody] = dataclasses.field(default=None)
     r"""Ok"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
-    r"""Validation Failed"""
     
 

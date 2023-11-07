@@ -45,9 +45,9 @@ req = shared.DestinationCreate(
     type='string',
 )
 
-res = s.hightouch.create_destination(req)
+res = s.create_destination(req)
 
-if res.create_destination_200_application_json_one_of is not None:
+if res.one_of is not None:
     # handle response
     pass
 ```
@@ -108,6 +108,39 @@ Here's an example of one such pagination call:
 Handling errors in your SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
 
 
+## Example
+
+```python
+import hightouch
+from hightouch.models import shared
+
+s = hightouch.Hightouch(
+    security=shared.Security(
+        bearer_auth="",
+    ),
+)
+
+req = shared.DestinationCreate(
+    configuration={
+        "key": 'string',
+    },
+    name='string',
+    slug='string',
+    type='string',
+)
+
+res = None
+try:
+    res = s.create_destination(req)
+
+
+except (ValidateErrorJSON) as e:
+    print(e) # handle exception
+
+if res.one_of is not None:
+    # handle response
+    pass
+```
 <!-- End Error Handling -->
 
 
@@ -125,16 +158,15 @@ You can override the default server globally by passing a server index to the `s
 
 For example:
 
-
 ```python
 import hightouch
 from hightouch.models import shared
 
 s = hightouch.Hightouch(
+    server_idx=0,
     security=shared.Security(
         bearer_auth="",
     ),
-    server_idx=0
 )
 
 req = shared.DestinationCreate(
@@ -146,9 +178,9 @@ req = shared.DestinationCreate(
     type='string',
 )
 
-res = s.hightouch.create_destination(req)
+res = s.create_destination(req)
 
-if res.create_destination_200_application_json_one_of is not None:
+if res.one_of is not None:
     # handle response
     pass
 ```
@@ -158,16 +190,15 @@ if res.create_destination_200_application_json_one_of is not None:
 
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 
-
 ```python
 import hightouch
 from hightouch.models import shared
 
 s = hightouch.Hightouch(
+    server_url="https://api.hightouch.com/api/v1",
     security=shared.Security(
         bearer_auth="",
     ),
-    server_url="https://api.hightouch.com/api/v1"
 )
 
 req = shared.DestinationCreate(
@@ -179,9 +210,9 @@ req = shared.DestinationCreate(
     type='string',
 )
 
-res = s.hightouch.create_destination(req)
+res = s.create_destination(req)
 
-if res.create_destination_200_application_json_one_of is not None:
+if res.one_of is not None:
     # handle response
     pass
 ```
@@ -205,9 +236,50 @@ http_client = requests.Session()
 http_client.headers.update({'x-custom-header': 'someValue'})
 s = hightouch.Hightouch(client: http_client)
 ```
-
-
 <!-- End Custom HTTP Client -->
+
+
+
+<!-- Start Authentication -->
+
+# Authentication
+
+## Per-Client Security Schemes
+
+Your SDK supports the following security scheme globally:
+
+| Name          | Type          | Scheme        |
+| ------------- | ------------- | ------------- |
+| `bearer_auth` | http          | HTTP Bearer   |
+
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
+
+```python
+import hightouch
+from hightouch.models import shared
+
+s = hightouch.Hightouch(
+    security=shared.Security(
+        bearer_auth="",
+    ),
+)
+
+req = shared.DestinationCreate(
+    configuration={
+        "key": 'string',
+    },
+    name='string',
+    slug='string',
+    type='string',
+)
+
+res = s.create_destination(req)
+
+if res.one_of is not None:
+    # handle response
+    pass
+```
+<!-- End Authentication -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

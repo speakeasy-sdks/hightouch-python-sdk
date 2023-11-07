@@ -3,15 +3,14 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import syncrun as shared_syncrun
-from ..shared import validateerrorjson as shared_validateerrorjson
+from ...models.shared import syncrun as shared_syncrun
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from enum import Enum
 from hightouch import utils
 from typing import List, Optional
 
-class ListSyncRunsOrderBy(str, Enum):
+class ListSyncRunsQueryParamOrderBy(str, Enum):
     r"""specify the order"""
     ID = 'id'
     CREATED_AT = 'createdAt'
@@ -30,7 +29,7 @@ class ListSyncRunsRequest:
     r"""limit the number of objects returned (default is 5)"""
     offset: Optional[float] = dataclasses.field(default=0, metadata={'query_param': { 'field_name': 'offset', 'style': 'form', 'explode': True }})
     r"""set the offset on results (for pagination)"""
-    order_by: Optional[ListSyncRunsOrderBy] = dataclasses.field(default=ListSyncRunsOrderBy.ID, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
+    order_by: Optional[ListSyncRunsQueryParamOrderBy] = dataclasses.field(default=ListSyncRunsQueryParamOrderBy.ID, metadata={'query_param': { 'field_name': 'orderBy', 'style': 'form', 'explode': True }})
     r"""specify the order"""
     run_id: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'runId', 'style': 'form', 'explode': True }})
     r"""query for specific run id"""
@@ -42,7 +41,7 @@ class ListSyncRunsRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListSyncRuns200ApplicationJSON:
+class ListSyncRunsResponseBody:
     r"""Ok"""
     data: List[shared_syncrun.SyncRun] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     has_more: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hasMore') }})
@@ -56,11 +55,9 @@ class ListSyncRunsResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    list_sync_runs_200_application_json_object: Optional[ListSyncRuns200ApplicationJSON] = dataclasses.field(default=None)
+    object: Optional[ListSyncRunsResponseBody] = dataclasses.field(default=None)
     r"""Ok"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
-    r"""Validation Failed"""
     
 

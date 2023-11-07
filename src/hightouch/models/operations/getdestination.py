@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import destination as shared_destination
+from ...models.shared import destination as shared_destination
 from typing import Optional
 
 

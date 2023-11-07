@@ -1,19 +1,29 @@
 # SyncSchedule
 
-The scheduling configuration. It can be triggerd based on several ways:
 
-Interval: the sync will be trigged based on certain interval(minutes/hours/days/weeks)
+## Supported Types
 
-Cron: the sync will be trigged based on cron expression https://en.wikipedia.org/wiki/Cron.
+### IntervalSchedule
 
-Visual: the sync will be trigged based a visual cron configuration on UI
+```python
+syncSchedule: shared.IntervalSchedule = /* values here */
+```
 
-DBT-cloud: the sync will be trigged based on a dbt cloud job
+### CronSchedule
 
+```python
+syncSchedule: shared.CronSchedule = /* values here */
+```
 
-## Fields
+### VisualCronSchedule
 
-| Field                                                                                                                 | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
-| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `schedule`                                                                                                            | [Union[IntervalSchedule, CronSchedule, VisualCronSchedule, DBTSchedule]](../../models/shared/syncscheduleschedule.md) | :heavy_check_mark:                                                                                                    | N/A                                                                                                                   |
-| `type`                                                                                                                | *str*                                                                                                                 | :heavy_check_mark:                                                                                                    | N/A                                                                                                                   |
+```python
+syncSchedule: shared.VisualCronSchedule = /* values here */
+```
+
+### DBTSchedule
+
+```python
+syncSchedule: shared.DBTSchedule = /* values here */
+```
+

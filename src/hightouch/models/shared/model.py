@@ -11,7 +11,7 @@ from typing import Any, Dict, List, Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ModelCustom:
+class Custom:
     r"""Custom query for sources that doesn't support sql. For example, Airtable."""
     query: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('query') }})
     
@@ -20,7 +20,7 @@ class ModelCustom:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ModelDbt:
+class Dbt:
     r"""Query that is based on a dbt model"""
     compiled_sql: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('compiledSql') }})
     r"""Compiled SQL in the dbt model"""
@@ -42,7 +42,7 @@ class ModelDbt:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ModelRaw:
+class Raw:
     r"""Standard raw SQL query"""
     sql: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sql') }})
     
@@ -51,7 +51,7 @@ class ModelRaw:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ModelTable:
+class Table:
     r"""Table-based query that fetches on a table instead of SQL"""
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
     
@@ -60,7 +60,7 @@ class ModelTable:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ModelVisual:
+class Visual:
     r"""Visual query, used by audience"""
     filter: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('filter') }})
     parent_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('parentId') }})
@@ -103,16 +103,16 @@ class Model:
     r"""The timestamp when model was lastly updated"""
     workspace_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('workspaceId') }})
     r"""The id of the workspace where the model belongs to"""
-    custom: Optional[ModelCustom] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('custom'), 'exclude': lambda f: f is None }})
+    custom: Optional[Custom] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('custom'), 'exclude': lambda f: f is None }})
     r"""Custom query for sources that doesn't support sql. For example, Airtable."""
-    dbt: Optional[ModelDbt] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dbt'), 'exclude': lambda f: f is None }})
+    dbt: Optional[Dbt] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dbt'), 'exclude': lambda f: f is None }})
     r"""Query that is based on a dbt model"""
     folder_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('folderId'), 'exclude': lambda f: f is None }})
-    raw: Optional[ModelRaw] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('raw'), 'exclude': lambda f: f is None }})
+    raw: Optional[Raw] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('raw'), 'exclude': lambda f: f is None }})
     r"""Standard raw SQL query"""
-    table: Optional[ModelTable] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('table'), 'exclude': lambda f: f is None }})
+    table: Optional[Table] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('table'), 'exclude': lambda f: f is None }})
     r"""Table-based query that fetches on a table instead of SQL"""
-    visual: Optional[ModelVisual] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('visual'), 'exclude': lambda f: f is None }})
+    visual: Optional[Visual] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('visual'), 'exclude': lambda f: f is None }})
     r"""Visual query, used by audience"""
     
 

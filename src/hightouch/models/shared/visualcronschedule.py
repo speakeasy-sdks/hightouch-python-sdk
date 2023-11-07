@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import record_day_boolean_or_undefined_ as shared_record_day_boolean_or_undefined_
+from .record_day_boolean_or_undefined_ import RecordDayBooleanOrUndefined
 from dataclasses_json import Undefined, dataclass_json
 from hightouch import utils
 from typing import List
@@ -10,8 +10,8 @@ from typing import List
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class VisualCronScheduleExpressions:
-    days: shared_record_day_boolean_or_undefined_.RecordDayBooleanOrUndefined = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('days') }})
+class Expressions:
+    days: RecordDayBooleanOrUndefined = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('days') }})
     r"""Construct a type with a set of properties K of type T"""
     time: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('time') }})
     
@@ -21,6 +21,6 @@ class VisualCronScheduleExpressions:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class VisualCronSchedule:
-    expressions: List[VisualCronScheduleExpressions] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expressions') }})
+    expressions: List[Expressions] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expressions') }})
     
 

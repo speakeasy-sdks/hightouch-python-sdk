@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field                                                           | Type                                                            | Required                                                        | Description                                                     |
-| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `account`                                                       | [DBTScheduleAccount](../../models/shared/dbtscheduleaccount.md) | :heavy_check_mark:                                              | N/A                                                             |
-| `job`                                                           | [DBTScheduleJob](../../models/shared/dbtschedulejob.md)         | :heavy_check_mark:                                              | N/A                                                             |
+| Field                                            | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `account`                                        | [shared.Account](../../models/shared/account.md) | :heavy_check_mark:                               | N/A                                              |
+| `job`                                            | [shared.Job](../../models/shared/job.md)         | :heavy_check_mark:                               | N/A                                              |

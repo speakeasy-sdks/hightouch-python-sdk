@@ -55,9 +55,9 @@ req = shared.DestinationCreate(
     type='string',
 )
 
-res = s.hightouch.create_destination(req)
+res = s.create_destination(req)
 
-if res.create_destination_200_application_json_one_of is not None:
+if res.one_of is not None:
     # handle response
     pass
 ```
@@ -117,9 +117,9 @@ req = shared.ModelCreate(
     ),
 )
 
-res = s.hightouch.create_model(req)
+res = s.create_model(req)
 
-if res.create_model_200_application_json_one_of is not None:
+if res.one_of is not None:
     # handle response
     pass
 ```
@@ -161,9 +161,9 @@ req = shared.SourceCreate(
     type='string',
 )
 
-res = s.hightouch.create_source(req)
+res = s.create_source(req)
 
-if res.create_source_200_application_json_one_of is not None:
+if res.one_of is not None:
     # handle response
     pass
 ```
@@ -205,10 +205,10 @@ req = shared.SyncCreate(
     model_id='string',
     schedule=shared.SyncCreateSchedule(
         shared.DBTSchedule(
-            account=shared.DBTScheduleAccount(
+            account=shared.Account(
                 id='<ID>',
             ),
-            job=shared.DBTScheduleJob(
+            job=shared.Job(
                 id='<ID>',
             ),
         ),
@@ -217,9 +217,9 @@ req = shared.SyncCreate(
     slug='string',
 )
 
-res = s.hightouch.create_sync(req)
+res = s.create_sync(req)
 
-if res.create_sync_200_application_json_one_of is not None:
+if res.one_of is not None:
     # handle response
     pass
 ```
@@ -256,7 +256,7 @@ req = operations.GetDestinationRequest(
     destination_id=4856.96,
 )
 
-res = s.hightouch.get_destination(req)
+res = s.get_destination(req)
 
 if res.destination is not None:
     # handle response
@@ -295,7 +295,7 @@ req = operations.GetModelRequest(
     model_id=7962.16,
 )
 
-res = s.hightouch.get_model(req)
+res = s.get_model(req)
 
 if res.model is not None:
     # handle response
@@ -334,7 +334,7 @@ req = operations.GetSourceRequest(
     source_id=4378.62,
 )
 
-res = s.hightouch.get_source(req)
+res = s.get_source(req)
 
 if res.source is not None:
     # handle response
@@ -373,7 +373,7 @@ req = operations.GetSyncRequest(
     sync_id=7319.86,
 )
 
-res = s.hightouch.get_sync(req)
+res = s.get_sync(req)
 
 if res.sync is not None:
     # handle response
@@ -412,7 +412,7 @@ req = operations.GetSyncSequenceRunRequest(
     sync_sequence_run_id='string',
 )
 
-res = s.hightouch.get_sync_sequence_run(req)
+res = s.get_sync_sequence_run(req)
 
 if res.sync_sequence_status_output is not None:
     # handle response
@@ -449,9 +449,9 @@ s = hightouch.Hightouch(
 
 req = operations.ListDestinationRequest()
 
-res = s.hightouch.list_destination(req)
+res = s.list_destination(req)
 
-if res.list_destination_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -486,9 +486,9 @@ s = hightouch.Hightouch(
 
 req = operations.ListModelRequest()
 
-res = s.hightouch.list_model(req)
+res = s.list_model(req)
 
-if res.list_model_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -523,9 +523,9 @@ s = hightouch.Hightouch(
 
 req = operations.ListSourceRequest()
 
-res = s.hightouch.list_source(req)
+res = s.list_source(req)
 
-if res.list_source_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -549,8 +549,8 @@ List all the syncs in the current workspace
 ### Example Usage
 
 ```python
-import hightouch
 import dateutil.parser
+import hightouch
 from hightouch.models import operations, shared
 
 s = hightouch.Hightouch(
@@ -561,9 +561,9 @@ s = hightouch.Hightouch(
 
 req = operations.ListSyncRequest()
 
-res = s.hightouch.list_sync(req)
+res = s.list_sync(req)
 
-if res.list_sync_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -587,8 +587,8 @@ List all sync runs under a sync
 ### Example Usage
 
 ```python
-import hightouch
 import dateutil.parser
+import hightouch
 from hightouch.models import operations, shared
 
 s = hightouch.Hightouch(
@@ -601,9 +601,9 @@ req = operations.ListSyncRunsRequest(
     sync_id=8858.62,
 )
 
-res = s.hightouch.list_sync_runs(req)
+res = s.list_sync_runs(req)
 
-if res.list_sync_runs_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -644,7 +644,7 @@ req = operations.TriggerRunRequest(
     sync_id='string',
 )
 
-res = s.hightouch.trigger_run(req)
+res = s.trigger_run(req)
 
 if res.trigger_run_output is not None:
     # handle response
@@ -684,9 +684,9 @@ s = hightouch.Hightouch(
 
 req = shared.TriggerRunCustomInput()
 
-res = s.hightouch.trigger_run_custom(req)
+res = s.trigger_run_custom(req)
 
-if res.trigger_run_custom_200_application_json_one_of is not None:
+if res.one_of is not None:
     # handle response
     pass
 ```
@@ -722,7 +722,7 @@ req = operations.TriggerRunIDGraphRequest(
     graph_id='string',
 )
 
-res = s.hightouch.trigger_run_id_graph(req)
+res = s.trigger_run_id_graph(req)
 
 if res.trigger_run_id_graph_output is not None:
     # handle response
@@ -764,7 +764,7 @@ req = operations.TriggerSequenceRunRequest(
     sync_sequence_id='string',
 )
 
-res = s.hightouch.trigger_sequence_run(req)
+res = s.trigger_sequence_run(req)
 
 if res.trigger_sequence_run_output is not None:
     # handle response
@@ -810,9 +810,9 @@ req = operations.UpdateDestinationRequest(
     destination_id=8928.88,
 )
 
-res = s.hightouch.update_destination(req)
+res = s.update_destination(req)
 
-if res.update_destination_200_application_json_one_of is not None:
+if res.one_of is not None:
     # handle response
     pass
 ```
@@ -871,9 +871,9 @@ req = operations.UpdateModelRequest(
     model_id=1027.03,
 )
 
-res = s.hightouch.update_model(req)
+res = s.update_model(req)
 
-if res.update_model_200_application_json_one_of is not None:
+if res.one_of is not None:
     # handle response
     pass
 ```
@@ -917,9 +917,9 @@ req = operations.UpdateSourceRequest(
     source_id=6585.68,
 )
 
-res = s.hightouch.update_source(req)
+res = s.update_source(req)
 
-if res.update_source_200_application_json_one_of is not None:
+if res.one_of is not None:
     # handle response
     pass
 ```
@@ -962,7 +962,7 @@ req = operations.UpdateSyncRequest(
         schedule=shared.SyncUpdateSchedule(
             shared.VisualCronSchedule(
                 expressions=[
-                    shared.VisualCronScheduleExpressions(
+                    shared.Expressions(
                         days=shared.RecordDayBooleanOrUndefined(),
                         time='string',
                     ),
@@ -974,9 +974,9 @@ req = operations.UpdateSyncRequest(
     sync_id=1402.89,
 )
 
-res = s.hightouch.update_sync(req)
+res = s.update_sync(req)
 
-if res.update_sync_200_application_json_one_of is not None:
+if res.one_of is not None:
     # handle response
     pass
 ```

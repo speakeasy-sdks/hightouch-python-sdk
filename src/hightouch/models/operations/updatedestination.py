@@ -3,10 +3,10 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import destination as shared_destination
-from ..shared import destinationupdate as shared_destinationupdate
-from ..shared import internalservererror as shared_internalservererror
-from ..shared import validateerrorjson as shared_validateerrorjson
+from ...models.shared import destination as shared_destination
+from ...models.shared import destinationupdate as shared_destinationupdate
+from ...models.shared import internalservererror as shared_internalservererror
+from ...models.shared import validateerrorjson as shared_validateerrorjson
 from typing import Optional, Union
 
 
@@ -20,7 +20,7 @@ class UpdateDestinationRequest:
 
 
 @dataclasses.dataclass
-class UpdateDestination200ApplicationJSON:
+class UpdateDestinationResponseBody:
     r"""Ok"""
     
 
@@ -32,13 +32,9 @@ class UpdateDestinationResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    internal_server_error: Optional[shared_internalservererror.InternalServerError] = dataclasses.field(default=None)
-    r"""Something went wrong"""
+    one_of: Optional[Union[shared_destination.Destination, shared_validateerrorjson.ValidateErrorJSON, shared_internalservererror.InternalServerError]] = dataclasses.field(default=None)
+    r"""Ok"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    update_destination_200_application_json_one_of: Optional[Union[shared_destination.Destination, shared_validateerrorjson.ValidateErrorJSON, shared_internalservererror.InternalServerError]] = dataclasses.field(default=None)
-    r"""Ok"""
-    validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
-    r"""Validation Failed"""
     
 

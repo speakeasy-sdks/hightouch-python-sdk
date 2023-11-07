@@ -3,8 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import syncsequencestatusoutput as shared_syncsequencestatusoutput
-from ..shared import validateerrorjson as shared_validateerrorjson
+from ...models.shared import syncsequencestatusoutput as shared_syncsequencestatusoutput
 from typing import Optional
 
 
@@ -26,7 +25,5 @@ class GetSyncSequenceRunResponse:
     r"""Raw HTTP response; suitable for custom response parsing"""
     sync_sequence_status_output: Optional[shared_syncsequencestatusoutput.SyncSequenceStatusOutput] = dataclasses.field(default=None)
     r"""Ok"""
-    validate_error_json: Optional[shared_validateerrorjson.ValidateErrorJSON] = dataclasses.field(default=None)
-    r"""Validation Failed"""
     
 

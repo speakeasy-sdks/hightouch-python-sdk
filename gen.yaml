@@ -2,24 +2,31 @@ configVersion: 1.0.0
 management:
   docChecksum: 7998dbff43d13b24f5ce8289e558ad2e
   docVersion: 1.0.0
-  speakeasyVersion: 1.109.0
-  generationVersion: 2.173.0
+  speakeasyVersion: 1.114.1
+  generationVersion: 2.181.1
 generation:
-  repoURL: https://github.com/speakeasy-sdks/hightouch-python-sdk.git
+  comments: {}
   sdkClassName: hightouch
-  sdkFlattening: false
-  singleTagPerOp: false
-  telemetryEnabled: true
+  repoURL: https://github.com/speakeasy-sdks/hightouch-python-sdk.git
 features:
   python:
-    core: 3.3.1
+    core: 4.1.0
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
 python:
-  version: 2.1.1
+  version: 3.0.0
   author: Speakeasy
+  clientServerStatusCodesAsErrors: true
   description: Python SDK for Hightouch API
   flattenGlobalSecurity: false
+  imports:
+    option: openapi
+    paths:
+      callbacks: models/callbacks
+      errors: models/errors
+      operations: models/operations
+      shared: models/shared
+      webhooks: models/webhooks
   installationURL: https://github.com/speakeasy-sdks/hightouch-python-sdk.git
   maxMethodParams: 0
   maxMethodParms: 4

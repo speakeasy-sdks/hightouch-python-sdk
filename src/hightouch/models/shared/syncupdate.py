@@ -2,17 +2,17 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import cronschedule as shared_cronschedule
-from ..shared import dbtschedule as shared_dbtschedule
-from ..shared import intervalschedule as shared_intervalschedule
-from ..shared import visualcronschedule as shared_visualcronschedule
+from .cronschedule import CronSchedule
+from .dbtschedule import DBTSchedule
+from .intervalschedule import IntervalSchedule
+from .visualcronschedule import VisualCronSchedule
 from dataclasses_json import Undefined, dataclass_json
 from hightouch import utils
 from typing import Any, Dict, Optional, Union
 
 
 @dataclasses.dataclass
-class SyncUpdateScheduleSchedule:
+class SyncUpdateSchemasSchedule:
     pass
 
 
@@ -29,7 +29,7 @@ class SyncUpdateSchedule:
 
     DBT-cloud: the sync will be trigged based on a dbt cloud job
     """
-    schedule: Union[shared_intervalschedule.IntervalSchedule, shared_cronschedule.CronSchedule, shared_visualcronschedule.VisualCronSchedule, shared_dbtschedule.DBTSchedule] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})
+    schedule: Union[IntervalSchedule, CronSchedule, VisualCronSchedule, DBTSchedule] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})
     type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     
 
