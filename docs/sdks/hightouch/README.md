@@ -72,7 +72,12 @@ if res.one_of is not None:
 ### Response
 
 **[operations.CreateDestinationResponse](../../models/operations/createdestinationresponse.md)**
+### Errors
 
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ValidateErrorJSON | 409,422                  | application/json         |
+| errors.SDKError          | 400-600                  | */*                      |
 
 ## create_model
 
@@ -134,7 +139,12 @@ if res.one_of is not None:
 ### Response
 
 **[operations.CreateModelResponse](../../models/operations/createmodelresponse.md)**
+### Errors
 
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ValidateErrorJSON | 409,422                  | application/json         |
+| errors.SDKError          | 400-600                  | */*                      |
 
 ## create_source
 
@@ -178,7 +188,12 @@ if res.one_of is not None:
 ### Response
 
 **[operations.CreateSourceResponse](../../models/operations/createsourceresponse.md)**
+### Errors
 
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ValidateErrorJSON | 409,422                  | application/json         |
+| errors.SDKError          | 400-600                  | */*                      |
 
 ## create_sync
 
@@ -234,7 +249,12 @@ if res.one_of is not None:
 ### Response
 
 **[operations.CreateSyncResponse](../../models/operations/createsyncresponse.md)**
+### Errors
 
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ValidateErrorJSON | 409,422                  | application/json         |
+| errors.SDKError          | 400-600                  | */*                      |
 
 ## get_destination
 
@@ -273,7 +293,11 @@ if res.destination is not None:
 ### Response
 
 **[operations.GetDestinationResponse](../../models/operations/getdestinationresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## get_model
 
@@ -312,7 +336,11 @@ if res.model is not None:
 ### Response
 
 **[operations.GetModelResponse](../../models/operations/getmodelresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## get_source
 
@@ -351,7 +379,12 @@ if res.source is not None:
 ### Response
 
 **[operations.GetSourceResponse](../../models/operations/getsourceresponse.md)**
+### Errors
 
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ValidateErrorJSON | 422                      | application/json         |
+| errors.SDKError          | 400-600                  | */*                      |
 
 ## get_sync
 
@@ -390,7 +423,11 @@ if res.sync is not None:
 ### Response
 
 **[operations.GetSyncResponse](../../models/operations/getsyncresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## get_sync_sequence_run
 
@@ -429,7 +466,12 @@ if res.sync_sequence_status_output is not None:
 ### Response
 
 **[operations.GetSyncSequenceRunResponse](../../models/operations/getsyncsequencerunresponse.md)**
+### Errors
 
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ValidateErrorJSON | 422                      | application/json         |
+| errors.SDKError          | 400-600                  | */*                      |
 
 ## list_destination
 
@@ -466,7 +508,12 @@ if res.object is not None:
 ### Response
 
 **[operations.ListDestinationResponse](../../models/operations/listdestinationresponse.md)**
+### Errors
 
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ValidateErrorJSON | 422                      | application/json         |
+| errors.SDKError          | 400-600                  | */*                      |
 
 ## list_model
 
@@ -503,7 +550,12 @@ if res.object is not None:
 ### Response
 
 **[operations.ListModelResponse](../../models/operations/listmodelresponse.md)**
+### Errors
 
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ValidateErrorJSON | 422                      | application/json         |
+| errors.SDKError          | 400-600                  | */*                      |
 
 ## list_source
 
@@ -540,7 +592,11 @@ if res.object is not None:
 ### Response
 
 **[operations.ListSourceResponse](../../models/operations/listsourceresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## list_sync
 
@@ -578,7 +634,12 @@ if res.object is not None:
 ### Response
 
 **[operations.ListSyncResponse](../../models/operations/listsyncresponse.md)**
+### Errors
 
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ValidateErrorJSON | 422                      | application/json         |
+| errors.SDKError          | 400-600                  | */*                      |
 
 ## list_sync_runs
 
@@ -618,7 +679,12 @@ if res.object is not None:
 ### Response
 
 **[operations.ListSyncRunsResponse](../../models/operations/listsyncrunsresponse.md)**
+### Errors
 
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ValidateErrorJSON | 422                      | application/json         |
+| errors.SDKError          | 400-600                  | */*                      |
 
 ## trigger_run
 
@@ -661,7 +727,12 @@ if res.trigger_run_output is not None:
 ### Response
 
 **[operations.TriggerRunResponse](../../models/operations/triggerrunresponse.md)**
+### Errors
 
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ValidateErrorJSON | 422                      | application/json         |
+| errors.SDKError          | 400-600                  | */*                      |
 
 ## trigger_run_custom
 
@@ -701,7 +772,12 @@ if res.one_of is not None:
 ### Response
 
 **[operations.TriggerRunCustomResponse](../../models/operations/triggerruncustomresponse.md)**
+### Errors
 
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ValidateErrorJSON | 422                      | application/json         |
+| errors.SDKError          | 400-600                  | */*                      |
 
 ## trigger_run_id_graph
 
@@ -739,7 +815,12 @@ if res.trigger_run_id_graph_output is not None:
 ### Response
 
 **[operations.TriggerRunIDGraphResponse](../../models/operations/triggerrunidgraphresponse.md)**
+### Errors
 
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ValidateErrorJSON | 422                      | application/json         |
+| errors.SDKError          | 400-600                  | */*                      |
 
 ## trigger_sequence_run
 
@@ -781,7 +862,12 @@ if res.trigger_sequence_run_output is not None:
 ### Response
 
 **[operations.TriggerSequenceRunResponse](../../models/operations/triggersequencerunresponse.md)**
+### Errors
 
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ValidateErrorJSON | 422                      | application/json         |
+| errors.SDKError          | 400-600                  | */*                      |
 
 ## update_destination
 
@@ -827,7 +913,12 @@ if res.one_of is not None:
 ### Response
 
 **[operations.UpdateDestinationResponse](../../models/operations/updatedestinationresponse.md)**
+### Errors
 
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ValidateErrorJSON | 422                      | application/json         |
+| errors.SDKError          | 400-600                  | */*                      |
 
 ## update_model
 
@@ -888,7 +979,12 @@ if res.one_of is not None:
 ### Response
 
 **[operations.UpdateModelResponse](../../models/operations/updatemodelresponse.md)**
+### Errors
 
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ValidateErrorJSON | 422                      | application/json         |
+| errors.SDKError          | 400-600                  | */*                      |
 
 ## update_source
 
@@ -934,7 +1030,12 @@ if res.one_of is not None:
 ### Response
 
 **[operations.UpdateSourceResponse](../../models/operations/updatesourceresponse.md)**
+### Errors
 
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ValidateErrorJSON | 422                      | application/json         |
+| errors.SDKError          | 400-600                  | */*                      |
 
 ## update_sync
 
@@ -991,4 +1092,9 @@ if res.one_of is not None:
 ### Response
 
 **[operations.UpdateSyncResponse](../../models/operations/updatesyncresponse.md)**
+### Errors
 
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ValidateErrorJSON | 422                      | application/json         |
+| errors.SDKError          | 400-600                  | */*                      |

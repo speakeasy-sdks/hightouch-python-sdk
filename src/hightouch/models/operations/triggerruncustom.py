@@ -9,13 +9,6 @@ from typing import Optional, Union
 
 
 @dataclasses.dataclass
-class TriggerRunCustomResponseBody:
-    r"""Ok"""
-    
-
-
-
-@dataclasses.dataclass
 class TriggerRunCustomResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""

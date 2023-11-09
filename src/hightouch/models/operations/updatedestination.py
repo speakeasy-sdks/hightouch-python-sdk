@@ -20,13 +20,6 @@ class UpdateDestinationRequest:
 
 
 @dataclasses.dataclass
-class UpdateDestinationResponseBody:
-    r"""Ok"""
-    
-
-
-
-@dataclasses.dataclass
 class UpdateDestinationResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""

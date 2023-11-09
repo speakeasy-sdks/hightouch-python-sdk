@@ -4,7 +4,7 @@ import requests as requests_http
 from .sdkconfiguration import SDKConfiguration
 from hightouch import utils
 from hightouch.models import errors, operations, shared
-from typing import Dict, Optional, Union
+from typing import Callable, Dict, Optional, Union
 
 class Hightouch:
     r"""Hightouch API: Hightouch Public Rest API to access syncs, models, sources and destinations"""
@@ -12,7 +12,7 @@ class Hightouch:
     sdk_configuration: SDKConfiguration
 
     def __init__(self,
-                 security: shared.Security = None,
+                 security: Union[shared.Security,Callable[[], shared.Security]] = None,
                  server_idx: int = None,
                  server_url: str = None,
                  url_params: Dict[str, str] = None,
@@ -22,7 +22,7 @@ class Hightouch:
         """Instantiates the SDK configuring it with the provided parameters.
         
         :param security: The security details required for authentication
-        :type security: shared.Security
+        :type security: Union[shared.Security,Callable[[], shared.Security]]
         :param server_idx: The index of the server to use for all operations
         :type server_idx: int
         :param server_url: The server URL to use for all operations
@@ -37,17 +37,14 @@ class Hightouch:
         if client is None:
             client = requests_http.Session()
         
-        
-        security_client = utils.configure_security_client(client, security)
-        
-        
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
 
-        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx, retry_config=retry_config)
+        self.sdk_configuration = SDKConfiguration(client, security, server_url, server_idx, retry_config=retry_config)
        
         
+    
     
     
     
@@ -67,7 +64,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -93,6 +93,7 @@ class Hightouch:
         return res
 
     
+    
     def create_model(self, request: shared.ModelCreate) -> operations.CreateModelResponse:
         r"""Create Model
         Create a new model
@@ -109,7 +110,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -135,6 +139,7 @@ class Hightouch:
         return res
 
     
+    
     def create_source(self, request: shared.SourceCreate) -> operations.CreateSourceResponse:
         r"""Create Source
         Create a new source
@@ -151,7 +156,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -177,6 +185,7 @@ class Hightouch:
         return res
 
     
+    
     def create_sync(self, request: shared.SyncCreate) -> operations.CreateSyncResponse:
         r"""Create Sync
         Create a new sync
@@ -193,7 +202,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -219,6 +231,7 @@ class Hightouch:
         return res
 
     
+    
     def get_destination(self, request: operations.GetDestinationRequest) -> operations.GetDestinationResponse:
         r"""Get Destination
         Retrieve a destination based on its Hightouch ID
@@ -230,7 +243,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -249,6 +265,7 @@ class Hightouch:
         return res
 
     
+    
     def get_model(self, request: operations.GetModelRequest) -> operations.GetModelResponse:
         r"""Get Model
         Retrieve models from model ID
@@ -260,7 +277,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -279,6 +299,7 @@ class Hightouch:
         return res
 
     
+    
     def get_source(self, request: operations.GetSourceRequest) -> operations.GetSourceResponse:
         r"""Get Source
         Retrieve source from source ID
@@ -290,7 +311,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -316,6 +340,7 @@ class Hightouch:
         return res
 
     
+    
     def get_sync(self, request: operations.GetSyncRequest) -> operations.GetSyncResponse:
         r"""Get Sync
         Retrieve sync from sync ID
@@ -327,7 +352,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -346,6 +374,7 @@ class Hightouch:
         return res
 
     
+    
     def get_sync_sequence_run(self, request: operations.GetSyncSequenceRunRequest) -> operations.GetSyncSequenceRunResponse:
         r"""Sync sequence status
         Get the status of a sync sequence run.
@@ -357,7 +386,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -383,6 +415,7 @@ class Hightouch:
         return res
 
     
+    
     def list_destination(self, request: operations.ListDestinationRequest) -> operations.ListDestinationResponse:
         r"""List Destinations
         List the destinations in the user's workspace
@@ -395,7 +428,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -421,6 +457,7 @@ class Hightouch:
         return res
 
     
+    
     def list_model(self, request: operations.ListModelRequest) -> operations.ListModelResponse:
         r"""List Models
         List all the models in the current workspace including parent and related models
@@ -433,7 +470,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -459,6 +499,7 @@ class Hightouch:
         return res
 
     
+    
     def list_source(self, request: operations.ListSourceRequest) -> operations.ListSourceResponse:
         r"""List Sources
         List all the sources in the current workspace
@@ -471,7 +512,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -490,6 +534,7 @@ class Hightouch:
         return res
 
     
+    
     def list_sync(self, request: operations.ListSyncRequest) -> operations.ListSyncResponse:
         r"""List Syncs
         List all the syncs in the current workspace
@@ -502,7 +547,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -528,6 +576,7 @@ class Hightouch:
         return res
 
     
+    
     def list_sync_runs(self, request: operations.ListSyncRunsRequest) -> operations.ListSyncRunsResponse:
         r"""List Sync Runs
         List all sync runs under a sync
@@ -540,7 +589,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -566,6 +618,7 @@ class Hightouch:
         return res
 
     
+    
     def trigger_run(self, request: operations.TriggerRunRequest) -> operations.TriggerRunResponse:
         r"""Trigger Sync
         Trigger a new run for the given sync.
@@ -583,7 +636,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -609,6 +665,7 @@ class Hightouch:
         return res
 
     
+    
     def trigger_run_custom(self, request: shared.TriggerRunCustomInput) -> operations.TriggerRunCustomResponse:
         r"""Trigger Sync From ID or Slug
         Trigger a new run globally based on sync id or sync slug
@@ -628,7 +685,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -654,6 +714,7 @@ class Hightouch:
         return res
 
     
+    
     def trigger_run_id_graph(self, request: operations.TriggerRunIDGraphRequest) -> operations.TriggerRunIDGraphResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -665,7 +726,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -691,6 +755,7 @@ class Hightouch:
         return res
 
     
+    
     def trigger_sequence_run(self, request: operations.TriggerSequenceRunRequest) -> operations.TriggerSequenceRunResponse:
         r"""Trigger Sync sequence
         Trigger a new run for the given sync sequence.
@@ -705,7 +770,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -731,6 +799,7 @@ class Hightouch:
         return res
 
     
+    
     def update_destination(self, request: operations.UpdateDestinationRequest) -> operations.UpdateDestinationResponse:
         r"""Update Destination
         Update an existing destination
@@ -749,7 +818,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -775,6 +847,7 @@ class Hightouch:
         return res
 
     
+    
     def update_model(self, request: operations.UpdateModelRequest) -> operations.UpdateModelResponse:
         r"""Update Model
         Update an existing model
@@ -793,7 +866,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -819,6 +895,7 @@ class Hightouch:
         return res
 
     
+    
     def update_source(self, request: operations.UpdateSourceRequest) -> operations.UpdateSourceResponse:
         r"""Update Source
         Update an existing source
@@ -837,7 +914,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -863,6 +943,7 @@ class Hightouch:
         return res
 
     
+    
     def update_sync(self, request: operations.UpdateSyncRequest) -> operations.UpdateSyncResponse:
         r"""Update Sync
         Update an existing sync
@@ -881,7 +962,10 @@ class Hightouch:
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')

@@ -20,13 +20,6 @@ class UpdateModelRequest:
 
 
 @dataclasses.dataclass
-class UpdateModelResponseBody:
-    r"""Ok"""
-    
-
-
-
-@dataclasses.dataclass
 class UpdateModelResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""

@@ -11,11 +11,6 @@ from hightouch import utils
 from typing import Any, Dict, Optional, Union
 
 
-@dataclasses.dataclass
-class SyncUpdateSchemasSchedule:
-    pass
-
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class SyncUpdateSchedule:

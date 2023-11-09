@@ -2,19 +2,19 @@ configVersion: 1.0.0
 management:
   docChecksum: 7998dbff43d13b24f5ce8289e558ad2e
   docVersion: 1.0.0
-  speakeasyVersion: 1.114.1
-  generationVersion: 2.181.1
+  speakeasyVersion: 1.116.0
+  generationVersion: 2.185.0
 generation:
   comments: {}
   sdkClassName: hightouch
   repoURL: https://github.com/speakeasy-sdks/hightouch-python-sdk.git
 features:
   python:
-    core: 4.1.0
-    globalSecurity: 2.82.0
+    core: 4.1.2
+    globalSecurity: 2.83.0
     globalServerURLs: 2.82.0
 python:
-  version: 3.0.0
+  version: 3.1.0
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
   description: Python SDK for Hightouch API
@@ -27,8 +27,10 @@ python:
       operations: models/operations
       shared: models/shared
       webhooks: models/webhooks
+  inputModelSuffix: input
   installationURL: https://github.com/speakeasy-sdks/hightouch-python-sdk.git
   maxMethodParams: 0
   maxMethodParms: 4
+  outputModelSuffix: output
   packageName: hightouch
   repoSubDirectory: .

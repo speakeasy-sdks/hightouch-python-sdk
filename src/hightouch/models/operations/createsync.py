@@ -10,13 +10,6 @@ from typing import Optional, Union
 
 
 @dataclasses.dataclass
-class CreateSyncResponseBody:
-    r"""Ok"""
-    
-
-
-
-@dataclasses.dataclass
 class CreateSyncResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
