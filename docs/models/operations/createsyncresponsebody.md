@@ -14,7 +14,7 @@ createSyncResponseBody: shared.Sync = /* values here */
 ### ValidateErrorJSON
 
 ```python
-createSyncResponseBody: shared.ValidateErrorJSON = /* values here */
+createSyncResponseBody: errors.ValidateErrorJSON = /* values here */
 ```
 
 ### InternalServerError

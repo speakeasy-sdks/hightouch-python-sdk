@@ -14,7 +14,7 @@ updateModelResponseBody: shared.Model = /* values here */
 ### ValidateErrorJSON
 
 ```python
-updateModelResponseBody: shared.ValidateErrorJSON = /* values here */
+updateModelResponseBody: errors.ValidateErrorJSON = /* values here */
 ```
 
 ### InternalServerError
