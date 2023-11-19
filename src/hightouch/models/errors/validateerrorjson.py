@@ -15,6 +15,7 @@ class Message(str, Enum):
 
 @dataclasses.dataclass
 class ValidateErrorJSON(Exception):
+    r"""Conflict"""
     details: Dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details') }})
     message: Message = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})
     

@@ -14,7 +14,7 @@ updateDestinationResponseBody: shared.Destination = /* values here */
 ### ValidateErrorJSON
 
 ```python
-updateDestinationResponseBody: shared.ValidateErrorJSON = /* values here */
+updateDestinationResponseBody: errors.ValidateErrorJSON = /* values here */
 ```
 
 ### InternalServerError
