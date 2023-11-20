@@ -14,6 +14,6 @@ triggerRunCustomResponseBody: shared.TriggerRunOutput = /* values here */
 ### ValidateErrorJSON
 
 ```python
-triggerRunCustomResponseBody: shared.ValidateErrorJSON = /* values here */
+triggerRunCustomResponseBody: errors.ValidateErrorJSON = /* values here */
 ```
 
