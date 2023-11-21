@@ -10,7 +10,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="hightouch",
-    version="3.1.1",
+    version="3.1.2",
     author="Speakeasy",
     description="Python SDK for Hightouch API",
     long_description=long_description,
@@ -30,7 +30,7 @@ setuptools.setup(
         "six>=1.16.0",
         "typing-inspect>=0.9.0",
         "typing_extensions>=4.7.1",
-        "urllib3>=2.0.4",
+        "urllib3>=1.26.18",
     ],
     extras_require={
         "dev":["pylint==2.16.2"]

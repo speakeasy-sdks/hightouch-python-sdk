@@ -3,10 +3,10 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ...models.errors import validateerrorjson as errors_validateerrorjson
 from ...models.shared import internalservererror as shared_internalservererror
 from ...models.shared import model as shared_model
 from ...models.shared import modelupdate as shared_modelupdate
-from ...models.shared import validateerrorjson as shared_validateerrorjson
 from typing import Optional, Union
 
 
@@ -27,7 +27,7 @@ class UpdateModelResponse:
     r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    one_of: Optional[Union[shared_model.Model, shared_validateerrorjson.ValidateErrorJSON, shared_internalservererror.InternalServerError]] = dataclasses.field(default=None)
+    one_of: Optional[Union[shared_model.Model, errors_validateerrorjson.ValidateErrorJSON, shared_internalservererror.InternalServerError]] = dataclasses.field(default=None)
     r"""Ok"""
     
 

@@ -7,6 +7,7 @@ src/hightouch/utils/__init__.py
 src/hightouch/utils/retries.py
 src/hightouch/utils/utils.py
 src/hightouch/models/errors/sdkerror.py
+tests/helpers.py
 src/hightouch/models/operations/createdestination.py
 src/hightouch/models/operations/createmodel.py
 src/hightouch/models/operations/createsource.py
@@ -30,7 +31,6 @@ src/hightouch/models/operations/updatemodel.py
 src/hightouch/models/operations/updatesource.py
 src/hightouch/models/operations/updatesync.py
 src/hightouch/models/shared/destination.py
-src/hightouch/models/shared/validateerrorjson.py
 src/hightouch/models/shared/internalservererror.py
 src/hightouch/models/shared/destinationcreate.py
 src/hightouch/models/shared/model.py
@@ -127,8 +127,6 @@ docs/models/operations/updatesyncrequest.md
 docs/models/operations/updatesyncresponsebody.md
 docs/models/operations/updatesyncresponse.md
 docs/models/shared/destination.md
-docs/models/shared/message.md
-docs/models/shared/validateerrorjson.md
 docs/models/shared/internalservererror.md
 docs/models/shared/destinationcreate.md
 docs/models/shared/custom.md

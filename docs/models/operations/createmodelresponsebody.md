@@ -14,7 +14,7 @@ createModelResponseBody: shared.Model = /* values here */
 ### ValidateErrorJSON
 
 ```python
-createModelResponseBody: shared.ValidateErrorJSON = /* values here */
+createModelResponseBody: errors.ValidateErrorJSON = /* values here */
 ```
 
 ### InternalServerError

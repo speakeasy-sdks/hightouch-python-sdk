@@ -3,8 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ...models.errors import validateerrorjson as errors_validateerrorjson
 from ...models.shared import triggerrunoutput as shared_triggerrunoutput
-from ...models.shared import validateerrorjson as shared_validateerrorjson
 from typing import Optional, Union
 
 
@@ -16,7 +16,7 @@ class TriggerRunCustomResponse:
     r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    one_of: Optional[Union[shared_triggerrunoutput.TriggerRunOutput, shared_validateerrorjson.ValidateErrorJSON]] = dataclasses.field(default=None)
+    one_of: Optional[Union[shared_triggerrunoutput.TriggerRunOutput, errors_validateerrorjson.ValidateErrorJSON]] = dataclasses.field(default=None)
     r"""Ok"""
     
 

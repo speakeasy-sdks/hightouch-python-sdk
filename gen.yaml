@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: 7998dbff43d13b24f5ce8289e558ad2e
   docVersion: 1.0.0
-  speakeasyVersion: 1.120.3
-  generationVersion: 2.192.1
+  speakeasyVersion: 1.121.3
+  generationVersion: 2.195.2
 generation:
   comments: {}
   sdkClassName: hightouch
@@ -12,11 +12,11 @@ generation:
     optionalPropertyRendering: withExample
 features:
   python:
-    core: 4.1.4
+    core: 4.1.5
     globalSecurity: 2.83.0
-    globalServerURLs: 2.82.0
+    globalServerURLs: 2.82.1
 python:
-  version: 3.1.1
+  version: 3.1.2
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
   description: Python SDK for Hightouch API

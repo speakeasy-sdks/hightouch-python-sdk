@@ -219,14 +219,14 @@ req = shared.SyncCreate(
     disabled=False,
     model_id='string',
     schedule=shared.SyncCreateSchedule(
-        shared.DBTSchedule(
-            account=shared.Account(
-                id='<ID>',
-            ),
-            job=shared.Job(
-                id='<ID>',
-            ),
+        schedule=shared.DBTSchedule(
+        account=shared.Account(
+            id='<ID>',
         ),
+        job=shared.Job(
+            id='<ID>',
+        ),
+    ),
         type='string',
     ),
     slug='string',
@@ -1061,14 +1061,14 @@ req = operations.UpdateSyncRequest(
             "key": 'string',
         },
         schedule=shared.SyncUpdateSchedule(
-            shared.VisualCronSchedule(
-                expressions=[
-                    shared.Expressions(
-                        days=shared.RecordDayBooleanOrUndefined(),
-                        time='string',
-                    ),
-                ],
-            ),
+            schedule=shared.VisualCronSchedule(
+            expressions=[
+                shared.Expressions(
+                    days=shared.RecordDayBooleanOrUndefined(),
+                    time='string',
+                ),
+            ],
+        ),
             type='string',
         ),
     ),
