@@ -67,7 +67,6 @@ src/hightouch/models/__init__.py
 src/hightouch/models/errors/__init__.py
 src/hightouch/models/operations/__init__.py
 src/hightouch/models/shared/__init__.py
-USAGE.md
 docs/models/operations/createdestinationresponsebody.md
 docs/models/operations/createdestinationresponse.md
 docs/models/operations/createmodelresponsebody.md
@@ -189,4 +188,5 @@ docs/models/shared/security.md
 docs/models/errors/message.md
 docs/models/errors/validateerrorjson.md
 docs/sdks/hightouch/README.md
+USAGE.md
 .gitattributes

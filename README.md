@@ -8,13 +8,13 @@
   <a href="https://github.com/speakeasy-sdks/hightouch-python-sdk/releases"><img src="https://img.shields.io/github/v/release/speakeasy-sdks/hightouch-python-sdk?sort=semver&style=for-the-badge" /></a>
 </div>
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ```bash
 pip install git+https://github.com/speakeasy-sdks/hightouch-python-sdk.git
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
 ## Authentication
 
@@ -24,8 +24,9 @@ pip install git+https://github.com/speakeasy-sdks/hightouch-python-sdk.git
 - Copy your API key and store it in a safe location. The key will only be displayed once.
 - Click Create API key.
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example
 
 ```python
@@ -40,7 +41,7 @@ s = hightouch.Hightouch(
 
 req = shared.DestinationCreate(
     configuration={
-        "key": 'string',
+        'key': 'string',
     },
     name='string',
     slug='string',
@@ -53,9 +54,9 @@ if res.one_of is not None:
     # handle response
     pass
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [Hightouch SDK](docs/sdks/hightouch/README.md)
@@ -82,29 +83,15 @@ if res.one_of is not None:
 * [update_model](docs/sdks/hightouch/README.md#update_model) - Update Model
 * [update_source](docs/sdks/hightouch/README.md#update_source) - Update Source
 * [update_sync](docs/sdks/hightouch/README.md#update_sync) - Update Sync
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
 
 
 
-<!-- Start Pagination -->
-# Pagination
 
-Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
-returned response object will have a `Next` method that can be called to pull down the next group of results. If the
-return value of `Next` is `None`, then there are no more pages to be fetched.
-
-Here's an example of one such pagination call:
-<!-- End Pagination -->
-
-
-
-<!-- Start Error Handling -->
+<!-- Start Error Handling [errors] -->
 ## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
@@ -128,7 +115,7 @@ s = hightouch.Hightouch(
 
 req = shared.DestinationCreate(
     configuration={
-        "key": 'string',
+        'key': 'string',
     },
     name='string',
     slug='string',
@@ -138,22 +125,22 @@ req = shared.DestinationCreate(
 res = None
 try:
     res = s.create_destination(req)
-
-except (errors.ValidateErrorJSON) as e:
-    print(e) # handle exception
-except (errors.SDKError) as e:
-    print(e) # handle exception
-
+except errors.ValidateErrorJSON as e:
+    print(e)  # handle exception
+    raise(e)
+except errors.SDKError as e:
+    print(e)  # handle exception
+    raise(e)
 
 if res.one_of is not None:
     # handle response
     pass
 ```
-<!-- End Error Handling -->
+<!-- End Error Handling [errors] -->
 
 
 
-<!-- Start Server Selection -->
+<!-- Start Server Selection [server] -->
 ## Server Selection
 
 ### Select Server by Index
@@ -179,7 +166,7 @@ s = hightouch.Hightouch(
 
 req = shared.DestinationCreate(
     configuration={
-        "key": 'string',
+        'key': 'string',
     },
     name='string',
     slug='string',
@@ -210,7 +197,7 @@ s = hightouch.Hightouch(
 
 req = shared.DestinationCreate(
     configuration={
-        "key": 'string',
+        'key': 'string',
     },
     name='string',
     slug='string',
@@ -223,11 +210,11 @@ if res.one_of is not None:
     # handle response
     pass
 ```
-<!-- End Server Selection -->
+<!-- End Server Selection [server] -->
 
 
 
-<!-- Start Custom HTTP Client -->
+<!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
 The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
@@ -241,11 +228,11 @@ http_client = requests.Session()
 http_client.headers.update({'x-custom-header': 'someValue'})
 s = hightouch.Hightouch(client: http_client)
 ```
-<!-- End Custom HTTP Client -->
+<!-- End Custom HTTP Client [http-client] -->
 
 
 
-<!-- Start Authentication -->
+<!-- Start Authentication [security] -->
 ## Authentication
 
 ### Per-Client Security Schemes
@@ -269,7 +256,7 @@ s = hightouch.Hightouch(
 
 req = shared.DestinationCreate(
     configuration={
-        "key": 'string',
+        'key': 'string',
     },
     name='string',
     slug='string',
@@ -282,7 +269,7 @@ if res.one_of is not None:
     # handle response
     pass
 ```
-<!-- End Authentication -->
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

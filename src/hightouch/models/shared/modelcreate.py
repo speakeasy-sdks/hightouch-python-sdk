@@ -47,7 +47,7 @@ class ModelCreateTable:
 @dataclasses.dataclass
 class ModelCreateVisual:
     r"""Visual query, used by audience"""
-    filter: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('filter') }})
+    filter_: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('filter') }})
     parent_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('parentId') }})
     r"""Parent id of the schema that visual query is based on"""
     primary_label: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('primaryLabel') }})

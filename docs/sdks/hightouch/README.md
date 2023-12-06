@@ -48,7 +48,7 @@ s = hightouch.Hightouch(
 
 req = shared.DestinationCreate(
     configuration={
-        "key": 'string',
+        'key': 'string',
     },
     name='string',
     slug='string',
@@ -115,7 +115,7 @@ req = shared.ModelCreate(
         name='string',
     ),
     visual=shared.ModelCreateVisual(
-        filter='string',
+        filter_='string',
         parent_id='string',
         primary_label='string',
         secondary_label='string',
@@ -164,7 +164,7 @@ s = hightouch.Hightouch(
 
 req = shared.SourceCreate(
     configuration={
-        "key": 'string',
+        'key': 'string',
     },
     name='string',
     slug='string',
@@ -213,7 +213,7 @@ s = hightouch.Hightouch(
 
 req = shared.SyncCreate(
     configuration={
-        "key": 'string',
+        'key': 'string',
     },
     destination_id='string',
     disabled=False,
@@ -890,7 +890,7 @@ s = hightouch.Hightouch(
 req = operations.UpdateDestinationRequest(
     destination_update=shared.DestinationUpdate(
         configuration={
-            "key": 'string',
+            'key': 'string',
         },
     ),
     destination_id=8928.88,
@@ -953,7 +953,7 @@ req = operations.UpdateModelRequest(
             name='string',
         ),
         visual=shared.ModelUpdateVisual(
-            filter='string',
+            filter_='string',
             parent_id='string',
             primary_label='string',
             secondary_label='string',
@@ -1007,7 +1007,7 @@ s = hightouch.Hightouch(
 req = operations.UpdateSourceRequest(
     source_update=shared.SourceUpdate(
         configuration={
-            "key": 'string',
+            'key': 'string',
         },
     ),
     source_id=6585.68,
@@ -1058,7 +1058,7 @@ s = hightouch.Hightouch(
 req = operations.UpdateSyncRequest(
     sync_update=shared.SyncUpdate(
         configuration={
-            "key": 'string',
+            'key': 'string',
         },
         schedule=shared.SyncUpdateSchedule(
             schedule=shared.VisualCronSchedule(
