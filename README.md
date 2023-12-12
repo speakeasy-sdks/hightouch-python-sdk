@@ -35,7 +35,7 @@ from hightouch.models import shared
 
 s = hightouch.Hightouch(
     security=shared.Security(
-        bearer_auth="",
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
     ),
 )
 
@@ -109,7 +109,7 @@ from hightouch.models import shared
 
 s = hightouch.Hightouch(
     security=shared.Security(
-        bearer_auth="",
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
     ),
 )
 
@@ -160,7 +160,7 @@ from hightouch.models import shared
 s = hightouch.Hightouch(
     server_idx=0,
     security=shared.Security(
-        bearer_auth="",
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
     ),
 )
 
@@ -191,7 +191,7 @@ from hightouch.models import shared
 s = hightouch.Hightouch(
     server_url="https://api.hightouch.com/api/v1",
     security=shared.Security(
-        bearer_auth="",
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
     ),
 )
 
@@ -250,7 +250,7 @@ from hightouch.models import shared
 
 s = hightouch.Hightouch(
     security=shared.Security(
-        bearer_auth="",
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
     ),
 )
 

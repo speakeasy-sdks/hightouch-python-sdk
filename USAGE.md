@@ -5,7 +5,7 @@ from hightouch.models import shared
 
 s = hightouch.Hightouch(
     security=shared.Security(
-        bearer_auth="",
+        bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
     ),
 )
 

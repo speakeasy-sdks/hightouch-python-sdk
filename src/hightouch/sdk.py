@@ -56,7 +56,7 @@ class Hightouch:
         
         url = base_url + '/destinations'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.DestinationCreate, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -102,7 +102,7 @@ class Hightouch:
         
         url = base_url + '/models'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.ModelCreate, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -148,7 +148,7 @@ class Hightouch:
         
         url = base_url + '/sources'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.SourceCreate, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -194,7 +194,7 @@ class Hightouch:
         
         url = base_url + '/syncs'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.SyncCreate, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -630,7 +630,7 @@ class Hightouch:
         
         url = utils.generate_url(operations.TriggerRunRequest, base_url, '/syncs/{syncId}/trigger', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "trigger_run_input", False, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.TriggerRunRequest, "trigger_run_input", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
@@ -677,7 +677,7 @@ class Hightouch:
         
         url = base_url + '/syncs/trigger'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.TriggerRunCustomInput, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -720,7 +720,7 @@ class Hightouch:
         
         url = utils.generate_url(operations.TriggerRunIDGraphRequest, base_url, '/id_graphs/{graphId}/trigger', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "trigger_run_id_graph_input", False, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.TriggerRunIDGraphRequest, "trigger_run_id_graph_input", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
@@ -810,7 +810,7 @@ class Hightouch:
         
         url = utils.generate_url(operations.UpdateDestinationRequest, base_url, '/destinations/{destinationId}', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "destination_update", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UpdateDestinationRequest, "destination_update", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -858,7 +858,7 @@ class Hightouch:
         
         url = utils.generate_url(operations.UpdateModelRequest, base_url, '/models/{modelId}', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "model_update", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UpdateModelRequest, "model_update", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -906,7 +906,7 @@ class Hightouch:
         
         url = utils.generate_url(operations.UpdateSourceRequest, base_url, '/sources/{sourceId}', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "source_update", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UpdateSourceRequest, "source_update", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -954,7 +954,7 @@ class Hightouch:
         
         url = utils.generate_url(operations.UpdateSyncRequest, base_url, '/syncs/{syncId}', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "sync_update", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.UpdateSyncRequest, "sync_update", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
