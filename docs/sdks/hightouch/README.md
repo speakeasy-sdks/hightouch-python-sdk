@@ -77,7 +77,7 @@ if res.one_of is not None:
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | errors.ValidateErrorJSON | 409,422                  | application/json         |
-| errors.SDKError          | 400-600                  | */*                      |
+| errors.SDKError          | 4x-5xx                   | */*                      |
 
 ## create_model
 
@@ -144,7 +144,7 @@ if res.one_of is not None:
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | errors.ValidateErrorJSON | 409,422                  | application/json         |
-| errors.SDKError          | 400-600                  | */*                      |
+| errors.SDKError          | 4x-5xx                   | */*                      |
 
 ## create_source
 
@@ -193,7 +193,7 @@ if res.one_of is not None:
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | errors.ValidateErrorJSON | 409,422                  | application/json         |
-| errors.SDKError          | 400-600                  | */*                      |
+| errors.SDKError          | 4x-5xx                   | */*                      |
 
 ## create_sync
 
@@ -254,7 +254,7 @@ if res.one_of is not None:
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | errors.ValidateErrorJSON | 409,422                  | application/json         |
-| errors.SDKError          | 400-600                  | */*                      |
+| errors.SDKError          | 4x-5xx                   | */*                      |
 
 ## get_destination
 
@@ -297,7 +297,7 @@ if res.destination is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## get_model
 
@@ -340,7 +340,7 @@ if res.model is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## get_source
 
@@ -384,7 +384,7 @@ if res.source is not None:
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | errors.ValidateErrorJSON | 422                      | application/json         |
-| errors.SDKError          | 400-600                  | */*                      |
+| errors.SDKError          | 4x-5xx                   | */*                      |
 
 ## get_sync
 
@@ -427,7 +427,7 @@ if res.sync is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## get_sync_sequence_run
 
@@ -471,7 +471,7 @@ if res.sync_sequence_status_output is not None:
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | errors.ValidateErrorJSON | 422                      | application/json         |
-| errors.SDKError          | 400-600                  | */*                      |
+| errors.SDKError          | 4x-5xx                   | */*                      |
 
 ## list_destination
 
@@ -513,7 +513,7 @@ if res.object is not None:
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | errors.ValidateErrorJSON | 422                      | application/json         |
-| errors.SDKError          | 400-600                  | */*                      |
+| errors.SDKError          | 4x-5xx                   | */*                      |
 
 ## list_model
 
@@ -555,7 +555,7 @@ if res.object is not None:
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | errors.ValidateErrorJSON | 422                      | application/json         |
-| errors.SDKError          | 400-600                  | */*                      |
+| errors.SDKError          | 4x-5xx                   | */*                      |
 
 ## list_source
 
@@ -596,7 +596,7 @@ if res.object is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## list_sync
 
@@ -639,7 +639,7 @@ if res.object is not None:
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | errors.ValidateErrorJSON | 422                      | application/json         |
-| errors.SDKError          | 400-600                  | */*                      |
+| errors.SDKError          | 4x-5xx                   | */*                      |
 
 ## list_sync_runs
 
@@ -684,7 +684,7 @@ if res.object is not None:
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | errors.ValidateErrorJSON | 422                      | application/json         |
-| errors.SDKError          | 400-600                  | */*                      |
+| errors.SDKError          | 4x-5xx                   | */*                      |
 
 ## trigger_run
 
@@ -732,7 +732,7 @@ if res.trigger_run_output is not None:
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | errors.ValidateErrorJSON | 422                      | application/json         |
-| errors.SDKError          | 400-600                  | */*                      |
+| errors.SDKError          | 4x-5xx                   | */*                      |
 
 ## trigger_run_custom
 
@@ -777,7 +777,7 @@ if res.one_of is not None:
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | errors.ValidateErrorJSON | 422                      | application/json         |
-| errors.SDKError          | 400-600                  | */*                      |
+| errors.SDKError          | 4x-5xx                   | */*                      |
 
 ## trigger_run_id_graph
 
@@ -820,7 +820,7 @@ if res.trigger_run_id_graph_output is not None:
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | errors.ValidateErrorJSON | 422                      | application/json         |
-| errors.SDKError          | 400-600                  | */*                      |
+| errors.SDKError          | 4x-5xx                   | */*                      |
 
 ## trigger_sequence_run
 
@@ -867,7 +867,7 @@ if res.trigger_sequence_run_output is not None:
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | errors.ValidateErrorJSON | 422                      | application/json         |
-| errors.SDKError          | 400-600                  | */*                      |
+| errors.SDKError          | 4x-5xx                   | */*                      |
 
 ## update_destination
 
@@ -918,7 +918,7 @@ if res.one_of is not None:
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | errors.ValidateErrorJSON | 422                      | application/json         |
-| errors.SDKError          | 400-600                  | */*                      |
+| errors.SDKError          | 4x-5xx                   | */*                      |
 
 ## update_model
 
@@ -984,7 +984,7 @@ if res.one_of is not None:
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | errors.ValidateErrorJSON | 422                      | application/json         |
-| errors.SDKError          | 400-600                  | */*                      |
+| errors.SDKError          | 4x-5xx                   | */*                      |
 
 ## update_source
 
@@ -1035,7 +1035,7 @@ if res.one_of is not None:
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | errors.ValidateErrorJSON | 422                      | application/json         |
-| errors.SDKError          | 400-600                  | */*                      |
+| errors.SDKError          | 4x-5xx                   | */*                      |
 
 ## update_sync
 
@@ -1097,4 +1097,4 @@ if res.one_of is not None:
 | Error Object             | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
 | errors.ValidateErrorJSON | 422                      | application/json         |
-| errors.SDKError          | 400-600                  | */*                      |
+| errors.SDKError          | 4x-5xx                   | */*                      |
