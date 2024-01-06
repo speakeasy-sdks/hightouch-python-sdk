@@ -4,16 +4,16 @@ management:
   docChecksum: 7998dbff43d13b24f5ce8289e558ad2e
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.225.2
-  releaseVersion: 3.2.1
-  configChecksum: e5b066e73bec232d4439e0d89ccaa557
+  generationVersion: 2.228.1
+  releaseVersion: 3.2.2
+  configChecksum: 129ce0c847432347c16a82eca867cd65
   repoURL: https://github.com/speakeasy-sdks/hightouch-python-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/hightouch-python-sdk.git
 features:
   python:
     constsAndDefaults: 0.1.2
-    core: 4.4.0
+    core: 4.4.1
     globalSecurity: 2.83.1
     globalServerURLs: 2.82.1
     unions: 2.82.5
