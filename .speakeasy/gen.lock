@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1cc01e85-de06-43c6-8eba-b42d8ac9f2f1
 management:
-  docChecksum: 7998dbff43d13b24f5ce8289e558ad2e
+  docChecksum: 0dd32241bcd639c7e99747c1a7b3780d
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.237.2
-  releaseVersion: 3.2.3
-  configChecksum: 201e9056748be4977faa111e0a2279fa
+  generationVersion: 2.237.3
+  releaseVersion: 3.2.4
+  configChecksum: 3d241d76e43e062828a7f6d899a3f5bf
   repoURL: https://github.com/speakeasy-sdks/hightouch-python-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/hightouch-python-sdk.git

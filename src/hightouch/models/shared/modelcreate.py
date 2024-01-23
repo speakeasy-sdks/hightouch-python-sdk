@@ -19,7 +19,7 @@ class ModelCreateCustom:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ModelCreateDbt:
-    model_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modelId') }})
+    model_id: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modelId') }})
     r"""Model id that refers to a dbt model"""
     
 
@@ -48,7 +48,7 @@ class ModelCreateTable:
 class ModelCreateVisual:
     r"""Visual query, used by audience"""
     filter_: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('filter') }})
-    parent_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('parentId') }})
+    parent_id: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('parentId') }})
     r"""Parent id of the schema that visual query is based on"""
     primary_label: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('primaryLabel') }})
     secondary_label: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('secondaryLabel') }})
@@ -72,7 +72,7 @@ class ModelCreate:
     r"""The type of the query. Available options: custom, raw_sql, tabel, dbt and visual."""
     slug: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('slug') }})
     r"""The slug of the model"""
-    source_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceId') }})
+    source_id: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceId') }})
     r"""The id of the source that model is connected to"""
     custom: Optional[ModelCreateCustom] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('custom'), 'exclude': lambda f: f is None }})
     r"""Custom query for sources that doesn't support sql. For example, Airtable."""

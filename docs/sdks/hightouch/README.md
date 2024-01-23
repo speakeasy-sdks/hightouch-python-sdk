@@ -100,7 +100,7 @@ req = shared.ModelCreate(
         query='string',
     ),
     dbt=shared.ModelCreateDbt(
-        model_id='string',
+        model_id=8761.56,
     ),
     is_schema=False,
     name='string',
@@ -110,13 +110,13 @@ req = shared.ModelCreate(
         sql='string',
     ),
     slug='string',
-    source_id='string',
+    source_id=9991.44,
     table=shared.ModelCreateTable(
         name='string',
     ),
     visual=shared.ModelCreateVisual(
         filter_='string',
-        parent_id='string',
+        parent_id=5748.68,
         primary_label='string',
         secondary_label='string',
     ),
@@ -215,17 +215,12 @@ req = shared.SyncCreate(
     configuration={
         'key': 'string',
     },
-    destination_id='string',
+    destination_id=8797.77,
     disabled=False,
-    model_id='string',
+    model_id=2438.5,
     schedule=shared.SyncCreateSchedule(
-        schedule=shared.DBTSchedule(
-        account=shared.Account(
-            id='<ID>',
-        ),
-        job=shared.Job(
-            id='<ID>',
-        ),
+        schedule=shared.CronSchedule(
+        expression='string',
     ),
         type='string',
     ),
@@ -944,7 +939,7 @@ req = operations.UpdateModelRequest(
             query='string',
         ),
         dbt=shared.ModelUpdateDbt(
-            model_id='string',
+            model_id=1027.03,
         ),
         raw=shared.ModelUpdateRaw(
             sql='string',
@@ -954,12 +949,12 @@ req = operations.UpdateModelRequest(
         ),
         visual=shared.ModelUpdateVisual(
             filter_='string',
-            parent_id='string',
+            parent_id=4048.47,
             primary_label='string',
             secondary_label='string',
         ),
     ),
-    model_id=1027.03,
+    model_id=7828.84,
 )
 
 res = s.update_model(req)

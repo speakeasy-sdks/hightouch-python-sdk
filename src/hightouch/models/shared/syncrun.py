@@ -81,7 +81,7 @@ class SyncRun:
     """
     finished_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finishedAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }})
     r"""The timestamp when the sync run finished"""
-    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
+    id: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""The sync run's id"""
     planned_rows: PlannedRows = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('plannedRows') }})
     r"""The number of planned rows that this sync run was supposed to execute.

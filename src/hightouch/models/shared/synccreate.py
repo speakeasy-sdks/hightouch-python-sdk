@@ -43,11 +43,11 @@ class SyncCreate:
     Consumers should NOT make assumptions on the contents of the
     configuration. It may change as Hightouch updates its internal code.
     """
-    destination_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('destinationId') }})
+    destination_id: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('destinationId') }})
     r"""The id of the Destination that sync is connected to"""
     disabled: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('disabled') }})
     r"""Whether the sync has been disabled by the user."""
-    model_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modelId') }})
+    model_id: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modelId') }})
     r"""The id of the Model that sync is connected to"""
     schedule: Optional[SyncCreateSchedule] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})
     r"""The scheduling configuration. It can be triggerd based on several ways:

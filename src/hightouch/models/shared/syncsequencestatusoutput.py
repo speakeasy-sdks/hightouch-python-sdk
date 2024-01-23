@@ -15,8 +15,8 @@ class SyncRuns:
     finished_at: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finishedAt') }})
     status: SyncRunStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""The status of sync runs"""
-    sync_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncId') }})
-    sync_run_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncRunId') }})
+    sync_id: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncId') }})
+    sync_run_id: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncRunId') }})
     
 
 

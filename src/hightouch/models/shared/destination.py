@@ -26,19 +26,19 @@ class Destination:
     """
     created_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }})
     r"""The timestamp when the destination was created"""
-    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
+    id: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""The destination's id"""
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
     r"""The destination's name"""
     slug: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('slug') }})
     r"""The destination's slug"""
-    syncs: List[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncs') }})
+    syncs: List[float] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('syncs') }})
     r"""A list of syncs that sync to this destination."""
     type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""The destination's type (e.g. salesforce or hubspot)."""
     updated_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updatedAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }})
     r"""The timestamp when the destination was last updated"""
-    workspace_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('workspaceId') }})
+    workspace_id: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('workspaceId') }})
     r"""The id of the workspace that the destination belongs to"""
     
 
