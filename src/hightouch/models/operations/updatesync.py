@@ -12,9 +12,9 @@ from typing import Optional, Union
 
 @dataclasses.dataclass
 class UpdateSyncRequest:
+    sync_update: shared_syncupdate.SyncUpdate = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     sync_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'syncId', 'style': 'simple', 'explode': False }})
     r"""The sync's ID"""
-    sync_update: shared_syncupdate.SyncUpdate = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     
 
 
@@ -23,10 +23,10 @@ class UpdateSyncRequest:
 class UpdateSyncResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
-    raw_response: requests_http.Response = dataclasses.field()
-    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     one_of: Optional[Union[shared_sync.Sync, errors_validateerrorjson.ValidateErrorJSON, shared_internalservererror.InternalServerError]] = dataclasses.field(default=None)
     r"""Ok"""
     

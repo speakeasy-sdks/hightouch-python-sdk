@@ -96,21 +96,21 @@ s = hightouch.Hightouch(
 )
 
 req = shared.ModelCreate(
-    custom=shared.ModelCreateCustom(
-        query='string',
-    ),
-    dbt=shared.ModelCreateDbt(
-        model_id=8761.56,
-    ),
     is_schema=False,
     name='string',
     primary_key='string',
     query_type='string',
+    slug='string',
+    source_id=8761.56,
+    custom=shared.ModelCreateCustom(
+        query='string',
+    ),
+    dbt=shared.ModelCreateDbt(
+        model_id=9991.44,
+    ),
     raw=shared.ModelCreateRaw(
         sql='string',
     ),
-    slug='string',
-    source_id=9991.44,
     table=shared.ModelCreateTable(
         name='string',
     ),
@@ -701,8 +701,8 @@ s = hightouch.Hightouch(
 )
 
 req = operations.TriggerRunRequest(
-    trigger_run_input=shared.TriggerRunInput(),
     sync_id='string',
+    trigger_run_input=shared.TriggerRunInput(),
 )
 
 res = s.trigger_run(req)
@@ -789,8 +789,8 @@ s = hightouch.Hightouch(
 )
 
 req = operations.TriggerRunIDGraphRequest(
-    trigger_run_id_graph_input=shared.TriggerRunIDGraphInput(),
     graph_id='string',
+    trigger_run_id_graph_input=shared.TriggerRunIDGraphInput(),
 )
 
 res = s.trigger_run_id_graph(req)

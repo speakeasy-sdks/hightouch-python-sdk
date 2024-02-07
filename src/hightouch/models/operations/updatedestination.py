@@ -12,9 +12,9 @@ from typing import Optional, Union
 
 @dataclasses.dataclass
 class UpdateDestinationRequest:
+    destination_update: shared_destinationupdate.DestinationUpdate = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     destination_id: float = dataclasses.field(metadata={'path_param': { 'field_name': 'destinationId', 'style': 'simple', 'explode': False }})
     r"""The destination's ID"""
-    destination_update: shared_destinationupdate.DestinationUpdate = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     
 
 
@@ -23,10 +23,10 @@ class UpdateDestinationRequest:
 class UpdateDestinationResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
-    raw_response: requests_http.Response = dataclasses.field()
-    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     one_of: Optional[Union[shared_destination.Destination, errors_validateerrorjson.ValidateErrorJSON, shared_internalservererror.InternalServerError]] = dataclasses.field(default=None)
     r"""Ok"""
     
