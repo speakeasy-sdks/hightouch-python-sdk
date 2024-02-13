@@ -105,7 +105,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 
 ```python
 import hightouch
-from hightouch.models import shared
+from hightouch.models import errors, shared
 
 s = hightouch.Hightouch(
     security=shared.Security(
@@ -126,10 +126,10 @@ res = None
 try:
     res = s.create_destination(req)
 except errors.ValidateErrorJSON as e:
-    print(e)  # handle exception
+    # handle exception
     raise(e)
 except errors.SDKError as e:
-    print(e)  # handle exception
+    # handle exception
     raise(e)
 
 if res.one_of is not None:

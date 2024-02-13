@@ -4,7 +4,7 @@ management:
   docChecksum: 0dd32241bcd639c7e99747c1a7b3780d
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.250.12
+  generationVersion: 2.253.0
   releaseVersion: 5.0.0
   configChecksum: cc5dfab1a86747abb7e95c436cd3642d
   repoURL: https://github.com/speakeasy-sdks/hightouch-python-sdk.git

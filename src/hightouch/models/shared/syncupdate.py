@@ -34,6 +34,7 @@ class SyncUpdateSchedule:
 @dataclasses.dataclass
 class SyncUpdate:
     r"""The input for updating a Sync"""
+    UNSET='__SPEAKEASY_UNSET__'
     configuration: Optional[Dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('configuration'), 'exclude': lambda f: f is None }})
     r"""The sync's configuration. This specifies how data is mapped, among other
     configuration.
@@ -45,7 +46,7 @@ class SyncUpdate:
     """
     disabled: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('disabled'), 'exclude': lambda f: f is None }})
     r"""Whether the sync has been disabled by the user."""
-    schedule: Optional[SyncUpdateSchedule] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule') }})
+    schedule: Optional[SyncUpdateSchedule] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('schedule'), 'exclude': lambda f: f is SyncUpdate.UNSET }})
     r"""The scheduling configuration. It can be triggerd based on several ways:
 
     Interval: the sync will be trigged based on certain interval(minutes/hours/days/weeks)

@@ -102,24 +102,6 @@ req = shared.ModelCreate(
     query_type='string',
     slug='string',
     source_id=8761.56,
-    custom=shared.ModelCreateCustom(
-        query='string',
-    ),
-    dbt=shared.ModelCreateDbt(
-        model_id=9991.44,
-    ),
-    raw=shared.ModelCreateRaw(
-        sql='string',
-    ),
-    table=shared.ModelCreateTable(
-        name='string',
-    ),
-    visual=shared.ModelCreateVisual(
-        filter_='string',
-        parent_id=5748.68,
-        primary_label='string',
-        secondary_label='string',
-    ),
 )
 
 res = s.create_model(req)
@@ -220,8 +202,8 @@ req = shared.SyncCreate(
     model_id=2438.5,
     schedule=shared.SyncCreateSchedule(
         schedule=shared.CronSchedule(
-        expression='string',
-    ),
+            expression='string',
+        ),
         type='string',
     ),
     slug='string',
@@ -600,7 +582,6 @@ List all the syncs in the current workspace
 ### Example Usage
 
 ```python
-import dateutil.parser
 import hightouch
 from hightouch.models import operations, shared
 
@@ -643,7 +624,6 @@ List all sync runs under a sync
 ### Example Usage
 
 ```python
-import dateutil.parser
 import hightouch
 from hightouch.models import operations, shared
 
@@ -702,7 +682,6 @@ s = hightouch.Hightouch(
 
 req = operations.TriggerRunRequest(
     sync_id='string',
-    trigger_run_input=shared.TriggerRunInput(),
 )
 
 res = s.trigger_run(req)
@@ -790,7 +769,6 @@ s = hightouch.Hightouch(
 
 req = operations.TriggerRunIDGraphRequest(
     graph_id='string',
-    trigger_run_id_graph_input=shared.TriggerRunIDGraphInput(),
 )
 
 res = s.trigger_run_id_graph(req)
@@ -883,11 +861,7 @@ s = hightouch.Hightouch(
 )
 
 req = operations.UpdateDestinationRequest(
-    destination_update=shared.DestinationUpdate(
-        configuration={
-            'key': 'string',
-        },
-    ),
+    destination_update=shared.DestinationUpdate(),
     destination_id=8928.88,
 )
 
@@ -934,27 +908,8 @@ s = hightouch.Hightouch(
 )
 
 req = operations.UpdateModelRequest(
-    model_update=shared.ModelUpdate(
-        custom=shared.ModelUpdateCustom(
-            query='string',
-        ),
-        dbt=shared.ModelUpdateDbt(
-            model_id=1027.03,
-        ),
-        raw=shared.ModelUpdateRaw(
-            sql='string',
-        ),
-        table=shared.ModelUpdateTable(
-            name='string',
-        ),
-        visual=shared.ModelUpdateVisual(
-            filter_='string',
-            parent_id=4048.47,
-            primary_label='string',
-            secondary_label='string',
-        ),
-    ),
-    model_id=7828.84,
+    model_update=shared.ModelUpdate(),
+    model_id=1027.03,
 )
 
 res = s.update_model(req)
@@ -1000,11 +955,7 @@ s = hightouch.Hightouch(
 )
 
 req = operations.UpdateSourceRequest(
-    source_update=shared.SourceUpdate(
-        configuration={
-            'key': 'string',
-        },
-    ),
+    source_update=shared.SourceUpdate(),
     source_id=6585.68,
 )
 
@@ -1051,23 +1002,8 @@ s = hightouch.Hightouch(
 )
 
 req = operations.UpdateSyncRequest(
-    sync_update=shared.SyncUpdate(
-        configuration={
-            'key': 'string',
-        },
-        schedule=shared.SyncUpdateSchedule(
-            schedule=shared.VisualCronSchedule(
-            expressions=[
-                shared.Expressions(
-                    days=shared.RecordDayBooleanOrUndefined(),
-                    time='string',
-                ),
-            ],
-        ),
-            type='string',
-        ),
-    ),
-    sync_id=1402.89,
+    sync_update=shared.SyncUpdate(),
+    sync_id=5066.51,
 )
 
 res = s.update_sync(req)
