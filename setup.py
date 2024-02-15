@@ -10,7 +10,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="hightouch",
-    version="5.0.0",
+    version="5.0.1",
     author="Speakeasy",
     description="Python SDK for Hightouch API",
     long_description=long_description,

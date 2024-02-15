@@ -41,11 +41,11 @@ s = hightouch.Hightouch(
 
 req = shared.DestinationCreate(
     configuration={
-        'key': 'string',
+        'key': '<value>',
     },
-    name='string',
-    slug='string',
-    type='string',
+    name='<value>',
+    slug='<value>',
+    type='<value>',
 )
 
 res = s.create_destination(req)
@@ -115,11 +115,11 @@ s = hightouch.Hightouch(
 
 req = shared.DestinationCreate(
     configuration={
-        'key': 'string',
+        'key': '<value>',
     },
-    name='string',
-    slug='string',
-    type='string',
+    name='<value>',
+    slug='<value>',
+    type='<value>',
 )
 
 res = None
@@ -166,11 +166,11 @@ s = hightouch.Hightouch(
 
 req = shared.DestinationCreate(
     configuration={
-        'key': 'string',
+        'key': '<value>',
     },
-    name='string',
-    slug='string',
-    type='string',
+    name='<value>',
+    slug='<value>',
+    type='<value>',
 )
 
 res = s.create_destination(req)
@@ -197,11 +197,11 @@ s = hightouch.Hightouch(
 
 req = shared.DestinationCreate(
     configuration={
-        'key': 'string',
+        'key': '<value>',
     },
-    name='string',
-    slug='string',
-    type='string',
+    name='<value>',
+    slug='<value>',
+    type='<value>',
 )
 
 res = s.create_destination(req)
@@ -256,11 +256,11 @@ s = hightouch.Hightouch(
 
 req = shared.DestinationCreate(
     configuration={
-        'key': 'string',
+        'key': '<value>',
     },
-    name='string',
-    slug='string',
-    type='string',
+    name='<value>',
+    slug='<value>',
+    type='<value>',
 )
 
 res = s.create_destination(req)

@@ -11,11 +11,11 @@ s = hightouch.Hightouch(
 
 req = shared.DestinationCreate(
     configuration={
-        'key': 'string',
+        'key': '<value>',
     },
-    name='string',
-    slug='string',
-    type='string',
+    name='<value>',
+    slug='<value>',
+    type='<value>',
 )
 
 res = s.create_destination(req)

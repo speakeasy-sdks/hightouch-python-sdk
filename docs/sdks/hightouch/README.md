@@ -48,11 +48,11 @@ s = hightouch.Hightouch(
 
 req = shared.DestinationCreate(
     configuration={
-        'key': 'string',
+        'key': '<value>',
     },
-    name='string',
-    slug='string',
-    type='string',
+    name='<value>',
+    slug='<value>',
+    type='<value>',
 )
 
 res = s.create_destination(req)
@@ -97,10 +97,10 @@ s = hightouch.Hightouch(
 
 req = shared.ModelCreate(
     is_schema=False,
-    name='string',
-    primary_key='string',
-    query_type='string',
-    slug='string',
+    name='<value>',
+    primary_key='<value>',
+    query_type='<value>',
+    slug='<value>',
     source_id=8761.56,
 )
 
@@ -146,11 +146,11 @@ s = hightouch.Hightouch(
 
 req = shared.SourceCreate(
     configuration={
-        'key': 'string',
+        'key': '<value>',
     },
-    name='string',
-    slug='string',
-    type='string',
+    name='<value>',
+    slug='<value>',
+    type='<value>',
 )
 
 res = s.create_source(req)
@@ -195,18 +195,18 @@ s = hightouch.Hightouch(
 
 req = shared.SyncCreate(
     configuration={
-        'key': 'string',
+        'key': '<value>',
     },
     destination_id=8797.77,
     disabled=False,
     model_id=2438.5,
     schedule=shared.SyncCreateSchedule(
         schedule=shared.CronSchedule(
-            expression='string',
+            expression='<value>',
         ),
-        type='string',
+        type='<value>',
     ),
-    slug='string',
+    slug='<value>',
 )
 
 res = s.create_sync(req)
@@ -423,7 +423,7 @@ s = hightouch.Hightouch(
 )
 
 req = operations.GetSyncSequenceRunRequest(
-    sync_sequence_run_id='string',
+    sync_sequence_run_id='<value>',
 )
 
 res = s.get_sync_sequence_run(req)
@@ -681,7 +681,7 @@ s = hightouch.Hightouch(
 )
 
 req = operations.TriggerRunRequest(
-    sync_id='string',
+    sync_id='<value>',
 )
 
 res = s.trigger_run(req)
@@ -768,7 +768,7 @@ s = hightouch.Hightouch(
 )
 
 req = operations.TriggerRunIDGraphRequest(
-    graph_id='string',
+    graph_id='<value>',
 )
 
 res = s.trigger_run_id_graph(req)
@@ -815,7 +815,7 @@ s = hightouch.Hightouch(
 )
 
 req = operations.TriggerSequenceRunRequest(
-    sync_sequence_id='string',
+    sync_sequence_id='<value>',
 )
 
 res = s.trigger_sequence_run(req)

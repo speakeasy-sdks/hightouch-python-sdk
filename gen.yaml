@@ -8,7 +8,7 @@ generation:
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
 python:
-  version: 5.0.0
+  version: 5.0.1
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
   description: Python SDK for Hightouch API
