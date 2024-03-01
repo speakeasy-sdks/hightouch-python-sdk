@@ -7,8 +7,14 @@ generation:
     nameResolutionDec2023: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
+  auth:
+    oAuth2ClientCredentialsEnabled: false
 python:
-  version: 5.0.1
+  version: 5.1.0
+  additionalDependencies:
+    dependencies: {}
+    extraDependencies:
+      dev: {}
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
   description: Python SDK for Hightouch API

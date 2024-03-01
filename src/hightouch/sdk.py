@@ -3,6 +3,7 @@
 import requests as requests_http
 from .sdkconfiguration import SDKConfiguration
 from hightouch import utils
+from hightouch._hooks import HookContext, SDKHooks
 from hightouch.models import errors, operations, shared
 from typing import Callable, Dict, Optional, Union
 
@@ -42,6 +43,16 @@ class Hightouch:
                 server_url = utils.template_url(server_url, url_params)
 
         self.sdk_configuration = SDKConfiguration(client, security, server_url, server_idx, retry_config=retry_config)
+
+        hooks = SDKHooks()
+
+        current_server_url, *_ = self.sdk_configuration.get_server_details()
+        server_url, self.sdk_configuration.client = hooks.sdk_init(current_server_url, self.sdk_configuration.client)
+        if current_server_url != server_url:
+            self.sdk_configuration.server_url = server_url
+
+        # pylint: disable=protected-access
+        self.sdk_configuration._hooks=hooks
        
         
     
@@ -52,12 +63,13 @@ class Hightouch:
         r"""Create Destination
         Create a new destination
         """
+        hook_ctx = HookContext(operation_id='CreateDestination', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/destinations'
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, shared.DestinationCreate, "request", False, False, 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+        if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
@@ -69,7 +81,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('POST', url, data=data, files=form, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['401','409','422','4XX','500','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.CreateDestinationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -98,12 +130,13 @@ class Hightouch:
         r"""Create Model
         Create a new model
         """
+        hook_ctx = HookContext(operation_id='CreateModel', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/models'
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, shared.ModelCreate, "request", False, False, 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+        if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
@@ -115,7 +148,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('POST', url, data=data, files=form, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['401','409','422','4XX','500','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.CreateModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -144,12 +197,13 @@ class Hightouch:
         r"""Create Source
         Create a new source
         """
+        hook_ctx = HookContext(operation_id='CreateSource', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/sources'
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, shared.SourceCreate, "request", False, False, 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+        if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
@@ -161,7 +215,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('POST', url, data=data, files=form, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['401','409','422','4XX','500','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.CreateSourceResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -190,12 +264,13 @@ class Hightouch:
         r"""Create Sync
         Create a new sync
         """
+        hook_ctx = HookContext(operation_id='CreateSync', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/syncs'
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, shared.SyncCreate, "request", False, False, 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+        if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
@@ -207,7 +282,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('POST', url, data=data, files=form, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['401','409','422','4XX','500','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.CreateSyncResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -236,6 +331,7 @@ class Hightouch:
         r"""Get Destination
         Retrieve a destination based on its Hightouch ID
         """
+        hook_ctx = HookContext(operation_id='GetDestination', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.GetDestinationRequest, base_url, '/destinations/{destinationId}', request)
@@ -248,7 +344,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('GET', url, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('GET', url, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['401','404','4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.GetDestinationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -270,6 +386,7 @@ class Hightouch:
         r"""Get Model
         Retrieve models from model ID
         """
+        hook_ctx = HookContext(operation_id='GetModel', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.GetModelRequest, base_url, '/models/{modelId}', request)
@@ -282,7 +399,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('GET', url, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('GET', url, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['401','404','4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.GetModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -304,6 +441,7 @@ class Hightouch:
         r"""Get Source
         Retrieve source from source ID
         """
+        hook_ctx = HookContext(operation_id='GetSource', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.GetSourceRequest, base_url, '/sources/{sourceId}', request)
@@ -316,7 +454,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('GET', url, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('GET', url, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['401','404','422','4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.GetSourceResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -345,6 +503,7 @@ class Hightouch:
         r"""Get Sync
         Retrieve sync from sync ID
         """
+        hook_ctx = HookContext(operation_id='GetSync', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.GetSyncRequest, base_url, '/syncs/{syncId}', request)
@@ -357,7 +516,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('GET', url, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('GET', url, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['401','404','4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.GetSyncResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -379,6 +558,7 @@ class Hightouch:
         r"""Sync sequence status
         Get the status of a sync sequence run.
         """
+        hook_ctx = HookContext(operation_id='GetSyncSequenceRun', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.GetSyncSequenceRunRequest, base_url, '/sync-sequences/runs/{syncSequenceRunId}', request)
@@ -391,7 +571,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('GET', url, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('GET', url, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['400','401','422','4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.GetSyncSequenceRunResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -420,6 +620,7 @@ class Hightouch:
         r"""List Destinations
         List the destinations in the user's workspace
         """
+        hook_ctx = HookContext(operation_id='ListDestination', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/destinations'
@@ -433,7 +634,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('GET', url, params=query_params, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('GET', url, params=query_params, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['400','401','422','4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.ListDestinationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -462,6 +683,7 @@ class Hightouch:
         r"""List Models
         List all the models in the current workspace including parent and related models
         """
+        hook_ctx = HookContext(operation_id='ListModel', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/models'
@@ -475,7 +697,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('GET', url, params=query_params, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('GET', url, params=query_params, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['400','401','422','4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.ListModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -504,6 +746,7 @@ class Hightouch:
         r"""List Sources
         List all the sources in the current workspace
         """
+        hook_ctx = HookContext(operation_id='ListSource', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/sources'
@@ -517,7 +760,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('GET', url, params=query_params, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('GET', url, params=query_params, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['400','401','4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.ListSourceResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -539,6 +802,7 @@ class Hightouch:
         r"""List Syncs
         List all the syncs in the current workspace
         """
+        hook_ctx = HookContext(operation_id='ListSync', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/syncs'
@@ -552,7 +816,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('GET', url, params=query_params, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('GET', url, params=query_params, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['400','401','422','4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.ListSyncResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -581,6 +865,7 @@ class Hightouch:
         r"""List Sync Runs
         List all sync runs under a sync
         """
+        hook_ctx = HookContext(operation_id='ListSyncRuns', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.ListSyncRunsRequest, base_url, '/syncs/{syncId}/runs', request)
@@ -594,7 +879,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('GET', url, params=query_params, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('GET', url, params=query_params, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['400','401','422','4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.ListSyncRunsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -626,12 +931,13 @@ class Hightouch:
         If a run is already in progress, this queues a sync run that will get
         executed immediately after the current run completes.
         """
+        hook_ctx = HookContext(operation_id='TriggerRun', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.TriggerRunRequest, base_url, '/syncs/{syncId}/trigger', request)
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, operations.TriggerRunRequest, "trigger_run_input", False, True, 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+        if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
@@ -641,7 +947,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('POST', url, data=data, files=form, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['400','401','422','4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.TriggerRunResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -673,12 +999,13 @@ class Hightouch:
         If a run is already in progress, this queues a sync run that will get
         executed immediately after the current run completes.
         """
+        hook_ctx = HookContext(operation_id='TriggerRunCustom', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/syncs/trigger'
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, shared.TriggerRunCustomInput, "request", False, False, 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+        if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
@@ -690,7 +1017,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('POST', url, data=data, files=form, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['400','401','422','4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.TriggerRunCustomResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -716,12 +1063,13 @@ class Hightouch:
     
     
     def trigger_run_id_graph(self, request: operations.TriggerRunIDGraphRequest) -> operations.TriggerRunIDGraphResponse:
+        hook_ctx = HookContext(operation_id='TriggerRunIdGraph', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.TriggerRunIDGraphRequest, base_url, '/id_graphs/{graphId}/trigger', request)
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, operations.TriggerRunIDGraphRequest, "trigger_run_id_graph_input", False, True, 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+        if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
@@ -731,7 +1079,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('POST', url, data=data, files=form, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['400','401','422','4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.TriggerRunIDGraphResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -763,6 +1131,7 @@ class Hightouch:
         If a run is already in progress, this queues a sync sequence run that will be
         executed immediately after the current run completes.
         """
+        hook_ctx = HookContext(operation_id='TriggerSequenceRun', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.TriggerSequenceRunRequest, base_url, '/sync-sequences/{syncSequenceId}/trigger', request)
@@ -775,7 +1144,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('POST', url, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('POST', url, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['400','401','422','4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.TriggerSequenceRunResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -806,12 +1195,13 @@ class Hightouch:
 
         Patch a destination based on its Hightouch ID
         """
+        hook_ctx = HookContext(operation_id='UpdateDestination', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.UpdateDestinationRequest, base_url, '/destinations/{destinationId}', request)
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, operations.UpdateDestinationRequest, "destination_update", False, False, 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+        if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
@@ -823,7 +1213,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('PATCH', url, data=data, files=form, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['401','404','422','4XX','500','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.UpdateDestinationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -854,12 +1264,13 @@ class Hightouch:
 
         Patch a model based on its Hightouch ID
         """
+        hook_ctx = HookContext(operation_id='UpdateModel', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.UpdateModelRequest, base_url, '/models/{modelId}', request)
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, operations.UpdateModelRequest, "model_update", False, False, 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+        if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
@@ -871,7 +1282,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('PATCH', url, data=data, files=form, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['401','404','422','4XX','500','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.UpdateModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -902,12 +1333,13 @@ class Hightouch:
 
         Patch a source based on its Hightouch ID
         """
+        hook_ctx = HookContext(operation_id='UpdateSource', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.UpdateSourceRequest, base_url, '/sources/{sourceId}', request)
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, operations.UpdateSourceRequest, "source_update", False, False, 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+        if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
@@ -919,7 +1351,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('PATCH', url, data=data, files=form, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['401','404','422','4XX','500','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.UpdateSourceResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -950,12 +1402,13 @@ class Hightouch:
 
         Patch a sync based on its Hightouch ID
         """
+        hook_ctx = HookContext(operation_id='UpdateSync', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.UpdateSyncRequest, base_url, '/syncs/{syncId}', request)
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, operations.UpdateSyncRequest, "sync_update", False, False, 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+        if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
@@ -967,7 +1420,27 @@ class Hightouch:
         else:
             client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
-        http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('PATCH', url, data=data, files=form, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['401','404','422','4XX','500','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
         content_type = http_res.headers.get('Content-Type')
         
         res = operations.UpdateSyncResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
