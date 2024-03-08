@@ -10,7 +10,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 python:
-  version: 5.1.0
+  version: 5.2.0
   additionalDependencies:
     dependencies: {}
     extraDependencies:
@@ -32,3 +32,4 @@ python:
   maxMethodParms: 4
   outputModelSuffix: output
   packageName: hightouch
+  responseFormat: envelope

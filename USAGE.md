@@ -23,5 +23,6 @@ res = s.create_destination(req)
 if res.one_of is not None:
     # handle response
     pass
+
 ```
 <!-- End SDK Example Usage [usage] -->

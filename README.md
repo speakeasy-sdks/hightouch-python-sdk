@@ -53,6 +53,7 @@ res = s.create_destination(req)
 if res.one_of is not None:
     # handle response
     pass
+
 ```
 <!-- End SDK Example Usage [usage] -->
 
@@ -135,6 +136,7 @@ except errors.SDKError as e:
 if res.one_of is not None:
     # handle response
     pass
+
 ```
 <!-- End Error Handling [errors] -->
 
@@ -178,6 +180,7 @@ res = s.create_destination(req)
 if res.one_of is not None:
     # handle response
     pass
+
 ```
 
 
@@ -209,6 +212,7 @@ res = s.create_destination(req)
 if res.one_of is not None:
     # handle response
     pass
+
 ```
 <!-- End Server Selection [server] -->
 
@@ -268,6 +272,7 @@ res = s.create_destination(req)
 if res.one_of is not None:
     # handle response
     pass
+
 ```
 <!-- End Authentication [security] -->
 
