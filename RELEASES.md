@@ -775,3 +775,11 @@ Based on:
 - Speakeasy CLI 1.204.1 (2.279.1) https://github.com/speakeasy-api/speakeasy
 ### Generated
 - [python v5.2.0] .
+
+## 2024-03-09 00:32:31
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.205.0 (2.279.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v5.2.1] .

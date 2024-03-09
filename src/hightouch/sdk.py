@@ -128,7 +128,7 @@ class Hightouch:
 
     
     
-    def create_model(self, request: shared.ModelCreate) -> operations.CreateModelResponse:
+    def create_model(self, request: operations.CreateModelRequest) -> operations.CreateModelResponse:
         r"""Create Model
         Create a new model
         """
@@ -142,11 +142,12 @@ class Hightouch:
         else:
             headers, query_params = utils.get_security(self.sdk_configuration.security)
         
-        req_content_type, data, form = utils.serialize_request_body(request, shared.ModelCreate, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.CreateModelRequest, "model_create", False, False, 'json')
         if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        query_params = { **utils.get_query_params(operations.CreateModelRequest, request), **query_params }
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
         client = self.sdk_configuration.client

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 1cc01e85-de06-43c6-8eba-b42d8ac9f2f1
 management:
-  docChecksum: 0dd32241bcd639c7e99747c1a7b3780d
+  docChecksum: 8a72152156319b55ebd9dd4cff488703
   docVersion: 1.0.0
-  speakeasyVersion: 1.204.1
+  speakeasyVersion: 1.205.0
   generationVersion: 2.279.1
-  releaseVersion: 5.2.0
-  configChecksum: 583a08d485555b1a3ba1ff550115faf0
+  releaseVersion: 5.2.1
+  configChecksum: 5d106addd37d2dd1ba534190538cdd30
   repoURL: https://github.com/speakeasy-sdks/hightouch-python-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/hightouch-python-sdk.git
@@ -91,6 +91,7 @@ generatedFiles:
   - src/hightouch/models/shared/__init__.py
   - docs/models/operations/createdestinationresponsebody.md
   - docs/models/operations/createdestinationresponse.md
+  - docs/models/operations/createmodelrequest.md
   - docs/models/operations/createmodelresponsebody.md
   - docs/models/operations/createmodelresponse.md
   - docs/models/operations/createsourceresponsebody.md

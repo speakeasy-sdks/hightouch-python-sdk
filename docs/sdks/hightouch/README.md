@@ -88,7 +88,7 @@ Create a new model
 
 ```python
 import hightouch
-from hightouch.models import shared
+from hightouch.models import operations, shared
 
 s = hightouch.Hightouch(
     security=shared.Security(
@@ -96,13 +96,15 @@ s = hightouch.Hightouch(
     ),
 )
 
-req = shared.ModelCreate(
-    is_schema=False,
-    name='<value>',
-    primary_key='<value>',
-    query_type='<value>',
-    slug='<value>',
-    source_id=8761.56,
+req = operations.CreateModelRequest(
+    model_create=shared.ModelCreate(
+        is_schema=False,
+        name='<value>',
+        primary_key='<value>',
+        query_type='<value>',
+        slug='<value>',
+        source_id=8761.56,
+    ),
 )
 
 res = s.create_model(req)
@@ -115,9 +117,9 @@ if res.one_of is not None:
 
 ### Parameters
 
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `request`                                                | [shared.ModelCreate](../../models/shared/modelcreate.md) | :heavy_check_mark:                                       | The request object to use for the request.               |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [operations.CreateModelRequest](../../models/operations/createmodelrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
 
 
 ### Response

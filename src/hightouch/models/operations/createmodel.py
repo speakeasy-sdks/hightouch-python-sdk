@@ -6,7 +6,16 @@ import requests as requests_http
 from ...models.errors import validateerrorjson as errors_validateerrorjson
 from ...models.shared import internalservererror as shared_internalservererror
 from ...models.shared import model as shared_model
+from ...models.shared import modelcreate as shared_modelcreate
 from typing import Optional, Union
+
+
+@dataclasses.dataclass
+class CreateModelRequest:
+    model_create: shared_modelcreate.ModelCreate = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
+    skip_column_query: Optional[bool] = dataclasses.field(default=False, metadata={'query_param': { 'field_name': 'skipColumnQuery', 'style': 'form', 'explode': True }})
+    
+
 
 
 @dataclasses.dataclass
