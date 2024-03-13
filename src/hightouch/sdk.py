@@ -14,14 +14,14 @@ class Hightouch:
 
     def __init__(self,
                  security: Union[shared.Security,Callable[[], shared.Security]] = None,
-                 server_idx: int = None,
-                 server_url: str = None,
-                 url_params: Dict[str, str] = None,
-                 client: requests_http.Session = None,
-                 retry_config: utils.RetryConfig = None
+                 server_idx: Optional[int] = None,
+                 server_url: Optional[str] = None,
+                 url_params: Optional[Dict[str, str]] = None,
+                 client: Optional[requests_http.Session] = None,
+                 retry_config: Optional[utils.RetryConfig] = None
                  ) -> None:
         """Instantiates the SDK configuring it with the provided parameters.
-        
+
         :param security: The security details required for authentication
         :type security: Union[shared.Security,Callable[[], shared.Security]]
         :param server_idx: The index of the server to use for all operations
@@ -37,12 +37,18 @@ class Hightouch:
         """
         if client is None:
             client = requests_http.Session()
-        
+
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
 
-        self.sdk_configuration = SDKConfiguration(client, security, server_url, server_idx, retry_config=retry_config)
+        self.sdk_configuration = SDKConfiguration(
+            client,
+            security,
+            server_url,
+            server_idx,
+            retry_config=retry_config
+        )
 
         hooks = SDKHooks()
 
@@ -52,13 +58,9 @@ class Hightouch:
             self.sdk_configuration.server_url = server_url
 
         # pylint: disable=protected-access
-        self.sdk_configuration._hooks=hooks
-       
-        
-    
-    
-    
-    
+        self.sdk_configuration._hooks = hooks
+
+
     def create_destination(self, request: shared.DestinationCreate) -> operations.CreateDestinationResponse:
         r"""Create Destination
         Create a new destination
@@ -126,8 +128,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def create_model(self, request: operations.CreateModelRequest) -> operations.CreateModelResponse:
         r"""Create Model
         Create a new model
@@ -196,8 +198,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def create_source(self, request: shared.SourceCreate) -> operations.CreateSourceResponse:
         r"""Create Source
         Create a new source
@@ -265,8 +267,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def create_sync(self, request: shared.SyncCreate) -> operations.CreateSyncResponse:
         r"""Create Sync
         Create a new sync
@@ -334,8 +336,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def get_destination(self, request: operations.GetDestinationRequest) -> operations.GetDestinationResponse:
         r"""Get Destination
         Retrieve a destination based on its Hightouch ID
@@ -391,8 +393,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def get_model(self, request: operations.GetModelRequest) -> operations.GetModelResponse:
         r"""Get Model
         Retrieve models from model ID
@@ -448,8 +450,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def get_source(self, request: operations.GetSourceRequest) -> operations.GetSourceResponse:
         r"""Get Source
         Retrieve source from source ID
@@ -512,8 +514,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def get_sync(self, request: operations.GetSyncRequest) -> operations.GetSyncResponse:
         r"""Get Sync
         Retrieve sync from sync ID
@@ -569,8 +571,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def get_sync_sequence_run(self, request: operations.GetSyncSequenceRunRequest) -> operations.GetSyncSequenceRunResponse:
         r"""Sync sequence status
         Get the status of a sync sequence run.
@@ -633,8 +635,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def list_destination(self, request: operations.ListDestinationRequest) -> operations.ListDestinationResponse:
         r"""List Destinations
         List the destinations in the user's workspace
@@ -698,8 +700,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def list_model(self, request: operations.ListModelRequest) -> operations.ListModelResponse:
         r"""List Models
         List all the models in the current workspace including parent and related models
@@ -763,8 +765,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def list_source(self, request: operations.ListSourceRequest) -> operations.ListSourceResponse:
         r"""List Sources
         List all the sources in the current workspace
@@ -821,8 +823,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def list_sync(self, request: operations.ListSyncRequest) -> operations.ListSyncResponse:
         r"""List Syncs
         List all the syncs in the current workspace
@@ -886,8 +888,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def list_sync_runs(self, request: operations.ListSyncRunsRequest) -> operations.ListSyncRunsResponse:
         r"""List Sync Runs
         List all sync runs under a sync
@@ -951,8 +953,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def trigger_run(self, request: operations.TriggerRunRequest) -> operations.TriggerRunResponse:
         r"""Trigger Sync
         Trigger a new run for the given sync.
@@ -1021,8 +1023,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def trigger_run_custom(self, request: shared.TriggerRunCustomInput) -> operations.TriggerRunCustomResponse:
         r"""Trigger Sync From ID or Slug
         Trigger a new run globally based on sync id or sync slug
@@ -1093,8 +1095,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def trigger_run_id_graph(self, request: operations.TriggerRunIDGraphRequest) -> operations.TriggerRunIDGraphResponse:
         hook_ctx = HookContext(operation_id='TriggerRunIdGraph', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -1157,8 +1159,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def trigger_sequence_run(self, request: operations.TriggerSequenceRunRequest) -> operations.TriggerSequenceRunResponse:
         r"""Trigger Sync sequence
         Trigger a new run for the given sync sequence.
@@ -1224,8 +1226,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def update_destination(self, request: operations.UpdateDestinationRequest) -> operations.UpdateDestinationResponse:
         r"""Update Destination
         Update an existing destination
@@ -1295,8 +1297,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def update_model(self, request: operations.UpdateModelRequest) -> operations.UpdateModelResponse:
         r"""Update Model
         Update an existing model
@@ -1366,8 +1368,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def update_source(self, request: operations.UpdateSourceRequest) -> operations.UpdateSourceResponse:
         r"""Update Source
         Update an existing source
@@ -1437,8 +1439,8 @@ class Hightouch:
 
         return res
 
-    
-    
+
+
     def update_sync(self, request: operations.UpdateSyncRequest) -> operations.UpdateSyncResponse:
         r"""Update Sync
         Update an existing sync
@@ -1508,4 +1510,3 @@ class Hightouch:
 
         return res
 
-    
